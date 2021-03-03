@@ -55,19 +55,6 @@ e.g., ln -s /home/ubuntu/data/resisc45 /home/ubuntu/hpt/OpenSelfSup/data/resisc4
 
 ```
 
-### SEN12MS
-
-```
-mkdir ~/data/sen12ms
-rsync -r --progress rsync://m1474000@dataserv.ub.tum.de/m1474000/ ~/data/sen12ms
-password m1474000
-
-# extract 
-
-# delete zip file 
-
-```
-
 
 ### Download Pretrained Models
 ``` shell
@@ -80,12 +67,12 @@ cd OpenSelfSup/data/basetrain_chkpts/
 ```
 export WANDB_API_KEY=<use your API key>
 export WANDB_ENTITY=cal-capstone
-export WANDB_PROJECT=RESISC_PT
+export WANDB_PROJECT=hpt
 #export WANDB_MODE=dryrun
 ```
 
 ## Verify Install
-Check installation by pretraining using mocov2, extracting the model weights, evaluating the representations, and then viewing the results on tensorboard or [wandb](https://wandb.ai/cal-capstone/RESISC_PT):
+Check installation by pretraining using mocov2, extracting the model weights, evaluating the representations, and then viewing the results on tensorboard or [wandb](https://wandb.ai/cal-capstone/hpt):
 
 ```
 cd OpenSelfSup
