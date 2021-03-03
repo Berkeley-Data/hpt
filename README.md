@@ -1,117 +1,22 @@
 # Hierarchical Pretraining: Research Repository
 
-This is a research repository for the submission "Self-Supervised Pretraining Improves Self-Supervised Pretraining"
+This is a research repository for the submission "Self-Supervised Pretraining Improves Self-Supervised Pretraining" 
 
-## (optional) GPU instance
+For initial setup, refer to [setup instructions](references/setup). 
 
-Use `Deep Learning AMI (Ubuntu 18.04) Version 40.0` AMI
-- on us-west-2, ami-084f81625fbc98fa4
-- additional disk may be required for data 
+## Setup Weight & Biases Tracking 
 
-Once logged in
-```
-# update conda to the latest 
-conda update -n base conda 
-```
-
-## Installation
 ```bash
-# (1) clone this repo and cd into the cloned directory
-
-# setup environment
-conda create -n hpt python=3.7 ipython
-conda activate hpt
-
-# NOTE: if you are not using CUDA 10.2, you need to change the 10.2 in this command appropriately. Make sure to use torch 1.6.0
-# (check CUDA version with e.g. `cat /usr/local/cuda/version.txt`)
-conda install pytorch==1.6.0 torchvision==0.7.0 cudatoolkit=10.2 -c pytorch
-
-# install local submodules
-cd OpenSelfSup
-pip install -v -e .
-```
-
-## Data installation
-
-Installing and setting up all 16 datsets is a bit of work, so this tutorial shows how to install and setup RESISC-45, and provides links to repeat those steps with other datasets.
-
-### RESISC-45
-RESISC-45 contains 31,500 aerial images, covering 45 scene classes with 700 images in each class.
-
-``` shell
-# cd to the directory where you want the data, $DATA
-wget -q https://bit.ly/3pfkHYp -O resisc45.tar.gz
-md5sum resisc45.tar.gz  # this should be 964dafcfa2dff0402d0772514fb4540b
-tar xf resisc45.tar.gz
-
-mkdir ~/data 
-mv resisc45 ~/data 
-
-# replace/set $DATA and $CODE as appropriate 
-# e.g., ln -s /home/ubuntu/data/resisc45 /home/ubuntu/hpt/OpenSelfSup/data/resisc45/all
-ln -s $DATA/resisc45 $CODE/OpenSelfSup/data/resisc45/all
-
-e.g., ln -s /home/ubuntu/data/resisc45 /home/ubuntu/hpt/OpenSelfSup/data/resisc45/all
-
-```
-
-
-### Download Pretrained Models
-``` shell
-cd OpenSelfSup/data/basetrain_chkpts/
-./download-pretrained-models.sh
-```
-
-### Setup Weight & Biases Tracking 
-
-```
 export WANDB_API_KEY=<use your API key>
 export WANDB_ENTITY=cal-capstone
 export WANDB_PROJECT=hpt
 #export WANDB_MODE=dryrun
 ```
 
-## Verify Install
-Check installation by pretraining using mocov2, extracting the model weights, evaluating the representations, and then viewing the results on tensorboard or [wandb](https://wandb.ai/cal-capstone/hpt):
-
-```
-cd OpenSelfSup
-
-# Sanity check: MoCo for 20 epoch on 4 gpus
-./tools/dist_train.sh configs/selfsup/moco/r50_v2_resisc_in_basetrain_20ep.py 4
-
-# make some variables so its clear what's happening
-CHECKPOINT=work_dirs/selfsup/moco/r50_v2_resisc_in_basetrain_20ep/epoch_20.pth
-BACKBONE=work_dirs/selfsup/moco/r50_v2_resisc_in_basetrain_20ep/epoch_20_moco_in_basetrain.pth
-# Extract the backbone
-python tools/extract_backbone_weights.py ${CHECKPOINT} ${BACKBONE}
-
-# Evaluate the representations
-./benchmarks/dist_train_linear.sh configs/benchmarks/linear_classification/resisc45/r50_last.py ${BACKBONE}
-
-# View the results (optional if wandb is not configured)
-cd work_dirs
-# you may need to install tensorboard
-tensorboard --logdir .
-```
-
-### Additional datasets:
-Following the same instructions as above except replace the bit.ly 
-* BDD: https://bdd-data.berkeley.edu
-* xView: http://xviewdataset.org
-* UC-Merced: http://weegee.vision.ucmerced.edu/datasets/landuse.html
-* DomainNet: http://ai.bu.edu/DomainNet/
-* Chexpert: https://stanfordmlgroup.github.io/competitions/chexpert/
-* Chest-X-ray-kids:https://www.kaggle.com/andrewmvd/pediatric-pneumonia-chest-xray
-* Flowers: https://www.robots.ox.ac.uk/~vgg/data/flowers/
-* VIPER: https://playing-for-benchmarks.org
-* CoCo: https://cocodataset.org/#home
-* PASCAL: http://host.robots.ox.ac.uk/pascal/VOC/
-
 ## Base Training
 
 Right now we assume ImageNet base trained models.
-``` shell
+```bash
 cd OpenSelfSup/data/basetrain_chkpts/
 ./download-pretrained-models.sh
 ```
@@ -182,7 +87,7 @@ Congratulations: you've launch a full hierarchical pretraining experiment.
 
 ## Evaluating Pretrained Representations
 This has been simplified to simply:
-```
+```bash
 ./utils/pretrain-evaluator.sh -b OpenSelfSup/work_dirs/hpt-pretrain/${shortname}/ -d OpenSelfSup/configs/hpt-pretrain/${shortname}
 ```
 where `-b` is the backbone directory and `-d` is the config directory. This command also works for cross-dataset evaluation (e.g. evaluate models trained on Resic45 and evaluate on UC Merced dataset).
@@ -194,7 +99,7 @@ Where are the checkpoints and logs? E.g., if you pass in  `configs/hpt-pretrain/
 ## Finetuning
 Assuming you generated the pretraining project as specified above, finetuning is as simple as:
 
-```
+```bash
 ./utils/finetune-runner.sh -d ./OpenSelfSup/configs/hpt-pretrain/${shortname}/finetune/ -b ./OpenSelfSup/work_dirs/hpt-pretrain/${shortname}/
 ```
 where `-b` is the backbone directory and `-d` is the config directory
@@ -214,7 +119,7 @@ chexpert 50000 50000 400000
 , in which for `chest_xray_kids` dataset, `5000`-iters, `10000`-iters, `100000`-iters are the best pretrained models under `moco base-training`, `imagenet-supervised base-training`, and `no base-training`, respectively.
 
 Second, run the following command to perform finetuning only on the best checkpoints (same as above, except that the change of script name):
-```
+```bash
 ./utils/finetune-runner-top-only.sh -d ./OpenSelfSup/configs/hpt-pretrain/${shortname}/finetune/ -b ./OpenSelfSup/work_dirs/hpt-pretrain/${shortname}
 ```
 
@@ -375,3 +280,4 @@ Here's a command that will allow breakpoints (WARNING: the results with the debu
 python tools/train.py configs/hpt-pretrain/resisc/moco_v2_800ep_basetrain/500-iters.py --work_dir work_dirs/debug --debug
 
 ```
+
