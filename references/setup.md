@@ -56,21 +56,7 @@ mv resisc45 ~/data
 ln -s $DATA/resisc45 $CODE/OpenSelfSup/data/resisc45/all
 
 e.g., ln -s /home/ubuntu/data/resisc45 /home/ubuntu/hpt/OpenSelfSup/data/resisc45/all
-
 ```
-
-
-### SEN12MS 
-
-```bash 
-
-# create softlink to SEN12MS datasets on different storage or different path 
-
-mkdir /scratch/crguest/OpenSelfSup/data/sen12ms
-ln -s /storage/sen12ms_x /scratch/crguest/OpenSelfSup/data/sen12ms/all
-
-```
-
 
 ### Download Pretrained Models
 ``` shell
@@ -106,7 +92,3 @@ cd work_dirs
 # you may need to install tensorboard
 tensorboard --logdir .
 ```
-
-
-
-/scratch/crguest/bin:/scratch/crguest/go/bin:/scratch/crguest/anaconda3/bin:/scratch/crguest/miniconda3/envs/hp120/bin:/scratch/crguest/miniconda3/condabin:/home/cjrd/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/crguest/.antigen/bundles/robbyrussell/oh-my-zsh/lib:/home/crguest/.antigen/bundles/robbyrussell/oh-my-zsh/plugins/git:/home/crguest/.antigen/bundles/robbyrussell/oh-my-zsh/plugins/pip:/home/crguest/.antigen/bundles/robbyrussell/oh-my-zsh/plugins/command-not-found:/home/crguest/.antigen/bundles/zsh-users/zsh-syntax-highlighting:/home/crguest/.antigen/bundles/zsh-users/zsh-autosuggestions:/home/crguest/.emacs.d/bin:/home/crguest/dev/bin:/home/crguest/installs/bin
