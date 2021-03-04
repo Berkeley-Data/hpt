@@ -2,7 +2,7 @@
 
 This is a research repository for the submission "Self-Supervised Pretraining Improves Self-Supervised Pretraining" 
 
-For initial setup, refer to [setup instructions](references/setup). 
+For initial setup, refer to [setup instructions](references/setup.md). 
 
 ## Setup Weight & Biases Tracking 
 

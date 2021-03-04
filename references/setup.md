@@ -60,6 +60,18 @@ e.g., ln -s /home/ubuntu/data/resisc45 /home/ubuntu/hpt/OpenSelfSup/data/resisc4
 ```
 
 
+### SEN12MS 
+
+```bash 
+
+# create softlink to SEN12MS datasets on different storage or different path 
+
+mkdir /scratch/crguest/OpenSelfSup/data/sen12ms
+ln -s /storage/sen12ms_x /scratch/crguest/OpenSelfSup/data/sen12ms/all
+
+```
+
+
 ### Download Pretrained Models
 ``` shell
 cd OpenSelfSup/data/basetrain_chkpts/
@@ -69,7 +81,12 @@ cd OpenSelfSup/data/basetrain_chkpts/
 ## Verify Install
 Check installation by pretraining using mocov2, extracting the model weights, evaluating the representations, and then viewing the results on tensorboard or [wandb](https://wandb.ai/cal-capstone/hpt):
 
-```
+
+```bash
+export WANDB_API_KEY=<use your API key>
+export WANDB_ENTITY=cal-capstone
+export WANDB_PROJECT=hpt
+
 cd OpenSelfSup
 
 # Sanity check: MoCo for 20 epoch on 4 gpus
@@ -90,3 +107,6 @@ cd work_dirs
 tensorboard --logdir .
 ```
 
+
+
+/scratch/crguest/bin:/scratch/crguest/go/bin:/scratch/crguest/anaconda3/bin:/scratch/crguest/miniconda3/envs/hp120/bin:/scratch/crguest/miniconda3/condabin:/home/cjrd/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/crguest/.antigen/bundles/robbyrussell/oh-my-zsh/lib:/home/crguest/.antigen/bundles/robbyrussell/oh-my-zsh/plugins/git:/home/crguest/.antigen/bundles/robbyrussell/oh-my-zsh/plugins/pip:/home/crguest/.antigen/bundles/robbyrussell/oh-my-zsh/plugins/command-not-found:/home/crguest/.antigen/bundles/zsh-users/zsh-syntax-highlighting:/home/crguest/.antigen/bundles/zsh-users/zsh-autosuggestions:/home/crguest/.emacs.d/bin:/home/crguest/dev/bin:/home/crguest/installs/bin
