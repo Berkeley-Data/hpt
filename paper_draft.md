@@ -21,6 +21,14 @@ In this work, we demonstrate that pre-training [MoCo-v2](https://openaccess.thec
 
 ## Related Work 
 
+##### TODO: Elaborate
+- Contrastive learning of visual representations for self-supervision using MoCo-V2  
+Improved Baselines with Momentum Contrastive Learning - Chen, et al., Facebook AI Research (FAIR),2020
+
+
+- Leverage spatially aligned images over time to construct temporal positive pairs in contrastive learning  
+Geography-Aware Self-supervised Learning - Ayush, et al., Stanford University, 2020
+
 - SimCLR pre-training with BigEarthNet
 
 
