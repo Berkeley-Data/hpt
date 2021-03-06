@@ -15,6 +15,7 @@ ln -s /storage/sen12ms_x /scratch/crguest/OpenSelfSup/data/sen12ms/all
 
 ```
 
+To prepare smaller set (1 patch from one region), refer to [this notebook](https://github.com/Berkeley-Data/hpt/blob/master/notebooks/1.1-tg-prepare-subset-sen12ms.ipynb)  
 
 ### Additional datasets:
 Following the same instructions as above except replace the bit.ly 
