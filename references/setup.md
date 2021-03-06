@@ -56,9 +56,7 @@ mv resisc45 ~/data
 ln -s $DATA/resisc45 $CODE/OpenSelfSup/data/resisc45/all
 
 e.g., ln -s /home/ubuntu/data/resisc45 /home/ubuntu/hpt/OpenSelfSup/data/resisc45/all
-
 ```
-
 
 ### Download Pretrained Models
 ``` shell
@@ -69,7 +67,12 @@ cd OpenSelfSup/data/basetrain_chkpts/
 ## Verify Install
 Check installation by pretraining using mocov2, extracting the model weights, evaluating the representations, and then viewing the results on tensorboard or [wandb](https://wandb.ai/cal-capstone/hpt):
 
-```
+
+```bash
+export WANDB_API_KEY=<use your API key>
+export WANDB_ENTITY=cal-capstone
+export WANDB_PROJECT=hpt
+
 cd OpenSelfSup
 
 # Sanity check: MoCo for 20 epoch on 4 gpus
@@ -89,4 +92,3 @@ cd work_dirs
 # you may need to install tensorboard
 tensorboard --logdir .
 ```
-
