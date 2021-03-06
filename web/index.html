@@ -61,7 +61,7 @@
                   <a class="nav-link js-scroll-trigger" href="#insight5">Solution</a>
                </li>
                <li class="nav-item">
-                  <a class="nav-link js-scroll-trigger" href="#insight6">Dataset</a>
+                  <a class="nav-link js-scroll-trigger" href="#insight6">Datasets</a>
                </li>
                <li class="nav-item">
                   <a class="nav-link js-scroll-trigger" href="#insight7">Results</a>
@@ -203,10 +203,109 @@
       <div class="container">
          <div class="row">
             <div class="col-lg-12 mx-auto">
-               <h2>Dataset</h2>
-               &nbsp;<br>
-               &nbsp;<br>
-               &nbsp;<br>
+               <h2>Datasets</h2>
+               To validate our ideas, we did experiments on datasets with different satellite imageries with variations
+               in dataset size, channels, and image ground resolutions.
+               The statistics of these datasets are given below. Readers are requested to see the the supplementary
+               materials for examples and additional details of these datasets.
+
+               <table class="table table-bordered table-hover table-responsive text-left">
+                  <thead class="thead-light">
+                     <tr>
+                        <th scope="col">Dataset</th>
+                        <th scope="col">Satellites</th>
+                        <th scope="col">Number of Images</th>
+                        <th scope="col">Image Size</th>
+                        <th scope="col">Labels</th>
+                        <th scope="col">Notes</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr>
+                        <th scope="row"><a href="https://arxiv.org/pdf/1902.06148.pdf" target='_blank'">BigEarthNet</a></th>
+                        <td>
+                           <ul>
+                              <li>Sentinel-2A/B</li>
+                           </ul>
+                        </td>
+                        <td>590,326 patches <ul>
+                              <li>12 Bands</li>
+                           </ul>
+                        </td>
+                        <td>20x20 to 120x120</td>
+                        <td>Multiple, up to 43</td>
+                        <td>
+                           <ul>
+                              <li>No overlapping</li>
+                              <li>10 European Countries</li>
+                           </ul>
+                        </td>
+                     </tr>
+                     <tr>
+                        <th scope=" row"><a href="https://arxiv.org/pdf/1906.07789.pdf" target='_blank'">SEN12MS</a></th>                        
+                        <td>
+                           <ul>
+                              <li>Sentinel-1A/B</li>
+                              <li>Sentinel-2A/B</li>
+                              <li>MODIS (Terra and Aqua)</li>
+                           </ul>
+                        </td>
+                        <td>541,986 patches <ul>
+                              <li><strong>180662 triplets</strong> (3*180662)</li>
+                              <li>4, 2 and 13 Bands</li>
+                           </ul>
+                        </td>
+                        <td>256X256</td>
+                        <td>Single, 17 Full and 10 Simplified</td>
+                        <td>Partial overlapping</td>
+                     </tr>
+                     <tr>
+                        <th scope=" row"><a href="https://arxiv.org/abs/1711.07846" target='_blank'">FMoW</a></th>
+                        <td>
+                           <ul>
+                              <li>QuickBird-2</li>
+                              <li>GeoEye-1</li>
+                              <li>WorldView-2</li>
+                              <li>WorldView-3</li>
+                           </ul>
+                        </td>
+                        <td>1,047,691 patches<ul>
+                              <li>4, 8 and RGB Bands</li>
+                           </ul>
+                        </td>
+                        <td>Variable
+                           Over 2500x2500</td>
+                        <td>Multiple, up to 63<br>
+                           Bounding Box Annotations
+                        </td>
+                        <td>
+                           <ul>
+                              <li>Includes False Detection</li>
+                              <li>Variable timestamp overlapping</li>
+                           </ul>
+                        </td>
+                     </tr>
+                     <tr>
+                        <th scope=" row"><a href="https://arxiv.org/ftp/arxiv/papers/1703/1703.00121.pdf"
+                                       target='_blank'">RESISC45</a></th>
+                        <td>NA</td>
+                        <td>31,500 Images<ul>
+                              <li>3 Bands(RGB)</li>
+                           </ul>
+                        </td>
+                        <td>256x256</td>
+                        <td>Single, 45 scene classes
+                        </td>
+                        <td>
+                           <ul>
+                              <li>Balanced</li>
+                              <li>700 images in each class</li>
+                           </ul>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+
                <h4>EDA</h4>
                &nbsp;<br>
                &nbsp;<br>
@@ -216,17 +315,17 @@
          </div>
       </div>
    </section>
-   <section id="insight7" style="padding: 10px 0;">
-      <div class="container">
-         <div class="row">
-            <div class="col-lg-12 mx-auto">
-               <h2>Results</h2>
-               &nbsp;
-               <br>
+   <section id=" insight7" style="padding: 10px 0;">
+                                       <div class="container">
+                                          <div class="row">
+                                             <div class="col-lg-12 mx-auto">
+                                                <h2>Results</h2>
+                                                &nbsp;
+                                                <br>
 
-            </div>
-         </div>
-      </div>
+                                             </div>
+                                          </div>
+                                       </div>
    </section>
    <section id="insight8" class="bg-light" style="padding: 10px 0;">
       <div class="container">
