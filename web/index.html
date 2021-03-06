@@ -1,226 +1,277 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
-   <head>
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-      <meta name="description" content="">
-      <meta name="author" content="">
-      <link rel="icon" href="images/favicon.ico">
-      <title>W210 - Deep Learning in Satellite Imagery</title>
-      <!-- Bootstrap core CSS -->
-      <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-      <!-- Custom styles for this template -->
-      <link href="css/scrolling-nav.css" rel="stylesheet">
-   </head>
-   <body id="page-top" style="text-align: justify;text-justify: inter-word;">
-      <!-- Navigation -->
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav" style="background-color:#003262 !important">
-         <div class="container">
-            <a class="navbar-brand js-scroll-trigger" href="#page-top">W210</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+
+<head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+   <meta name="description" content="">
+   <meta name="author" content="">
+   <link rel="icon" href="images/favicon.ico">
+   <title>W210 - Deep Learning in Satellite Imagery</title>
+   <!-- Bootstrap core CSS -->
+   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+   <!-- Custom styles for this template -->
+   <link href="css/scrolling-nav.css" rel="stylesheet">
+</head>
+
+<body id="page-top" style="text-align: justify;text-justify: inter-word;">
+   <!-- Navigation -->
+   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav"
+      style="background-color:#003262 !important">
+      <div class="container">
+         <a class="navbar-brand js-scroll-trigger" href="#page-top">W210</a>
+         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+            aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-               <ul class="navbar-nav ml-auto">
-                  <li class="nav-item">
-                     <a class="nav-link js-scroll-trigger" href="#insight1">Introduction</a>
-                  </li>
-                  <li class="nav-item">
-                     <a class="nav-link js-scroll-trigger" href="#insight2">Related work</a>
-                  </li>
-                  <li class="nav-item">
-                     <a class="nav-link js-scroll-trigger" href="#insight3">Problem definition</a>
-                  </li>
-                  <li class="nav-item">
-                     <a class="nav-link js-scroll-trigger" href="#insight4">Target users</a>
-                  </li>
-                  <li class="nav-item">
-                     <a class="nav-link js-scroll-trigger" href="#insight5">Solution</a>
-                  </li>
-                  <li class="nav-item">
-                     <a class="nav-link js-scroll-trigger" href="#insight6">Dataset</a>
-                  </li>
-                  <li class="nav-item">
-                     <a class="nav-link js-scroll-trigger" href="#insight7">Results</a>
-                  </li>
-                  <li class="nav-item">
-                     <a class="nav-link js-scroll-trigger" href="#insight8">Future work</a>
-                  </li>
-                  <li class="nav-item">
-                     <a class="nav-link js-scroll-trigger" href="#insight9">Conclusion</a>
-                  </li>
-                   <li class="nav-item">
-				                       <a class="nav-link js-scroll-trigger" href="#insight10">GitHub</a>
-				                    </li>
-				                    <li class="nav-item">
-				                       <a class="nav-link js-scroll-trigger" href="#insight11">Team</a>
-                  </li>
-               </ul>
+         </button>
+         <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+               <li class="nav-item">
+                  <a class="nav-link js-scroll-trigger" href="#insight1">Introduction</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link js-scroll-trigger" href="#insight2">Related work</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link js-scroll-trigger" href="#insight3">Problem definition</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link js-scroll-trigger" href="#insight4">Target users</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link js-scroll-trigger" href="#insight5">Solution</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link js-scroll-trigger" href="#insight6">Dataset</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link js-scroll-trigger" href="#insight7">Results</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link js-scroll-trigger" href="#insight8">Future work</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link js-scroll-trigger" href="#insight9">Conclusion</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link js-scroll-trigger" href="#insight10">GitHub</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link js-scroll-trigger" href="#insight11">Team</a>
+               </li>
+            </ul>
+         </div>
+      </div>
+   </nav>
+   <header class="bg-primary text-white" style="height: 225px; padding: 80px 0; background-color:#d99803 !important">
+      <div class="container text-center">
+         <h1>Unsupervised Deep Learning in Satellite Imagery</h1>
+         <p class="lead">Contrastive Learning Research
+            <br>
+            <img src="images/satellite.png" width="140px" />
+         </p>
+      </div>
+   </header>
+   <section id="insight1" style="padding: 20px 0;">
+      <div class="container">
+         <div class="row">
+            <div class="col-lg-12 mx-auto">
+               <h2>Introduction</h2>
+               <p>The performance of deep convolutional neural networks depends on their capability and the amount of
+                  training data. The datasets are becoming larger in every domain and different kinds of network
+                  architectures like <a href="https://arxiv.org/pdf/1409.1556.pdf" target="_blank">VGG</a>, <a
+                     href="https://arxiv.org/pdf/1409.4842.pdf" target="_blank">GoogLeNet</a>, <a
+                     href="https://arxiv.org/pdf/1512.03385.pdf">ResNet</a>, <a
+                     href="https://arxiv.org/pdf/1608.06993.pdf" target="_blank">DenseNet</a>, etc., increased network
+                  models' capacity.</p>
+               <p>However, the collection and annotation of large-scale datasets are time-consuming and expensive. Many
+                  self-supervised methods were proposed to learn visual features from large-scale unlabeled data without
+                  using any human annotations to avoid time-consuming and costly data annotations. Contrastive learning
+                  of visual representations has emerged as the front-runner for self-supervision and has demonstrated
+                  superior performance on downstream tasks. All contrastive learning frameworks involve maximizing
+                  agreement between positive image pairs relative to negative/different images via a contrastive loss
+                  function; this pretraining paradigm forces the model to learn good representations. These approaches
+                  typically differ in how they generate positive and negative image pairs from unlabeled data and how
+                  the data are sampled during pretraining.</p>
+               <p>Self-supervised approaches such as Momentum Contrast (MoCo) (<a
+                     href="https://arxiv.org/pdf/1911.05722.pdf" target="_blank">He et al., 2019</a>, <a
+                     href="https://arxiv.org/pdf/2003.04297.pdf" target="_blank">Chen et al.,2020</a>) can leverage
+                  unlabeled data to produce pre-trained models for subsequent fine-tuning on labeled data. In addition
+                  to MoCo, these include frameworks such as SimCLR (<a href="https://arxiv.org/pdf/2002.05709.pdf">Chen
+                     et al., 2020</a>) and PIRL (<a
+                     href="https://openaccess.thecvf.com/content_CVPR_2020/papers/Misra_Self-Supervised_Learning_of_Pretext-Invariant_Representations_CVPR_2020_paper.pdf"
+                     target="_blank">Misra and Maaten, 2020</a>).</p>
+
+               <p>Remote sensing data has become broadly available at the petabyte scale, offering unprecedented
+                  visibility into natural and human activity across the Earth. In remote sensing, labeled data is
+                  usually scarce and hard to obtain. Due to the success of self-supervised learning methods, we explore
+                  their application to large-scale remote sensing datasets.</p>
+
+               <p>While most self-supervised image analysis techniques focus on natural imagery, remote sensing differs
+                  in several critical ways. Natural imagery often has one subject; remote sensing images contain
+                  numerous objects such as buildings, trees, roads, rivers, etc. Additionally, the important content
+                  changes unpredictably within just a few pixels or between images at the same location from different
+                  times. Multiple satellites capture images of the same locations on earth with a wide variety of
+                  resolutions, spectral bands (channels), and revisit rates, such that any specific problem can require
+                  a different
+                  combination of sensor inputs (<a href="https://doi.org/10.1016/j.rse.2017.10.034"
+                     target="blank">Reiche et al., 2018</a>,<a
+                     href="https://openaccess.thecvf.com/content_CVPRW_2019/papers/cv4gc/Rustowicz_Semantic_Segmentation_of_Crop_Type_in_Africa_A_Novel_Dataset_CVPRW_2019_paper.pdf"
+                     target="_blank">Rustowicz et al., 2019</a>).</p>
+
+               <p>While MoCo and other contrastive learning methods have demonstrated promising results on natural image
+                  classification tasks, their application to remote sensing applications has been limited.</p>
+
+               <p>In this work, we demonstrate that pre-training <a
+                     href="https://openaccess.thecvf.com/content_CVPR_2020/papers/He_Momentum_Contrast_for_Unsupervised_Visual_Representation_Learning_CVPR_2020_paper.pdf"
+                     target="_blank">MoCo-v2</a> on data from multiple sensors lead to improved representations for
+                  remote sensing applications.</p>
             </div>
          </div>
-      </nav>
-      <header class="bg-primary text-white" style="height: 225px; padding: 80px 0; background-color:#d99803 !important">
-         <div class="container text-center">
-            <h1>Unsupervised Deep Learning in Satellite Imagery</h1>
-            <p class="lead">Contrastive Learning Research
+      </div>
+   </section>
+   <section id="insight2" class="bg-light" style="padding: 10px 0;">
+      <div class="container">
+         <div class="row">
+            <div class="col-lg-12 mx-auto">
+               <h2>Related work</h2>
+               &nbsp;
+
+            </div>
+         </div>
+      </div>
+   </section>
+   <section id="insight3" style="padding: 10px 0;">
+      <div class="container">
+         <div class="row">
+            <div class="col-lg-12 mx-auto">
+               <h2>Problem definition</h2>
+               &nbsp;
+
                <br>
-               <!--<img src="images/aircraft5.png" width="110px"/> -->
-            </p>
-         </div>
-      </header>
-      <section id="insight1" style="padding: 20px 0;">
-         <div class="container">
-            <div class="row">
-               <div class="col-lg-12 mx-auto">
-                  <h2>Introduction</h2>
-                 &nbsp;
-               </div>
+
             </div>
          </div>
-      </section>
-      <section id="insight2" class="bg-light" style="padding: 10px 0;">
-         <div class="container">
-            <div class="row">
-               <div class="col-lg-12 mx-auto">
-                  <h2>Related work</h2>
-                  &nbsp;
+      </div>
+   </section>
+   <section id="insight4" class="bg-light" style="padding: 10px 0;">
+      <div class="container">
+         <div class="row">
+            <div class="col-lg-12 mx-auto">
+               <h2>Target users</h2>
+               &nbsp;
+               <br>
+               &nbsp;
+               <br>
 
-               </div>
             </div>
          </div>
-      </section>
-      <section id="insight3" style="padding: 10px 0;">
-         <div class="container">
-            <div class="row">
-               <div class="col-lg-12 mx-auto">
-                  <h2>Problem definition</h2>
-                  &nbsp;
+      </div>
+   </section>
+   <section id="insight5" style="padding: 10px 0;">
+      <div class="container">
+         <div class="row">
+            <div class="col-lg-12 mx-auto">
+               <h2>Solution</h2>
+               &nbsp;
+               <br>
 
-                  <br>
-
-               </div>
             </div>
          </div>
-      </section>
-      <section id="insight4" class="bg-light" style="padding: 10px 0;">
-         <div class="container">
-            <div class="row">
-               <div class="col-lg-12 mx-auto">
-                  <h2>Target users</h2>
-                 &nbsp;
-                  <br>
-                 &nbsp;
-                  <br>
+      </div>
+   </section>
+   <section id="insight6" class="bg-light" style="padding: 10px 0;">
+      <div class="container">
+         <div class="row">
+            <div class="col-lg-12 mx-auto">
+               <h2>Dataset</h2>
+               &nbsp;<br>
+               &nbsp;<br>
+               &nbsp;<br>
+               <h4>EDA</h4>
+               &nbsp;<br>
+               &nbsp;<br>
+               <br>
 
-               </div>
             </div>
          </div>
-      </section>
-      <section id="insight5" style="padding: 10px 0;">
-         <div class="container">
-            <div class="row">
-               <div class="col-lg-12 mx-auto">
-                  <h2>Solution</h2>
-                  &nbsp;
-                  <br>
+      </div>
+   </section>
+   <section id="insight7" style="padding: 10px 0;">
+      <div class="container">
+         <div class="row">
+            <div class="col-lg-12 mx-auto">
+               <h2>Results</h2>
+               &nbsp;
+               <br>
 
-               </div>
             </div>
          </div>
-      </section>
-      <section id="insight6" class="bg-light" style="padding: 10px 0;">
-         <div class="container">
-            <div class="row">
-               <div class="col-lg-12 mx-auto">
-                  <h2>Dataset</h2>
-                  &nbsp;<br>
-                  &nbsp;<br>
-                  &nbsp;<br>
-                  <h4>EDA</h4>
-                  &nbsp;<br>
-                  &nbsp;<br>
-                  <br>
+      </div>
+   </section>
+   <section id="insight8" class="bg-light" style="padding: 10px 0;">
+      <div class="container">
+         <div class="row">
+            <div class="col-lg-12 mx-auto">
+               <h2>Future work</h2>
+               &nbsp;
+               <br>
 
-               </div>
             </div>
          </div>
-      </section>
-      <section id="insight7" style="padding: 10px 0;">
-         <div class="container">
-            <div class="row">
-               <div class="col-lg-12 mx-auto">
-                  <h2>Results</h2>
-                  &nbsp;
-				                   <br>
+      </div>
+   </section>
+   <section id="insight9" style="padding: 10px 0;">
+      <div class="container">
+         <div class="row">
+            <div class="col-lg-12 mx-auto">
+               <h2>Conclusion</h2>
+               &nbsp;
+               <br>
 
-				                </div>
-				             </div>
-				          </div>
-      </section>
-      <section id="insight8" class="bg-light" style="padding: 10px 0;">
-         <div class="container">
-            <div class="row">
-               <div class="col-lg-12 mx-auto">
-                  <h2>Future work</h2>
-                   &nbsp;
-				                    <br>
-
-				                 </div>
-				              </div>
-				           </div>
-      </section>
-      <section id="insight9" style="padding: 10px 0;">
-         <div class="container">
-            <div class="row">
-               <div class="col-lg-12 mx-auto">
-                  <h2>Conclusion</h2>
-                   &nbsp;
-				                    <br>
-
-				                 </div>
-				              </div>
-				           </div>
-      </section>
-      <section id="insight10" class="bg-light" style="padding: 10px 0;">
-         <div class="container">
-            <div class="row">
-               <div class="col-lg-12 mx-auto">
-                  <h2>GitHub</h2>
-                  &nbsp;
-				                   <br>
-
-				                </div>
-				             </div>
-				          </div>
-      </section>
-      <section id="insight11" style="padding: 10px 0;">
-          <div class="container">
-		             <div class="row">
-		                <div class="col-lg-12 mx-auto">
-		                   <h2>Team</h2>
-		                   &nbsp;
-		 				                   <br>
-
-		 				                </div>
-		 				             </div>
-		 				          </div>
-      </section>
-      <!-- Footer -->
-      <footer class="py-5 bg-dark" style="padding-top: 1rem !important;padding-bottom: 1rem !important; background-color:#003262 !important" >
-         <div class="container">
-            <p class="m-0 text-center text-white">Copyright &copy; W210 datascience@berkeley 2021</p>
+            </div>
          </div>
-         <!-- /.container -->
-      </footer>
-      <!-- Bootstrap core JavaScript -->
-      <script src="vendor/jquery/jquery.min.js"></script>
-      <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-      <!-- Plugin JavaScript -->
-      <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-      <!-- Custom JavaScript for this theme -->
-      <script src="js/scrolling-nav.js"></script>
-   </body>
+      </div>
+   </section>
+   <section id="insight10" class="bg-light" style="padding: 10px 0;">
+      <div class="container">
+         <div class="row">
+            <div class="col-lg-12 mx-auto">
+               <h2>GitHub</h2>
+               &nbsp;
+               <br>
+
+            </div>
+         </div>
+      </div>
+   </section>
+   <section id="insight11" style="padding: 10px 0;">
+      <div class="container">
+         <div class="row">
+            <div class="col-lg-12 mx-auto">
+               <h2>Team</h2>
+               &nbsp;
+               <br>
+
+            </div>
+         </div>
+      </div>
+   </section>
+   <!-- Footer -->
+   <footer class="py-5 bg-dark"
+      style="padding-top: 1rem !important;padding-bottom: 1rem !important; background-color:#003262 !important">
+      <div class="container">
+         <p class="m-0 text-center text-white">Copyright &copy; W210 datascience@berkeley 2021</p>
+      </div>
+      <!-- /.container -->
+   </footer>
+   <!-- Bootstrap core JavaScript -->
+   <script src="vendor/jquery/jquery.min.js"></script>
+   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+   <!-- Plugin JavaScript -->
+   <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+   <!-- Custom JavaScript for this theme -->
+   <script src="js/scrolling-nav.js"></script>
+</body>
+
 </html>
-
