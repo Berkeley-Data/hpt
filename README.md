@@ -15,6 +15,8 @@ export WANDB_PROJECT=hpt
 
 ## Base Training
 
+[OpenSelfSup](https://github.com/Berkeley-Data/OpenSelfSup) 
+
 Right now we assume ImageNet base trained models.
 ```bash
 cd OpenSelfSup/data/basetrain_chkpts/
