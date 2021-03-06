@@ -66,6 +66,12 @@ To validate our ideas, we did experiments on datasets with different satellite i
 | [FMoW](https://arxiv.org/abs/1711.07846)   | QuickBird-2; GeoEye-1; WorldView-2; WorldView-3  | 1,047,691 patches; 4, 8 and RGB Bands  | Variable Over 2500x2500  | Multiple, up to 63; Bounding Box Annotations | Includes False Detection; Variable timestamp overlapping  |
 | [RESISC45](https://arxiv.org/ftp/arxiv/papers/1703/1703.00121.pdf)   | NA  | 31,500 Images; 3 Bands(RGB)  | 256x256  | Single, 45 scene classes | Balanced; 700 images in each class  |
 
+##### SEN12MS
+The SEN12MS dataset contains 180,662 patch triplets of corresponding Sentinel-1 dual-pol SAR data, Sentinel-2 multi-spectral images, and MODIS-derived land cover maps. The patches are distributed across the land masses of the Earth and spread over all four meteorological seasons. This is reflected by the dataset structure. The captured scenes were tiled into patches of 256 X 256 pixels in size and implemented a stride of 128 pixels, resulting in an overlap between adjacent patches of 50% assuming 50% overlap is the ideal trade-off between patch independence and maximization of the number of samples. All patches are provided in the form of 16-bit GeoTiffs containing the following specific information:
+* Sentinel-1 SAR: 2 channels corresponding to sigma nought backscatter values in dB scale for VV and VH polarization.
+* Sentinel-2 Multi-Spectral: 13 channels corresponding to the 13 spectral bands (B1, B2, B3, B4, B5, B6, B7, B8, B8a, B9, B10, B11, B12).
+* MODIS Land Cover: 4 channels corresponding to IGBP, LCCS Land Cover, LCCS Land Use, and LCCS Surface Hydrology layers.
+
 ## Experiments 
 
 
@@ -80,9 +86,9 @@ To validate our ideas, we did experiments on datasets with different satellite i
 
 ## References  
 TODO: Use APA style later. Do this once the draft is ready by taking the links in the document, giving them a number and use APA style generator.  
-[1] 
-[2]
-[3]
-[4]
-[5]
+[1]  
+[2]  
+[3]  
+[4]  
+[5]  
 
