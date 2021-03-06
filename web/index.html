@@ -222,7 +222,8 @@
                   </thead>
                   <tbody>
                      <tr>
-                        <th scope="row"><a href="https://arxiv.org/pdf/1902.06148.pdf" target='_blank'">BigEarthNet</a></th>
+                        <th scope="row"><a href="https://arxiv.org/pdf/1902.06148.pdf" target='_blank'>BigEarthNet</a>
+                        </th>
                         <td>
                            <ul>
                               <li>Sentinel-2A/B</li>
@@ -242,7 +243,7 @@
                         </td>
                      </tr>
                      <tr>
-                        <th scope=" row"><a href="https://arxiv.org/pdf/1906.07789.pdf" target='_blank'">SEN12MS</a></th>                        
+                        <th scope=" row"><a href="https://arxiv.org/pdf/1906.07789.pdf" target='_blank'>SEN12MS</a></th>
                         <td>
                            <ul>
                               <li>Sentinel-1A/B</li>
@@ -260,7 +261,7 @@
                         <td>Partial overlapping</td>
                      </tr>
                      <tr>
-                        <th scope=" row"><a href="https://arxiv.org/abs/1711.07846" target='_blank'">FMoW</a></th>
+                        <th scope=" row"><a href="https://arxiv.org/abs/1711.07846" target='_blank'>FMoW</a></th>
                         <td>
                            <ul>
                               <li>QuickBird-2</li>
@@ -287,7 +288,7 @@
                      </tr>
                      <tr>
                         <th scope=" row"><a href="https://arxiv.org/ftp/arxiv/papers/1703/1703.00121.pdf"
-                                       target='_blank'">RESISC45</a></th>
+                              target='_blank'>RESISC45</a></th>
                         <td>NA</td>
                         <td>31,500 Images<ul>
                               <li>3 Bands(RGB)</li>
@@ -305,8 +306,96 @@
                      </tr>
                   </tbody>
                </table>
+               <h5>BigEarthNet</h5>
+               <p>The <a href="https://arxiv.org/pdf/1902.06148.pdf" target='_blank'>BigEarthNet</a> archive was
+                  constructed by the Remote Sensing Image Analysis (<a
+                     href=" https://www.rsim.tu-berlin.de/menue/remote_sensing_image_analysis_group/"
+                     target="_blank">RSiM)</a> Group and the Database Systems and Information
+                  Management (<a
+                     href="https://www.dima.tu-berlin.de/menue/database_systems_and_information_management_group/?no_cache=1"
+                     target="_blank">DIMA</a>)
+                  Group at the Technische Universität Berlin (<a
+                     href="https://www.tu-berlin.de/menue/home/parameter/en/" target="_blank">TU
+                     Berlin</a>). This work is supported by the European Research Council under the
+                  ERC Starting Grant BigEarthNet
+                  and by the Berlin Institute for the Foundations of Learning and Data (BIFOLD).
+                  Before BIFOLD, the Berlin
+                  Big Data Center (BBDC) supported the work.
+                  BigEarthNet is a benchmark archive, consisting of 590,326 pairs of Sentinel-1 and
+                  Sentinel-2 image patches. To construct BigEarthNet with Sentinel-2 image patches
+                  (called as BigEarthNet-S2
+                  now, previously BigEarthNet), 125 Sentinel-2 tiles acquired between June 2017 and
+                  May 2018 over the 10 countries (Austria, Belgium, Finland, Ireland, Kosovo,
+                  Lithuania, Luxembourg, Portugal, Serbia, Switzerland) of Europe were initially
+                  selected. All the tiles were atmospherically corrected by the Sentinel-2 Level 2A
+                  product generation and formatting tool (sen2cor). Then, they were divided into
+                  590,326 non-overlapping image patches. Each image patch was annotated by the
+                  multiple land-cover classes (i.e., multi-labels) that were provided from the CORINE
+                  Land Cover database of the year 2018 (CLC 2018).
+                  To construct BigEarthNet with Sentinel-1 image patches (called as BigEarthNet-S1),
+                  321 Sentinel-1 scenes acquired between June 2017 and May 2018 that jointly cover the
+                  area of all original 125 Sentinel-2 tiles with close temporal proximity were
+                  selected and processed. BigEarthNet-S1 consists of 590,326 preprocessed Sentinel-1
+                  image patches - one for each Sentinel-2 patch.</p>
+               <h5>SEN12MS</h5>
+               <p>The <a href="https://arxiv.org/pdf/1906.07789.pdf" target='_blank'>SEN12MS</a> dataset
+                  contains 180,662 patch triplets of corresponding Sentinel-1
+                  dual-pol SAR data, Sentinel-2 multi-spectral images, and MODIS-derived land cover
+                  maps. The patches are distributed across the land masses of the Earth and spread
+                  over all four meteorological seasons. This is reflected by the dataset structure.
+                  The captured scenes were tiled into patches of 256 X 256 pixels in size and
+                  implemented a stride of 128 pixels, resulting in an overlap
+                  between adjacent patches of 50% assuming 50% overlap is the ideal trade-off between
+                  patch independence and maximization of
+                  the number of samples.
+                  All patches are provided in the form of 16-bit GeoTiffs containing the following
+                  specific information:
+                  <ul>
+                     <li>Sentinel-1 SAR: 2 channels corresponding to sigma nought backscatter values
+                        in dB
+                        scale for VV and VH polarization.</li>
+                     <li>Sentinel-2 Multi-Spectral: 13 channels corresponding to the 13 spectral bands
+                        (B1,
+                        B2, B3, B4, B5, B6, B7, B8, B8a, B9, B10, B11, B12).</li>
+                     <li>MODIS Land Cover: 4 channels corresponding to IGBP, LCCS Land Cover, LCCS
+                        Land
+                        Use, and LCCS Surface Hydrology layers.</li>
+                  </ul>
+               </p>
+               <h5>FMoW</h5>
+               <p>Functional Map of the World <a href=" https://arxiv.org/abs/1711.07846" target='_blank'>(fMoW)</a> is
+                  a
+                  large-scale publicly available remote
+                  sensing dataset [6] consisting of
+                  approximately 363,571 training images and 53,041 test images across 62 highly
+                  granular class categories. It provides
+                  images (temporal views) from the same location over time as well as geo-location
+                  metadata (lat; lon)
+                  for each image. Most of the areas have multiple temporal views from 1 to 21, and on
+                  average there is about 2.5-3 years of
+                  difference between the images from an area. FMoW is a global dataset consisting of
+                  images from seven continents which can be ideal for learning global remote
+                  sensing representations. There are two versions of the dataset: fMoW-full and
+                  fMoW-rgb. fMoW-full is in TIFF
+                  format, contains 4-band and 8-band multispectral imagery, and is quite large at
+                  ~3.5TB in size. fMoW-rgb is in JPEG format, all multispectral imagery has been
+                  converted to RGB, and it is significantly smaller in size at ~200GB.</p>
+               <h5>RESISC45</h5>
+               <p><a href=" https://arxiv.org/ftp/arxiv/papers/1703/1703.00121.pdf" target='_blank'>RESISC45</a>
+                  dataset is a publicly available benchmark for Remote Sensing Image Scene
+                  Classification (RESISC), created by Northwestern Polytechnical University (NWPU).
+                  This dataset contains 31,500 256x256 RGB images, covering 45 scene classes with 700 images in
+                  each class. It is one of the most comprehensive datasets regarding land use. RESISC45 has a more
+                  diverse assortment of classes as well as more samples per class. The authors developed it while
+                  keeping
+                  in mind the desire to have both urban and rural classes as well as scenes classifiable by large
+                  features
+                  and
+                  small features alike. The dataset includes scenes including large features such as dense_residential,
+                  chaparral, mobile_home_park, river; smaller features such as storage-tank and basketball court;
+                  and even classes such as sea-ice and cloud.</p>
+               <h4>SEN12MS EDA</h4>
 
-               <h4>EDA</h4>
                &nbsp;<br>
                &nbsp;<br>
                <br>
@@ -316,16 +405,16 @@
       </div>
    </section>
    <section id=" insight7" style="padding: 10px 0;">
-                                       <div class="container">
-                                          <div class="row">
-                                             <div class="col-lg-12 mx-auto">
-                                                <h2>Results</h2>
-                                                &nbsp;
-                                                <br>
+      <div class="container">
+         <div class="row">
+            <div class="col-lg-12 mx-auto">
+               <h2>Results</h2>
+               &nbsp;
+               <br>
 
-                                             </div>
-                                          </div>
-                                       </div>
+            </div>
+         </div>
+      </div>
    </section>
    <section id="insight8" class="bg-light" style="padding: 10px 0;">
       <div class="container">
