@@ -59,7 +59,8 @@ In this work, we provide an effective approach for improving representation lear
 Does contrastive pre-training with data from multiple sensors lead to improved representations for remote sensing applications?  
 
 Pre-train the contrastive model using unlabelled data from multiple satellites and use that model for downstream remote sensing tasks.  
-TODO: Add description  
+
+We want to show that our approach to using images from different satellites for the same location as naturally augmented images as input to the MoCo-v2 method provides high-quality representations and transferable initializations for satellite imagery interpretation. Despite many differences in the data and task properties between natural image classification and satellite imagery interpretation, we want to show the benefit of MoCo-v2 pretraining across multiple patches from different satellites for satellite imagery and investigate representation transfer to a target dataset.   
 
 ### Datasets
 To validate our ideas, we did experiments on datasets with different satellite imageries with variations in dataset size, channels, and image ground resolutions. The statistics of these datasets are given below. Readers are requested to see the the supplementary materials for examples and additional details of these datasets.  
