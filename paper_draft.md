@@ -56,9 +56,10 @@ There is a performance gap between supervised learning using labels and self-sup
 In this work, we provide an effective approach for improving representation learning using data from different satellite imagery using [MoCo-v2](https://arxiv.org/pdf/2003.04297.pdf).
 
 ## Problem Definition 
+Does contrastive pre-training with data from multiple sensors lead to improved representations for remote sensing applications?  
 
-Update
-
+Pre-train the contrastive model using unlabelled data from multiple satellites and use that model for downstream remote sensing tasks.  
+TODO: Add description  
 
 ### Datasets
 To validate our ideas, we did experiments on datasets with different satellite imageries with variations in dataset size, channels, and image ground resolutions. The statistics of these datasets are given below. Readers are requested to see the the supplementary materials for examples and additional details of these datasets.  
