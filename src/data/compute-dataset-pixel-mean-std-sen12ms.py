@@ -80,7 +80,7 @@ def main(args):
                       # subset="small",
                       use_s1=args.use_s1,
                       use_s2=args.use_s2,
-                      use_RGB=args.use_RGB)
+                      use_RGB=args.use_RGB,)
 
     loader = DataLoader(
         dataset,
@@ -91,7 +91,7 @@ def main(args):
 
     mean = 0.
     nb_samples = 0.
-    results = torch.zeros((2,1))   # torch.Size([1, 3, 256, 256])
+    results = torch.zeros((2,1))
     N = len(dataset)
     Nproc = 0
     i = 0

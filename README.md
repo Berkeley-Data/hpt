@@ -29,13 +29,15 @@ cd OpenSelfSup/data/basetrain_chkpts/
 
 We have a handy set of config generators to make pretraining with a new dataset easy and consistent!
 
-**FIRST**, you will need the image pixel mean/std of your dataset, if you don't have it, you can do:
-
-```bash
+**FIRST**, you will need the image pixel mean/std of your dataset, if you don't have it, you can do: 
+```bash  
 cd src/data/
-./compute-dataset-pixel-mean-std.py --data /scratch/crguest/data/sen12ms_small --numworkers 20 --batchsize 256
 
-python ./compute-dataset-pixel-mean-std.py --data_dir /storage/sen12ms_x --data_index_dir /scratch/crguest/hpt/data --numworkers 1 
+# for sen12ms, run multiples times replacing --use_s1 by --use_s2 or --use_RGB
+./compute-dataset-pixel-mean-std-sen12ms.py --data_dir /storage/sen12ms_x --data_index_dir /scratch/crguest/hpt/data --use_s1 --numworkers 1
+
+# for others 
+./compute-dataset-pixel-mean-std.py --data /scratch/crguest/data/sen12ms_small --numworkers 20 --batchsize 256
 
 where image-folder has the structure from ImageFolder in pytorch
 class/image-name.jp[e]g
@@ -44,6 +46,17 @@ or whatever image extension you're using
 if your dataset is not arranged in this way, you can either:
 (i) use symlinks to put it in this structure
 (ii) update the above script to read in your data
+
+NOTE: For sen12ms, the code is not working as expected (refer to [this issue](https://github.com/Berkeley-Data/hpt/issues/24), until then use the following. 
+```
+bands_mean = {'s1_mean': [-11.76858, -18.294598],
+			  's2_mean': [1226.4215, 1137.3799, 1139.6792, 1350.9973, 1932.9058,
+						  2211.1584, 2154.9846, 2409.1128, 2001.8622, 1356.0801]}
+
+bands_std = {'s1_std': [4.525339, 4.3586307],
+			 's2_std': [741.6254, 740.883, 960.1045, 946.76056, 985.52747,
+						1082.4341, 1057.7628, 1136.1942, 1132.7898, 991.48016]}
+```
 
 
 **NEXT**, copy the pretraining template
