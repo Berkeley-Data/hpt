@@ -17,17 +17,20 @@ import torch
 from torch.utils.data import DataLoader
 from torch.utils.data.dataset import Dataset
 import torchvision.datasets as datasets
-import torchvision.transforms as transforms
+import torchvision.transforms as T
 
 parser = argparse.ArgumentParser(description='Compute image statistics from ImageFolder')
 parser.add_argument('--data', metavar='DIR', help='path to image directory with structure class/image.ext', required=True)
 parser.add_argument('--numworkers', type=int, default=30)
-parser.add_argument('--batchsize', type=int, default=256)
+parser.add_argument('--batchsize', type=int, default=1)
 parser.add_argument('--numbatches', type=int, default=-1)
 
 
 def main(args):
-    dataset = datasets.ImageFolder(args.data , transform=transforms.Compose([transforms.ToTensor(), transforms.Lambda(lambda x:  torch.stack([x.mean([1,2]), (x*x).mean([1,2])]) )])) # x.view(x.shape[0], -1))]))
+
+    imgTransform = T.Compose([T.ToTensor(), T.Lambda(lambda x: torch.stack([x.mean([1,2]), (x*x).mean([1,2])]) )])
+    dataset = datasets.ImageFolder(args.data, transform=imgTransform) # x.view(x.shape[0], -1))]))
+    # dataset = datasets.ImageFolder(args.data, transform=T.ToTensor()) # x.view(x.shape[0], -1))]))
 
     loader = DataLoader(
         dataset,
