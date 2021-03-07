@@ -17,6 +17,10 @@ combination of sensor inputs([Reiche et al., 2018](https://doi.org/10.1016/j.rse
 
 While MoCo and other contrastive learning methods have demonstrated promising results on natural image classification tasks, their application to remote sensing applications has been limited.  
 
+Unlike contrastive learning for traditional computer vision images where different views (augmentations) of the same image serve as a positive pair, we propose to use positive pairs from different sensors for the same location.    
+
+![](web/images/moco_framework.png)![](web/images/current_approach.png)
+
 In this work, we demonstrate that pre-training [MoCo-v2](https://openaccess.thecvf.com/content_CVPR_2020/papers/He_Momentum_Contrast_for_Unsupervised_Visual_Representation_Learning_CVPR_2020_paper.pdf) on data from multiple sensors lead to improved representations for remote sensing applications. 
 
 ## Related Work 
@@ -53,29 +57,10 @@ In this work, we provide an effective approach for improving representation lear
 
 ## Problem Definition 
 
-3.1. SEN12MS
+Update
 
 
-
-3.3 
-
-
-## Method 
-
- 
-#### Contrastive Learning Framework
-
-**Temporal Positive Pairs**
-
-
-**Resolution**
-
-
-**Multiple-Sensor** 
-different bands, different satelites 
-
-
-## Datasets
+### Datasets
 To validate our ideas, we did experiments on datasets with different satellite imageries with variations in dataset size, channels, and image ground resolutions. The statistics of these datasets are given below. Readers are requested to see the the supplementary materials for examples and additional details of these datasets.  
 | Dataset  | Satellites  | Number of Images  | Image Size  |  Labels | Notes  |
 |---|---|---|---|---|---|
@@ -90,12 +75,24 @@ The SEN12MS dataset contains 180,662 patch triplets of corresponding Sentinel-1 
 * Sentinel-2 Multi-Spectral: 13 channels corresponding to the 13 spectral bands (B1, B2, B3, B4, B5, B6, B7, B8, B8a, B9, B10, B11, B12).
 * MODIS Land Cover: 4 channels corresponding to IGBP, LCCS Land Cover, LCCS Land Use, and LCCS Surface Hydrology layers.
 
+## Method 
+In this section, we briefly review Contrastive Learning Framework for unsupervised learning and detail our proposed approach to improve Moco-v2, a recent contrastive learning framework, on satellite imagery from multiple sensors data.
+ 
+**Multiple-Sensor** 
+Update on different bands, different satelites etc. with images.  
+ 
+#### Contrastive Learning Framework
+Contrastive methods attempt to learn a mapping f<sub>q</sub> from raw pixels to semantically meaningful representations z in an unsupervised way. The training objective encourages representations corresponding to pairs of images that are known a priori to be semantically similar (positive pairs) to be closer to each other than typical unrelated pairs (negative pairs). With similarity measured by dot product, recent approaches in contrastive learning differ in the type of contrastive loss and generation of positive and negative pairs. In this work, we focus on the state-of-the-art contrastive learning framework [MoCo-v2](https://arxiv.org/pdf/2003.04297.pdf), an improved version of [MoCo](https://arxiv.org/pdf/1911.05722.pdf), and study improved methods for the construction of positive and negative pairs tailored to remote sensing applications. 
+
+#### Naturally Augmented Positive Pairs
+Given these observations, it is natural to leverage imagery for the same location from different remote sensing sensors while constructing positive or negative pairs since it can provide us with extra semantically meaningful information of a place from different sensors. 
+
 ## Experiments 
 
-
-
-
-
+#### Pre-training on SEN12MS
+Provide descripton on how the positive images have been identified based on the dataset and how they have been provided as positive samples to MoCo-v2. 
+#### Transfer Learning Experiments
+Will be updated once the tasks are identified. 
 
 
 ## Conclusion 
