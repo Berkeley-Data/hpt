@@ -20,7 +20,7 @@ While MoCo and other contrastive learning methods have demonstrated promising re
 In this work, we demonstrate that pre-training [MoCo-v2](https://openaccess.thecvf.com/content_CVPR_2020/papers/He_Momentum_Contrast_for_Unsupervised_Visual_Representation_Learning_CVPR_2020_paper.pdf) on data from multiple sensors lead to improved representations for remote sensing applications. 
 
 ## Related Work 
-
+#### Self-supervised contrastive learning
 Many self-supervised learning methods for visual feature learning have been developed without using any
  human-annotated labels. Compared to supervised learning methods which require a data pair X<sub>i</sub>
  and Y<sub>i</sub> while Y<sub>i</sub> is annotated by human labors, self-supervised learning also trained with data X<sub>i</sub> along
@@ -40,6 +40,7 @@ Many self-supervised learning methods for visual feature learning have been deve
  Contrastive learning of visual representations using MoCo ([**MoCo-v2**](https://arxiv.org/pdf/2003.04297.pdf) - Chen, et
  al., Facebook AI Research, 2020) has emerged as the front-runner for self-supervision and has demonstrated superior performance on downstream tasks.
 
+#### Performance gap in Satellite imagery
 There is a performance gap between supervised learning using labels and self-supervised contrastive learning method, [MoCo-v2](https://arxiv.org/pdf/2003.04297.pdf), on remote
  sensing datasets. For instance, on the Functional Map of the World ([fMoW](https://arxiv.org/abs/1711.07846)) image classification
  benchmark, there is an 8% gap in top 1 accuracy between supervised and self-supervised methods. By leveraging spatially aligned
