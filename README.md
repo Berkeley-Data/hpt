@@ -24,12 +24,18 @@ cd OpenSelfSup/data/basetrain_chkpts/
 ```
 
 ## Pretraining With a New Dataset
+
+[hpt](https://github.com/Berkeley-Data/hpt) 
+
 We have a handy set of config generators to make pretraining with a new dataset easy and consistent!
 
 **FIRST**, you will need the image pixel mean/std of your dataset, if you don't have it, you can do:
 
 ```bash
-./compute-dataset-pixel-mean-std.py --data /path/to/image-folder --numworkers 20 --batchsize 256
+cd src/data/
+./compute-dataset-pixel-mean-std.py --data /scratch/crguest/data/sen12ms_small --numworkers 20 --batchsize 256
+
+python ./compute-dataset-pixel-mean-std.py --data_dir /storage/sen12ms_x --data_index_dir /scratch/crguest/hpt/data --numworkers 1 
 
 where image-folder has the structure from ImageFolder in pytorch
 class/image-name.jp[e]g
