@@ -316,8 +316,8 @@
                            <li><strong>Human Settlements</strong>: Human settlements maps are useful in understanding
                               growth patterns, population distribution, resource management, change detection and a
                               variety of other applications where information related to earth surface is required. One
-                              example is vaccination planning; only by finding all the unmapped villages can you be sure
-                              that your vaccine is reaching all the people that need it.</li>
+                              example is <strong>vaccination planning</strong>; only by finding all the unmapped
+                              villages can you be sure that your vaccine is reaching all the people that need it.</li>
                         </ul>
 
                      </li>
@@ -327,22 +327,22 @@
                   <div class="row">
                      <div class="col-md-3 mx-auto border-right">
                         <p>
-                           <img src="images/building_footprints.png" width="175px" />
+                           <img src="images/building_footprints.png" width="175px" /><br>Buildings
                         </p>
                      </div>
                      <div class="col-md-3 mx-auto border-right">
                         <p>
-                           <img src="images/roads_extraction.png" width="175px" />
+                           <img src="images/roads_extraction.png" width="175px" /><br>Roads
                         </p>
                      </div>
                      <div class="col-md-3 mx-auto border-right">
                         <p>
-                           <img src="images/land_cover.png" width="175px" />
+                           <img src="images/land_cover.png" width="175px" /><br>Land cover
                         </p>
                      </div>
                      <div class="col-md-3 mx-auto">
                         <p>
-                           <img src="images/human_settlements.png" width="175px" />
+                           <img src="images/human_settlements.png" width="175px" /><br>Human settlements
                         </p>
                      </div>
                   </div>
@@ -624,11 +624,105 @@
    <section id="insight7" style="padding: 10px 0;">
       <div class="container">
          <div class="row">
-            <div class="col-lg-12 mx-auto">
+            <div class="col-lg-12 mx-auto text-left">
                <h2>Results</h2>
-               &nbsp;
                <br>
-               TODO: Provide current results
+               <h5>BigEarthNet - Supervised Learning</h5>
+               <div class="col-md-10 text-left">
+                  <table class="table table-bordered table-hover table-responsive text-left">
+                     <thead class="thead-light">
+                        <tr>
+                           <th scope="col">Data</th>
+                           <th scope="col">50/50 [AUC (F1-score)]</th>
+                           <th scope="col">10/90 [AUC (F1-score)]</th>
+                           <th scope="col">No downsample [AUC (F1-score)]</th>
+                           <th scope="col">Multiclass - No downsample [F1-score (P/R)]</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr>
+                           <th scope="row">1%
+                           </th>
+                           <td>
+                              0.845 (0.090)
+                           </td>
+                           <td>0.893 (0.153)
+                           </td>
+                           <td>0.5 (0)</td>
+                           <td>0.647 (0.688/0.606)</td>
+                        </tr>
+                        <tr>
+                           <th scope="row">3%
+                           </th>
+                           <td>
+                              0.904 (0.159)
+                           </td>
+                           <td>0.921 (0.284)
+                           </td>
+                           <td>0.814 (0)</td>
+                           <td> 0.666 (0.711/0.626)</td>
+                        </tr>
+                        <tr>
+                           <th scope="row">5%</th>
+                           <td>
+                              0.923 (0.242)
+                           </td>
+                           <td>0.943 (0.300)
+                           </td>
+                           <td>0.884 (0)</td>
+                           <td>0.688 (0.767/0.624)
+                           </td>
+                        </tr>
+                        <tr>
+                           <th scope=" row">10%</th>
+                           <td>0.944 (0.251)</td>
+                           <td>0.932 (0.255)
+                           </td>
+                           <td>0.913 (0)</td>
+                           <td>0.714 (0.790/0.652)
+                           </td>
+                        </tr>
+                        <tr>
+                           <th scope=" row">100%</th>
+                           <td>0.964 (0.314)</td>
+                           <td>0.973 (0.529)
+                           </td>
+                           <td>0.973 (0.478)</td>
+                           <td>0.749 (0.796/0.708)
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+               <br>
+               <h5>SEN12MS - Supervised Learning</h5>
+               <div class="col-md-4 text-left">
+                  <table class="table table-bordered table-hover ">
+                     <thead class="thead-light">
+                        <tr>
+                           <th scope="col">Data</th>
+                           <th scope="col">Acc.</th>
+                           <th scope="col">Pre.</th>
+                           <th scope="col">Rec.</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr>
+                           <td>
+                              30%
+                           </td>
+                           <td>0.791
+                           </td>
+                           <td>0.874</td>
+                           <td>0.878</td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+
+
+
+
 
             </div>
          </div>
@@ -651,13 +745,17 @@
                <h2>Conclusion</h2>
                <p>
                   Conclusion will be provided once the results are available from Moco-V2. The following is the current
-                  research
-                  direction:
+                  research direction:
                   <ul>
                      <li>Using MoCo-v2 as contrastive self-supervised learning algorithm</li>
                      <li>Pre-training on SEN12MS using positive pairs (same location) from multiple sensors</li>
                      <li>Downstream task will be identified soon</li>
                   </ul>
+               </p>
+               <p>
+                  We believe that our approach to using images from different satellites for the same location as
+                  naturally augmented images as input to the MoCo-v2 method provides high-quality representations and
+                  transferable initializations for satellite imagery interpretation.
                </p>
             </div>
          </div>
