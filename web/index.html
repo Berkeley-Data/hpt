@@ -554,13 +554,79 @@
                   chaparral, mobile_home_park, river; smaller features such as storage-tank and basketball court;
                   and even classes such as sea-ice and cloud.</p>
                <h4>SEN12MS EDA</h4>
-               <p>TODO: Add some EDA images and brief description. No details on how the image looks for the
-                  same location from different sensors. Those details goes to Solution section.</p>
 
-               &nbsp;<br>
-               &nbsp;<br>
+               <p calss="text-center">
+                  <div class="container text-center">
+                     <img src="images/patch_count_utm.png" width='95%' />
+                     <br>
+                     Figure: Patches per UTM zone</div>
+                  <br>
+                  There are 35,792 non-overlapping patches out of 180662. Only 3847 patches do not have any overlap on
+                  them. Most patches have up to 8 overlapping areas (few have up to 24).
+               </p>
+               <div class="container text-center">
+                  <div class="row">
+                     <div class="col-md-9 mx-auto ">
+                        <br>
+                        <img src="images/patch_overlap.png" />
+                     </div>
+                     <div class="col-md-3 text-left">
+                        <table class="table table-bordered table-hover ">
+                           <thead class="thead-light">
+                              <tr>
+                                 <th scope="col">Overlap (%)</th>
+                                 <th scope="col">Patches</th>
+                              </tr>
+                           </thead>
+                           <tbody>
+                              <tr>
+                                 <td>
+                                    0-15
+                                 </td>
+                                 <td>1313
+                                 </td>
+                              </tr>
+                              <tr>
+                                 <td>
+                                    15-25
+                                 </td>
+                                 <td>60195
+                                 </td>
+                              </tr>
+                              <tr>
+                                 <td>
+                                    25-50
+                                 </td>
+                                 <td>82618
+                                 </td>
+                              </tr>
+                              <tr>
+                                 <td>
+                                    50-95
+                                 </td>
+                                 <td>529
+                                 </td>
+                              </tr>
+                              <tr>
+                                 <td>
+                                    >75
+                                 </td>
+                                 <td>215
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </div>
+                  </div>
+                  Figure: Patches overlap
+               </div><br>
+               The data in SEN12MS has 180,662 patches consisting of 3 Geotif files from Sentinel-1, Sentinel-2, and
+               MODIS
+               satellites. Sentinel-1 includes two VV and VH polarized images. Sentinel-2 consists of 13 images for
+               different wavelength bands where bands 4,3, and 2 are the RGB bands. MODIS Land Cover (Moderate
+               Resolution Imaging Spectroradiometer) includes two images per satellite. The patches are organized by
+               seasons winter, spring, summer, and fall. There is an overlap of 50% per image in the same season.
                <br>
-
             </div>
          </div>
       </div>
@@ -620,7 +686,7 @@
 
          <p>
             <h5>Pre-training on SEN12MS</h5>
-            Provide descripton on how the positive images have been identified based on the dataset and how they have
+            Provide description on how the positive images have been identified based on the dataset and how they have
             been provided as positive samples to MoCo-v2.
 
 
@@ -735,11 +801,6 @@
                      </tbody>
                   </table>
                </div>
-
-
-
-
-
             </div>
          </div>
       </div>
@@ -831,8 +892,8 @@
                      </p>
                   </div>
                </div>
-
             </div>
+            <div class="col-md-12 text-center">Spring 2021 - section2 (tuesday 6:30 - 8:00 pm)</div>
          </div>
       </div>
    </section>
