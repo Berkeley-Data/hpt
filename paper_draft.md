@@ -93,6 +93,9 @@ Given these observations, it is natural to leverage imagery for the same locatio
 
 #### Pre-training on SEN12MS
 Provide descripton on how the positive images have been identified based on the dataset and how they have been provided as positive samples to MoCo-v2. 
+
+This data set has 180,662 patches. 
+
 #### Transfer Learning Experiments
 Will be updated once the tasks are identified. 
 
