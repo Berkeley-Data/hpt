@@ -97,11 +97,20 @@ Figure 2 shows 19 images from the 3 available satellites at the same patch.\
 #### Pre-training on SEN12MS
 For pre-training the model the ***50% of the dataset*** is included. ***Train and test split corresponds to 80% and 20%*** of the initial partition of the data. The model is trained on different scenarios to compare the performance of the model. First, the model is trained by using the original approach of MoCo V2. The input image is augmented by gaussian blur, elastic transformation, vertical and horizontal flip. Second, the model with the approach proposed in this work that is using images from different satellites as positive pairs. Third, in order to generalize the model, augmentation is applied to both satellites during training.
 
-The encoders have ***ResNet50*** architecture (50 layers deep, 2048 nodes) with 128 output nodes. The momentum constant (***m***) is ***0.9*** and the learning rate is ***0.03***. The temperature factor for the loss function is ***0.2***. The batch size is ***64***.
+The encoders have ***ResNet50*** architecture (50 layers deep, 2048 nodes) with 128 output nodes.
+These encoders are designed for a RGB input (3 bands) and Sen12MS data set is 2, 4 and 13 bands for S1, LC and S2 respectively.  
+To overcome this structure constrain, a convolutional layer is included before the encoders so the output of this layer has 3 bands.
+***The weights of this layer are not updated during training***.
+The momentum constant (***m***) is ***0.9*** and the learning rate is ***0.03***. The temperature factor for the loss function is ***0.2***. The batch size is ***64***.
 
  Figure ***x*** shows the comparison of loss of the 3 pretrained described. The number of epochs for all pre-training is 100. For this dataset the loss converges very well after 30 epochs for all cases. When using MS as positive example without augmentation (current approach), the loss is significantly lower that the base pre-train (original implementation). When including augmentation for additionally to MS images the loos is slightly lower than without augmentation.    
  ***INSERT FIGURE HERE***
 
+
+
+
+#### Transfer Learning Experiments
+Will be updated once the tasks are identified.
 
 The accuracy...
 
@@ -112,11 +121,7 @@ The accuracy...
 |Sen12MS - Single Image S2 + Aug||||
 |Sen12MS - Single Image LC + Aug||||
 |Sen12MS - MS Images||||
-|Sen12MS - MS Images + Aug|800|256|71.1|
-
-#### Transfer Learning Experiments
-Will be updated once the tasks are identified.
-
+|Sen12MS - MS Images + Aug||||
 
 ## Conclusion
 
