@@ -1,9 +1,9 @@
-## Abstract 
+## Abstract
 
 
 
 
-## Introduction 
+## Introduction
 The performance of deep convolutional neural networks depends on their capability and the amount of training data. The datasets are becoming larger in every domain and different kinds of network architectures like [VGG](https://arxiv.org/pdf/1409.1556.pdf), [GoogLeNet](https://arxiv.org/pdf/1409.4842.pdf), [ResNet](https://arxiv.org/pdf/1512.03385.pdf), [DenseNet](https://arxiv.org/pdf/1608.06993.pdf), etc., increased network models' capacity.  
 
 However, the collection and annotation of large-scale datasets are time-consuming and expensive. Many self-supervised methods were proposed to learn visual features from large-scale unlabeled data without using any human annotations to avoid time-consuming and costly data annotations.  Contrastive learning of visual representations has emerged as the front-runner for self-supervision and has demonstrated superior performance on downstream tasks. All contrastive learning frameworks involve maximizing agreement between positive image pairs relative to negative/different images via a contrastive loss function; this pretraining paradigm forces the model to learn good representations. These approaches typically differ in how they generate positive and negative image pairs from unlabeled data and how the data are sampled during pretraining.  
@@ -21,9 +21,9 @@ Unlike contrastive learning for traditional computer vision images where differe
 
 ![](web/images/moco_framework.png)![](web/images/current_approach.png)
 
-In this work, we demonstrate that pre-training [MoCo-v2](https://openaccess.thecvf.com/content_CVPR_2020/papers/He_Momentum_Contrast_for_Unsupervised_Visual_Representation_Learning_CVPR_2020_paper.pdf) on data from multiple sensors lead to improved representations for remote sensing applications. 
+In this work, we demonstrate that pre-training [MoCo-v2](https://openaccess.thecvf.com/content_CVPR_2020/papers/He_Momentum_Contrast_for_Unsupervised_Visual_Representation_Learning_CVPR_2020_paper.pdf) on data from multiple sensors lead to improved representations for remote sensing applications.
 
-## Related Work 
+## Related Work
 #### Self-supervised contrastive learning
 Many self-supervised learning methods for visual feature learning have been developed without using any
  human-annotated labels. Compared to supervised learning methods which require a data pair X<sub>i</sub>
@@ -33,14 +33,14 @@ Many self-supervised learning methods for visual feature learning have been deve
  images or by traditional hand-designed methods. As long as the pseudo labels P are automatically generated
  without involving human annotations, then the methods belong to self-supervised learning. Recently, self-supervised
  learning methods have achieved great progress.  
- 
+
  Self-supervised contrastive learning approaches such as [MoCo](https://arxiv.org/pdf/1911.05722.pdf) ,
  [MoCo-v2](https://arxiv.org/pdf/2003.04297.pdf), [SimCLR](https://arxiv.org/pdf/2002.05709.pdf), and [PIRL](https://openaccess.thecvf.com/content_CVPR_2020/papers/Misra_Self-Supervised_Learning_of_Pretext-Invariant_Representations_CVPR_2020_paper.pdf) have demonstrated
  superior performance and have emerged as the fore-runner on various downstream tasks. The intuition behind these
  methods are to learn representations by pulling positive image pairs from the same instance closer in latent space
  while pushing negative pairs from difference instances further away. These methods, on the other hand, differ in the
- type of contrastive loss, generation of positive and negative pairs, and sampling method. 
- 
+ type of contrastive loss, generation of positive and negative pairs, and sampling method.
+
  Contrastive learning of visual representations using MoCo ([**MoCo-v2**](https://arxiv.org/pdf/2003.04297.pdf) - Chen, et
  al., Facebook AI Research, 2020) has emerged as the front-runner for self-supervision and has demonstrated superior performance on downstream tasks.
 
@@ -55,10 +55,10 @@ There is a performance gap between supervised learning using labels and self-sup
 
 In this work, we provide an effective approach for improving representation learning using data from different satellite imagery using [MoCo-v2](https://arxiv.org/pdf/2003.04297.pdf).
 
-## Problem Definition 
+## Problem Definition
 Does contrastive pre-training with data from multiple sensors lead to improved representations for remote sensing applications?  
 
-Pre-train the contrastive model using unlabelled data from multiple satellites and use that model for downstream remote sensing tasks.  
+Pre-train the contrastive model using unlabeled data from multiple satellites and use that model for downstream remote sensing tasks.  
 
 We want to show that our approach to using images from different satellites for the same location as naturally augmented images as input to the MoCo-v2 method provides high-quality representations and transferable initializations for satellite imagery interpretation. Despite many differences in the data and task properties between natural image classification and satellite imagery interpretation, we want to show the benefit of MoCo-v2 pretraining across multiple patches from different satellites for satellite imagery and investigate representation transfer to a target dataset.   
 
@@ -77,30 +77,43 @@ The SEN12MS dataset contains 180,662 patch triplets of corresponding Sentinel-1 
 * Sentinel-2 Multi-Spectral: 13 channels corresponding to the 13 spectral bands (B1, B2, B3, B4, B5, B6, B7, B8, B8a, B9, B10, B11, B12).
 * MODIS Land Cover: 4 channels corresponding to IGBP, LCCS Land Cover, LCCS Land Use, and LCCS Surface Hydrology layers.
 
-## Method 
+## Method
 In this section, we briefly review Contrastive Learning Framework for unsupervised learning and detail our proposed approach to improve Moco-v2, a recent contrastive learning framework, on satellite imagery from multiple sensors data.
- 
-**Multiple-Sensor** 
-Update on different bands, different satelites etc. with images.  
- 
+
+**Multiple-Sensor**
+Update on different bands, different satellites etc. with images.  
+
 #### Contrastive Learning Framework
-Contrastive methods attempt to learn a mapping f<sub>q</sub> from raw pixels to semantically meaningful representations z in an unsupervised way. The training objective encourages representations corresponding to pairs of images that are known a priori to be semantically similar (positive pairs) to be closer to each other than typical unrelated pairs (negative pairs). With similarity measured by dot product, recent approaches in contrastive learning differ in the type of contrastive loss and generation of positive and negative pairs. In this work, we focus on the state-of-the-art contrastive learning framework [MoCo-v2](https://arxiv.org/pdf/2003.04297.pdf), an improved version of [MoCo](https://arxiv.org/pdf/1911.05722.pdf), and study improved methods for the construction of positive and negative pairs tailored to remote sensing applications. 
+Contrastive methods attempt to learn a mapping f<sub>q</sub> from raw pixels to semantically meaningful representations z in an unsupervised way. The training objective encourages representations corresponding to pairs of images that are known a priori to be semantically similar (positive pairs) to be closer to each other than typical unrelated pairs (negative pairs). With similarity measured by dot product, recent approaches in contrastive learning differ in the type of contrastive loss and generation of positive and negative pairs. In this work, we focus on the state-of-the-art contrastive learning framework [MoCo-v2](https://arxiv.org/pdf/2003.04297.pdf), an improved version of [MoCo](https://arxiv.org/pdf/1911.05722.pdf), and study improved methods for the construction of positive and negative pairs tailored to remote sensing applications.
 
 #### Naturally Augmented Positive Pairs
-Given these observations, it is natural to leverage imagery for the same location from different remote sensing sensors while constructing positive or negative pairs since it can provide us with extra semantically meaningful information of a place from different sensors. 
+Instead of using augmented images of the same input, it is natural to leverage the imagery for the same location from different remote sensing sensors while constructing positive pairs since it can provide us with extra semantically meaningful information.
+For example, Sentinel 1 consists of 2 images (vertical and horizontal polarization) and Sentinel 2 consist of 13 images (different wavelength bands) of the same patch.
+Any combination from the same patch would corresponds to a positive pair without the need of additional augmentation, while negative pair would correspond to any image from different patch without restriction  of same or different satellite.
+Figure 2 shows 19 images from the 3 available satellites at the same patch.\
+***INSERT FIGURE HERE***
 
-## Experiments 
-
+## Experiments
 #### Pre-training on SEN12MS
-Provide descripton on how the positive images have been identified based on the dataset and how they have been provided as positive samples to MoCo-v2. 
+For pre-training the model the ***50% of the dataset*** is included. ***Train and test split corresponds to 80% and 20%*** of the initial partition of the data. The model is trained on different scenarios to compare the performance of the model. First, the model is trained by using the original approach of MoCo V2. The input image is augmented by gaussian blur, elastic transformation, vertical and horizontal flip. Second, the model with the approach proposed in this work that is using images from different satellites as positive pairs. Third, in order to generalize the model, augmentation is applied to both satellites during training.
 
-This data set has 180,662 patches. 
+The encoders have ***ResNet50*** architecture (50 layers deep, 2048 nodes) with 128 output nodes. The momentum constant (***m***) is ***0.9*** and the learning rate is ***0.03***. The temperature factor for the loss function is ***0.2***. The batch size is ***64***.
+
+ Figure ***x*** shows the comparison of loss of the 3 pretrained described. The number of epochs for all pre-training is 100. For this dataset the loss converges very well after 30 epochs for all cases. When using MS as positive example without augmentation (current approach), the loss is significantly lower that the base pre-train (original implementation). When including augmentation for additionally to MS images the loos is slightly lower than without augmentation.    
+ ***INSERT FIGURE HERE***
+
+
+The accuracy...
+
+| Case  | Epoch  | Batch  | Accuracy  |
+|---|---|---|---|
+|MoCo V2|800|256|71.1|
 
 #### Transfer Learning Experiments
-Will be updated once the tasks are identified. 
+Will be updated once the tasks are identified.
 
 
-## Conclusion 
+## Conclusion
 
 
 
@@ -111,4 +124,3 @@ TODO: Use APA style later. Do this once the draft is ready by taking the links i
 [3]  
 [4]  
 [5]  
-
