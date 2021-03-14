@@ -107,7 +107,12 @@ The accuracy...
 
 | Case  | Epoch  | Batch  | Accuracy  |
 |---|---|---|---|
-|MoCo V2|800|256|71.1|
+|ImageNet - Single Image + Aug|800|256|71.1|
+|Sen12MS - Single Image S1 + Aug||||
+|Sen12MS - Single Image S2 + Aug||||
+|Sen12MS - Single Image LC + Aug||||
+|Sen12MS - MS Images||||
+|Sen12MS - MS Images + Aug|800|256|71.1|
 
 #### Transfer Learning Experiments
 Will be updated once the tasks are identified.
