@@ -58,12 +58,11 @@ bands_std = {'s1_std': [4.525339, 4.3586307],
 						1082.4341, 1057.7628, 1136.1942, 1132.7898, 991.48016]}
 ```
 
-
 **NEXT**, copy the pretraining template
 ```bash
-cd utils
-cp templates/pretraining-config-template.sh pretrain-configs/my-dataset-config.sh
-# edit pretrain-configs/my-dataset-config.sh
+cd src/utils
+cp templates/pretraining-config-template.sh pretrain-configs/sen12ms-small.sh
+# edit pretrain-configs/sen12ms-small.sh
 
 # once edited, generate the project
 ./gen-pretrain-project.sh pretrain-configs/my-dataset-config.sh
@@ -115,7 +114,7 @@ where `-b` is the backbone directory and `-d` is the config directory. This comm
 
 **FAQ**
 
-Where are the checkpoints and logs? E.g., if you pass in  `configs/hpt-pretrain/resisc` as the config directory,  then the working directories for this evalution is e.g. `work_dirs/hpt-pretrain/resisc/linear-eval/...`.
+Where are the checkpoints and logs? E.g., if you pass in  `configs/hpt-pretrain/resisc` as the config directory,  then the working directories for this evalution is e.g. `work_dirs/hpt-pretrain/resisc/linear-eval/...`. If w&b is enabled, it will be logged on weight & biases 
 
 ## Finetuning
 Assuming you generated the pretraining project as specified above, finetuning is as simple as:
