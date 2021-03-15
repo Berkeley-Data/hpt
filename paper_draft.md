@@ -72,7 +72,11 @@ To validate our ideas, we did experiments on datasets with different satellite i
 | [RESISC45](https://arxiv.org/ftp/arxiv/papers/1703/1703.00121.pdf)   | NA  | 31,500 Images; 3 Bands(RGB)  | 256x256  | Single, 45 scene classes | Balanced; 700 images in each class  |
 
 ##### SEN12MS
-The SEN12MS dataset contains 180,662 patch triplets of corresponding Sentinel-1 dual-pol SAR data, Sentinel-2 multi-spectral images, and MODIS-derived land cover maps. The patches are distributed across the land masses of the Earth and spread over all four meteorological seasons. This is reflected by the dataset structure. The captured scenes were tiled into patches of 256 X 256 pixels in size and implemented a stride of 128 pixels, resulting in an overlap between adjacent patches of 50% assuming 50% overlap is the ideal trade-off between patch independence and maximization of the number of samples. All patches are provided in the form of 16-bit GeoTiffs containing the following specific information:
+The SEN12MS dataset contains 180,662 patch triplets of corresponding Sentinel-1 dual-pol SAR data, Sentinel-2 multi-spectral images, and MODIS-derived land cover maps. The patches are distributed across the land masses of the Earth and spread over all four meteorological seasons. This is reflected by the dataset structure. The captured scenes were tiled into patches of 256 X 256 pixels in size and implemented a stride of 128 pixels, resulting in an overlap between adjacent patches.
+Only 3847 patches do not have any overlap with adjacent patches.
+Most of the overlap occurs around 25% and 50% of the area with few patches overlapping less than 15% and more than 75%.
+
+ All patches are provided in the form of 16-bit GeoTiffs containing the following specific information:
 * Sentinel-1 SAR: 2 channels corresponding to sigma nought backscatter values in dB scale for VV and VH polarization.
 * Sentinel-2 Multi-Spectral: 13 channels corresponding to the 13 spectral bands (B1, B2, B3, B4, B5, B6, B7, B8, B8a, B9, B10, B11, B12).
 * MODIS Land Cover: 4 channels corresponding to IGBP, LCCS Land Cover, LCCS Land Use, and LCCS Surface Hydrology layers.
@@ -95,18 +99,20 @@ Figure 2 shows 19 images from the 3 available satellites at the same patch.\
 
 ## Experiments
 #### Pre-training on SEN12MS
-For pre-training the model the ***50% of the dataset*** is included. ***Train and test split corresponds to 80% and 20%*** of the initial partition of the data. The model is trained on different scenarios to compare the performance of the model. First, the model is trained by using the original approach of MoCo V2. The input image is augmented by gaussian blur, elastic transformation, vertical and horizontal flip. Second, the model with the approach proposed in this work that is using images from different satellites as positive pairs. Third, in order to generalize the model, augmentation is applied to both satellites during training.
+
+Pre-training is performed twice for comparison proposes. First, examples from all patches are included (180,662). Second, pre-train includes a sample of the dataset which patches do not overlap with their adjacent patches. This sample of the dataset is selected on firs come first serve basis and any adjacent overlapping patch is ignored. The selection consist of 35,792 patches.
+
+The model is pre-trained on different scenarios to compare the performance of the model. ***First, the model is trained by using the original approach of MoCo V2. The input image is augmented by gaussian blur, elastic transformation, vertical and horizontal flip***. Second, the model with the approach proposed in this work that is using images from different satellites as positive pairs. ***Third, in order to generalize the model, augmentation is applied to both satellites during training***. The pre-train is also done with both the complete dataset and the non-overlapping sample described in the previous section.
 
 The encoders have ***ResNet50*** architecture (50 layers deep, 2048 nodes) with 128 output nodes.
 These encoders are designed for a RGB input (3 bands) and Sen12MS data set is 2, 4 and 13 bands for S1, LC and S2 respectively.  
-To overcome this structure constrain, a convolutional layer is included before the encoders so the output of this layer has 3 bands.
+To overcome this structure constrain, a convolutional layer is included before the encoders to map the input with different bands to 3.
 ***The weights of this layer are not updated during training***.
 The momentum constant (***m***) is ***0.9*** and the learning rate is ***0.03***. The temperature factor for the loss function is ***0.2***. The batch size is ***64***.
 
- Figure ***x*** shows the comparison of loss of the 3 pretrained described. The number of epochs for all pre-training is 100. For this dataset the loss converges very well after 30 epochs for all cases. When using MS as positive example without augmentation (current approach), the loss is significantly lower that the base pre-train (original implementation). When including augmentation for additionally to MS images the loos is slightly lower than without augmentation.    
- ***INSERT FIGURE HERE***
 
-
+ Figure ***x*** shows the comparison of loss of the 3 pretrained described. ***The number of epochs for all pre-training is 100***. For this dataset the loss converges very well after 30 epochs for all cases. When using MS as positive example without augmentation (current approach), the loss is significantly lower that the base pre-train (original implementation). When including augmentation for additionally to MS images the loos is slightly lower than without augmentation.    
+![](web/images/Loss_full_vs_35k_partial.png)
 
 
 #### Transfer Learning Experiments
