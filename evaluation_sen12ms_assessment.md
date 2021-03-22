@@ -42,9 +42,9 @@
 The modalities can be chosen when performing the training. Three options can be evaluated. 
 >> - _RGB: only S2 TGB imagery is used
 
->> _s2: full multi-spectral s-2 data were used
+>> - _s2: full multi-spectral s-2 data were used
 
->> _s1s2: data fusion-based models analyzing both s-1 and s-2 data
+>> - _s1s2: data fusion-based models analyzing both s-1 and s-2 data
 
 **Checked whether _s1s2 would be the most releveant model when it comes to compares with our approach - s1s2 MOCO, or it does not matter?**
 
