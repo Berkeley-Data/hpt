@@ -1,10 +1,23 @@
+# A. Key Questions:
+> ### 1. The evaluation options:
+> > a. Scene Classification -- land cover label (currently on wandb).
+> > b. Semantic segmentation -- assigning a class label to every pixel of the input image (not implement).
+
+> ### 2. What metrics they used:
+> > a. Scene Classification -- Average Accuracy (single-label); Overall Accuarcy (multi-label); f-1, precision, and recall refer to the repo url[https://github.com/schmitt-muc/SEN12MS].
+> > b. Semantic segmentation -- class-wise and average accuracy -- refer to the repo url[https://github.com/lukasliebel/dfc2020_baseline].
+
+
+
+# B. Deep Dive
+
 1. The difference evaluation options:
 > - a. Land cover classification -- image classificaiton.
 > - b. Semantic Segmentation -- assigning a class label to every pixel of the input image.
 
 2. 
 
-3. tmp
+3. results (tmp) on wandb
 > a. SEN12MS - Supervised Learning Benchmark - Classification
 
 | Backbone  | Land Type  | Modalitities  | Bactch size  | Epochs | Accuracy (%) | Macro-F1 (%) | Micro-F1 (%) |
