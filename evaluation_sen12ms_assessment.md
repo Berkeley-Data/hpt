@@ -40,7 +40,7 @@
 
 3. Modalities
 The modalities can be chosen when performing the training. Three options can be evaluated. 
->> - _RGB: only S2 TGB imagery is used
+>> - _RGB: only S2 RGB imagery is used
 
 >> - _s2: full multi-spectral s-2 data were used
 
