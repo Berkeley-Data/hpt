@@ -22,7 +22,9 @@
 
 2. Definition of single-label and multi-label.
 
-> . The authors has already processed and stored the labels of each image in SEN12MS dataset.
+> a. For every scence (patch), we can identify the labels through land cover images from MODIS, in which the first band describes the IGBP classification scheme, whereas the rest of the three bands covered the LCCS land cover layer, LCCS land use layer, and the LCCS surface hydrology layer. According to the authors, the overall acc for the layers are about 67% (IGBP), 74% (LCCS land cover), 81% (LCCS land use), and 87% (LCCS surface hydrology). There are known label noise to the SEN12MS dataset and hence these accuracies will constitute the upper bound of actually achievable predictive power.
+
+> b. The authors has already processed and stored the labels of each image in SEN12MS dataset in to ...
 
 - single-label_IGBPfull_ClsNum: This file contains scene labels based on the full IGBP land cover scheme, represented by actual class numbers.
 - single-label_IGBP_full_OneHot: This file contains scene labels based on the full IGBP land cover scheme, represented by a one-hot vector encoding.
