@@ -15,9 +15,10 @@
 
 ### 1. Scene Classification
 1. Label were used -- **IGBP land cover scheme**.
-a. the original IGBP land cover scheme has **17** classes.
 
-b. the simplified version of IGBP classes has **10** classes, which derived and consolidated from the orignial 17 classes.
+&nbsp a. the original IGBP land cover scheme has **17** classes.
+
+&nbsp b. the simplified version of IGBP classes has **10** classes, which derived and consolidated from the orignial 17 classes.
 
 ### 2. Semantic Segmentation
 
