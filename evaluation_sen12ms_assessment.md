@@ -24,7 +24,13 @@
 
 > a. For every scence (patch), we can identify the labels through land cover images from MODIS, in which the first band describes the IGBP classification scheme, whereas the rest of the three bands covered the LCCS land cover layer, LCCS land use layer, and the LCCS surface hydrology layer. According to the authors, the overall acc for the layers are about 67% (IGBP), 74% (LCCS land cover), 81% (LCCS land use), and 87% (LCCS surface hydrology). There are known label noise to the SEN12MS dataset and hence these accuracies will constitute the upper bound of actually achievable predictive power.
 
-> b. The authors has already processed and stored the labels of each image in SEN12MS dataset in to ...
+> b. from (a), the authors has already processed and stored the labels of each image in SEN12MS with full IGBP classes into the file **IGBP_probability_labels.pkl**, meaning the percentage of the imange that belongs to each classes, where further label types and target classes can be derived during the training steps -- single label or multi-label for a scence (patch). Below is the parameters we can define on the fly when training. 
+
+- full classes (17) or simplified classes (10)
+- single label -- it's derived from the probabilities files that applys the argmax to select the highest probability of class (vector) in a scence (patch).
+- multi label -- it's derived from the probabilities files that some threshold can be applied for each classes in a vetor.
+
+> c. For the single-label, the authors also provided the processed one-hot encoding for the vector dervided from (b).
 
 - single-label_IGBPfull_ClsNum: This file contains scene labels based on the full IGBP land cover scheme, represented by actual class numbers.
 - single-label_IGBP_full_OneHot: This file contains scene labels based on the full IGBP land cover scheme, represented by a one-hot vector encoding.
