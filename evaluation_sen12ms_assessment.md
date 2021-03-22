@@ -29,7 +29,7 @@
 
 >> - full classes (17) or simplified classes (10)
 >> -  single label -- it's derived from the probabilities files that applys the argmax to select the highest probability of class (vector) in a scence (patch).
->> - multi label -- it's derived from the probabilities files that some threshold can be applied for each classes in a vetor.
+>> - multi label -- it's derived from the probabilities files that some threshold can be applied for each classes in a vector.
 
 > c. For the single-label, the authors also provided the processed one-hot encoding for the vector dervided from (b).
 
