@@ -23,12 +23,12 @@
 
 2. Definition of single-label and multi-label.
 
-> a. For every scence (patch), we can identify the labels through land cover images from MODIS, in which the first band describes the IGBP classification scheme, whereas the rest of the three bands covered the LCCS land cover layer, LCCS land use layer, and the LCCS surface hydrology layer. According to the authors, the overall acc for the layers are about 67% (IGBP), 74% (LCCS land cover), 81% (LCCS land use), and 87% (LCCS surface hydrology). **There are known label noise to the SEN12MS dataset, and hence these accuracies will constitute the upper bound of actually achievable predictive power**.
+> a. For every scene (patch), we can identify the labels through land cover images from MODIS, in which the first band describes the IGBP classification scheme, whereas the rest of the three bands covered the LCCS land cover layer, LCCS land use layer, and the LCCS surface hydrology layer. According to the authors, the overall acc for the layers are about 67% (IGBP), 74% (LCCS land cover), 81% (LCCS land use), and 87% (LCCS surface hydrology). **There are known label noise to the SEN12MS dataset, and hence these accuracies will constitute the upper bound of actually achievable predictive power**.
 
-> b. from (a), the authors have already processed and stored the labels of each image in SEN12MS with full IGBP classes into the file **IGBP_probability_labels.pkl**, meaning the percentage of the image that belongs to each class, where further label types and target classes can be derived during the training steps -- single label or multi-label for a scence (patch). Below are the parameters we can define on the fly when training. 
+> b. from (a), the authors have already processed and stored the labels of each image in SEN12MS with full IGBP classes into the file **IGBP_probability_labels.pkl**, meaning the percentage of the image that belongs to each class, where further label types and target classes can be derived during the training steps -- single label or multi-label for a scene (patch). Below are the parameters we can define on the fly when training. 
 
 >> - full classes (17) or simplified classes (10)
->> -  single label -- it's derived from the probabilities files that applies the argmax to select the highest probability of class (vector) in a scence (patch).
+>> -  single label -- it's derived from the probabilities files that applies the argmax to select the highest probability of class (vector) in a scene (patch).
 >> - multi-label -- it's derived from the probabilities files that some threshold can be applied for each class in a vector.
 
 > c. For the single-label, the authors also provided the processed one-hot encoding for the vector derived from (b).
@@ -68,7 +68,7 @@ WIP
 
 ### a. methods
 
-1. potential 1 -- using the exiting scence classification models and the current evaluation in sen12ms dataset to evaluate the moco one
+1. potential 1 -- using the exiting scene classification models and the current evaluation in sen12ms dataset to evaluate the moco one
 2. potential 2 -- using openselfsup to evaluate the sen12ms dataset?? (TBD)
 3. potential 3 -- others ?? (TBD)
 
@@ -78,7 +78,7 @@ WIP
 
 
 # D. Results (WIP on wandb, subject to changes)
-### 1. SEN12MS - Supervised Learning Benchmark - Scence Classification
+### 1. SEN12MS - Supervised Learning Benchmark - Scene Classification
 These models were downloaded from their pre-trained described in B-5, and evaluated.
 
 | Backbone  | Land Type  | Modalities  | Bactch size  | Epochs | Accuracy (%) | Macro-F1 (%) | Micro-F1 (%) |
@@ -94,5 +94,5 @@ These models were downloaded from their pre-trained described in B-5, and evalua
 
 
 # E. Appendix
-1. IGBP Land Cover Classification System
+1. IGBP Land Cover Classification System  
 ![Screen Shot 2021-03-21 at 10 52 56 PM](https://user-images.githubusercontent.com/39634122/111934636-2f68ee00-8a98-11eb-8763-8453266227ed.png)
