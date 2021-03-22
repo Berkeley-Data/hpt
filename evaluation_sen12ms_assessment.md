@@ -26,16 +26,16 @@
 
 > b. from (a), the authors has already processed and stored the labels of each image in SEN12MS with full IGBP classes into the file **IGBP_probability_labels.pkl**, meaning the percentage of the imange that belongs to each classes, where further label types and target classes can be derived during the training steps -- single label or multi-label for a scence (patch). Below is the parameters we can define on the fly when training. 
 
-- full classes (17) or simplified classes (10)
-- single label -- it's derived from the probabilities files that applys the argmax to select the highest probability of class (vector) in a scence (patch).
-- multi label -- it's derived from the probabilities files that some threshold can be applied for each classes in a vetor.
+>> - full classes (17) or simplified classes (10)
+>> -  single label -- it's derived from the probabilities files that applys the argmax to select the highest probability of class (vector) in a scence (patch).
+>> - multi label -- it's derived from the probabilities files that some threshold can be applied for each classes in a vetor.
 
 > c. For the single-label, the authors also provided the processed one-hot encoding for the vector dervided from (b).
 
-- single-label_IGBPfull_ClsNum: This file contains scene labels based on the full IGBP land cover scheme, represented by actual class numbers.
-- single-label_IGBP_full_OneHot: This file contains scene labels based on the full IGBP land cover scheme, represented by a one-hot vector encoding.
-- single-label_IGBPsimple_ClsNum: This file contains scene labels based on the simplified IGBP land cover scheme, represented by actual class numbers.
-- single-label_IGBPsimple_OneHot: This file contains scene labels based on the simplified IGBP land cover scheme, represented by a one-hot vector encoding. All these files are available both in plain ASCII (.txt) format, as well as .pkl format.
+>> - single-label_IGBPfull_ClsNum: This file contains scene labels based on the full IGBP land cover scheme, represented by actual class numbers.
+>> - single-label_IGBP_full_OneHot: This file contains scene labels based on the full IGBP land cover scheme, represented by a one-hot vector encoding.
+>> - single-label_IGBPsimple_ClsNum: This file contains scene labels based on the simplified IGBP land cover scheme, represented by actual class numbers.
+>> - single-label_IGBPsimple_OneHot: This file contains scene labels based on the simplified IGBP land cover scheme, represented by a one-hot vector encoding. All these files are available both in plain ASCII (.txt) format, as well as .pkl format.
 
 
 
