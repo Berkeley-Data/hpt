@@ -56,8 +56,6 @@ The authors has implemented some metrics in the .py files but according to the p
 
 5. There are pre-trained model(weights) and optimizations parameters can be downloaded.
 
-6. No entire resutls from this pre-trained was documented (or at least not found at the moment, still seacrhing) 
-
 
 ### 2. Semantic Segmentation (WIP)
 -- this tasks seems to be not straightforwrad. and the author did not report everything (based on the paper and repo). checking ...
