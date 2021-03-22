@@ -10,6 +10,9 @@ Once logged in
 ```
 # update conda to the latest 
 conda update -n base conda 
+
+conda install pytorch torchvision torchaudio cudatoolkit=10.2 -c pytorch
+
 ```
 
 ## Installation
@@ -28,7 +31,13 @@ conda activate hpt
 
 # NOTE: if you are not using CUDA 10.2, you need to change the 10.2 in this command appropriately. Make sure to use torch 1.6.0
 # (check CUDA version with e.g. `cat /usr/local/cuda/version.txt`)
+# latest 
+conda install pytorch torchvision torchaudio cudatoolkit=10.2 -c pytorch
+
+# 1.6 torch (no support for torchvision transform on tensor)
 conda install pytorch==1.6.0 torchvision==0.7.0 cudatoolkit=10.2 -c pytorch
+#colorado machine 
+conda install pytorch==1.2.0 torchvision==0.7.0 cudatoolkit=10.2 -c pytorch
 
 # install local submodules
 cd OpenSelfSup
@@ -64,19 +73,30 @@ cd OpenSelfSup/data/basetrain_chkpts/
 ./download-pretrained-models.sh
 ```
 
-## Verify Install
+## Verify Install With RESISC DataSet
+[OpenSelfSup](https://github.com/Berkeley-Data/OpenSelfSup) 
+
 Check installation by pretraining using mocov2, extracting the model weights, evaluating the representations, and then viewing the results on tensorboard or [wandb](https://wandb.ai/cal-capstone/hpt):
 
 
 ```bash
 export WANDB_API_KEY=<use your API key>
 export WANDB_ENTITY=cal-capstone
-export WANDB_PROJECT=hpt
+export WANDB_PROJECT=hpt2
+#export WANDB_MODE=dryrun
 
 cd OpenSelfSup
 
+# Sanity check with single train and single epoch 
+CUDA_VISIBLE_DEVICES=1 ./tools/single_train.sh configs/selfsup/moco/r50_v2_resisc_in_basetrain_20ep.py --debug 
+
+CUDA_VISIBLE_DEVICES=1 ./tools/single_train.sh  /scratch/crguest/OpenSelfSup/configs/selfsup/moco/r50_v2_sen12ms_in_basetrain_20ep.py --work_dir work_dirs/selfsup/moco/r50_v2_sen12ms_in_basetrain_20ep/ --debug
+
 # Sanity check: MoCo for 20 epoch on 4 gpus
 ./tools/dist_train.sh configs/selfsup/moco/r50_v2_resisc_in_basetrain_20ep.py 4
+
+# if debugging, use 
+tools/train.py configs/selfsup/moco/r50_v2_resisc_in_basetrain_1ep.py --work_dir work_dirs/selfsup/moco/r50_v2_resisc_in_basetrain_1ep/ --debug
 
 # make some variables so its clear what's happening
 CHECKPOINT=work_dirs/selfsup/moco/r50_v2_resisc_in_basetrain_20ep/epoch_20.pth
@@ -91,4 +111,50 @@ python tools/extract_backbone_weights.py ${CHECKPOINT} ${BACKBONE}
 cd work_dirs
 # you may need to install tensorboard
 tensorboard --logdir .
+```
+
+
+## Verify Install With SEN12MS Dataset
+[OpenSelfSup](https://github.com/Berkeley-Data/OpenSelfSup) 
+
+Check installation by pretraining using mocov2, extracting the model weights, evaluating the representations, and then viewing the results on tensorboard or [wandb](https://wandb.ai/cal-capstone/hpt):
+
+```bash
+export WANDB_API_KEY=<use your API key>
+export WANDB_ENTITY=cal-capstone
+export WANDB_PROJECT=hpt2
+
+cd OpenSelfSup
+
+# single GPU training 
+CUDA_VISIBLE_DEVICES=1 ./tools/single_train.sh configs/selfsup/moco/r50_v2_sen12ms_in_basetrain_20ep.py --debug
+
+CUDA_VISIBLE_DEVICES=1 ./tools/single_train.sh configs/selfsup/moco/r50_v2_sen12ms_in_fulltrain_20ep.py --debug
+
+
+# command for remote debugging, use full path
+python /scratch/crguest/OpenSelfSup/tools/train.py /scratch/crguest/OpenSelfSup/configs/selfsup/moco/r50_v2_sen12ms_in_fulltrain_20ep.py --debug
+
+CUDA_VISIBLE_DEVICES=1 python ./tools/single_train.sh configs/selfsup/moco/r50_v2_sen12ms_in_fulltrain_20ep.py --debug
+
+# Sanity check: MoCo for 20 epoch on 4 gpus
+#CUDA_VISIBLE_DEVICES=0,1,2,3 
+CUDA_VISIBLE_DEVICES=1 ./tools/dist_train.sh configs/selfsup/moco/r50_v2_sen12ms_in_basetrain_20ep.py 4
+
+# distributed training 
+#CUDA_VISIBLE_DEVICES=0,1,2,3 
+./tools/dist_train.sh configs/selfsup/moco/r50_v2_sen12ms_in_fulltrain_20ep.py 4
+
+BACKBONE=work_dirs/selfsup/moco/r50_v2_sen12ms_in_basetrain_20ep/epoch_20_moco_in_baseline.pth
+# method 1: from working dir
+CHECKPOINT=work_dirs/selfsup/moco/r50_v2_resisc_in_basetrain_20ep/epoch_20.pth
+# method 2: from W&B, {projectid}/{W&B run id}
+CHECKPOINT=hpt2/3l4yg63k  
+
+# Extract the backbone
+python tools/extract_backbone_weights.py ${BACKBONE} ${CHECKPOINT} 
+
+# Evaluate the representations
+./benchmarks/dist_train_linear.sh configs/benchmarks/linear_classification/resisc45/r50_last.py ${BACKBONE}
+
 ```
