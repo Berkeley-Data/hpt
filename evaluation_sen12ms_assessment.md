@@ -16,9 +16,22 @@
 ### 1. Scene Classification
 1. Label were used -- **IGBP land cover scheme**.
 
-&nbsp a. the original IGBP land cover scheme has **17** classes.
+> a. the original IGBP land cover scheme has **17** classes.
 
-&nbsp b. the simplified version of IGBP classes has **10** classes, which derived and consolidated from the orignial 17 classes.
+> b. the simplified version of IGBP classes has **10** classes, which derived and consolidated from the orignial 17 classes.
+
+2. Definition of single-label and multi-label.
+
+> . The authors has already processed and stored the labels of each image in SEN12MS dataset.
+
+- single-label_IGBPfull_ClsNum: This file contains scene labels based on the full IGBP land cover scheme, represented by actual class numbers.
+- single-label_IGBP_full_OneHot: This file contains scene labels based on the full IGBP land cover scheme, represented by a one-hot vector encoding.
+- single-label_IGBPsimple_ClsNum: This file contains scene labels based on the simplified IGBP land cover scheme, represented by actual class numbers.
+- single-label_IGBPsimple_OneHot: This file contains scene labels based on the simplified IGBP land cover scheme, represented by a one-hot vector encoding. All these files are available both in plain ASCII (.txt) format, as well as .pkl format.
+
+
+
+
 
 ### 2. Semantic Segmentation
 
