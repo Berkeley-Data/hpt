@@ -9,7 +9,7 @@
 
 > b. Semantic segmentation -- class-wise and average accuracy -- refer to the [repo](https://github.com/lukasliebel/dfc2020_baseline).
 
-**Recalling from the meeting with Colorado, whether this metircs are standard? -- the answer is yes -- hence, In stead of using the author's evaluation system, there maybe options for the use of openselfsup ecosystem.
+**Recalling from the meeting with Colorado, whether this metircs are standard? -- the answer is yes -- hence, In stead of using the author's evaluation system, there maybe options for the use of openselfsup ecosystem.**
 
 
 # B. Summary of the Benchmark Evaluation Deep Dive
@@ -52,16 +52,19 @@ The authors has implemented some metrics in the .py files but according to the p
 >> 2. Overall Accuracy (OA_multi) -- particular for multi-label cases.
 >> 3. F1-score, precision, and recall -- this is relatively standard measure.
 
+5. There are pre-trained model(weights) and optimizations parameters can be downloaded.
+
 
 ### 2. Semantic Segmentation (WIP)
 -- this tasks seems to be not straightforwrad. and the author did not report everything (based on the paper and repo). checking ...
 
-
+WIP
 
 
 
 # Results (WIP on wandb, subject to changes)
-> a. SEN12MS - Supervised Learning Benchmark - Classification
+### 1. SEN12MS - Supervised Learning Benchmark - Scence Classification
+These models were downloaded from their per-trained described in B-5, and evaluated.
 
 | Backbone  | Land Type  | Modalitities  | Bactch size  | Epochs | Accuracy (%) | Macro-F1 (%) | Micro-F1 (%) |
 |---|---|---|---|---|---|---|---|
