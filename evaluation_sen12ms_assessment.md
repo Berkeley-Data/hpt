@@ -1,10 +1,12 @@
 # A. Key Questions:
 > ### 1. The evaluation options:
 > > a. Scene Classification -- land cover label (currently on wandb).
+
 > > b. Semantic segmentation -- assigning a class label to every pixel of the input image (not implement).
 
 > ### 2. What metrics they used:
 > > a. Scene Classification -- Average Accuracy (single-label); Overall Accuarcy (multi-label); f-1, precision, and recall refer to the [repo](https://github.com/schmitt-muc/SEN12MS).
+
 > > b. Semantic segmentation -- class-wise and average accuracy -- refer to the [repo](https://github.com/lukasliebel/dfc2020_baseline).
 
 
