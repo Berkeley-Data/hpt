@@ -84,3 +84,12 @@ These models were downloaded from their per-trained described in B-5, and evalua
 |ResNet50|multi-label|_s2|64|100|90.62|56.14|69.88|
 
 
+# E. Appendix
+1. IGBP Land Cover Classification System
+![Screen Shot 2021-03-21 at 10 52 56 PM](https://user-images.githubusercontent.com/39634122/111934636-2f68ee00-8a98-11eb-8763-8453266227ed.png)
+
+
+
+
+
+
