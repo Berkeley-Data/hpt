@@ -12,7 +12,7 @@
 **Recalling from the meeting with Colorado, whether this metircs are standard? -- the answer is yes -- hence, In stead of using the author's evaluation system, there maybe options for the use of openselfsup ecosystem.
 
 
-# B. Summary of the Deep Dive
+# B. Summary of the Benchmark Evaluation Deep Dive
 
 ### 1. Scene Classification
 1. Label were used -- **IGBP land cover scheme**.
