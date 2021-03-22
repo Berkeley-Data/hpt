@@ -9,6 +9,7 @@
 
 > b. Semantic segmentation -- class-wise and average accuracy -- refer to the [repo](https://github.com/lukasliebel/dfc2020_baseline).
 
+**Recalling from the meeting with Colorado, whether this metircs are standard? -- the answer is yes -- hence, In stead of using the author's evaluation system, there maybe options for the use of openselfsup ecosystem.
 
 
 # B. Summary of the Deep Dive
@@ -37,11 +38,23 @@
 >> - single-label_IGBPsimple_ClsNum: This file contains scene labels based on the simplified IGBP land cover scheme, represented by actual class numbers.
 >> - single-label_IGBPsimple_OneHot: This file contains scene labels based on the simplified IGBP land cover scheme, represented by a one-hot vector encoding. All these files are available both in plain ASCII (.txt) format, as well as .pkl format.
 
+3. Modalities
+The modalities can be chosen when performing the training. Three options can be evaluated. 
+>> - _RGB: only S2 TGB imagery is used
+>> _s2: full multi-spectral s-2 data were used
+>> _s1s2: data fusion-based models analyzing both s-1 and s-2 data
+
+**Checked wheter _s1s2 would be the most releveant model when it comes to compares with our approach - s1s2 MOCO, or it does not matter?**
+
+4. Reporting Metrics
+The authors has implemented some metrics in the .py files but according to the papers, there is no actual reporting for the model describe above (**or not found, still searhing**). However, the author did mentioned in the paper as well as in the .py files for the metrics to be reported, which includes:
+>> 1. Average Accuracy (get_AA) -- only applied to single-label types.
+>> 2. Overall Accuracy (OA_multi) -- particular for multi-label cases.
+>> 3. F1-score, precision, and recall -- this is relatively standard measure.
 
 
-
-
-### 2. Semantic Segmentation
+### 2. Semantic Segmentation (WIP)
+-- this tasks seems to be not straightforwrad. and the author did not report everything (based on the paper and repo). checking ...
 
 
 
