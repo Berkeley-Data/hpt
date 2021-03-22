@@ -1,4 +1,4 @@
-# A. Key Questions
+# A. Question & Response
 ### 1. The evaluation options:
 > a. Scene Classification -- land cover label (currently on wandb).
 
@@ -11,9 +11,12 @@
 
 
 
-# B. Deep Dive
+# B. Summary of the Deep Dive
 
 ### 1. Scene Classification
+1. Label were used -- **IGBP land cover scheme**.
+>> a. the original IGBP land cover scheme has **17** classes
+>> b. the simplified version of IGBP classes has **10** classes, which derived and consolidated from the orignial 17 classes.
 
 ### 2. Semantic Segmentation
 
