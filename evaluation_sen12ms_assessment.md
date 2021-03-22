@@ -63,9 +63,16 @@ WIP
 
 
 # C. Our Evaluation choices
+
+### a. methods
+
 1. potential 1 -- using the exiting scence classificaion models and the current evalution in sen12ms dataset to evaluate the moco one
 2. potential 2 -- using openselfsup to evalute the sen12ms dataset?? (tbc)
 3. potential 3 -- others ?? (tbd)
+
+### b. samples
+1. full or sub-samples ? (distributions)
+2. size
 
 
 # D. Results (WIP on wandb, subject to changes)
