@@ -44,7 +44,7 @@ The modalities can be chosen when performing the training. Three options can be 
 >> _s2: full multi-spectral s-2 data were used
 >> _s1s2: data fusion-based models analyzing both s-1 and s-2 data
 
-**Checked wheter _s1s2 would be the most releveant model when it comes to compares with our approach - s1s2 MOCO, or it does not matter?**
+**Checked whether _s1s2 would be the most releveant model when it comes to compares with our approach - s1s2 MOCO, or it does not matter?**
 
 4. Reporting Metrics
 The authors has implemented some metrics in the .py files but according to the papers, there is no actual reporting for the model describe above (**or not found, still searhing**). However, the author did mentioned in the paper as well as in the .py files for the metrics to be reported, which includes:
