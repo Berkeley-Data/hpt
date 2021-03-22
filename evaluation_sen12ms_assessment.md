@@ -23,7 +23,7 @@
 
 2. Definition of single-label and multi-label.
 
-> a. For every scence (patch), we can identify the labels through land cover images from MODIS, in which the first band describes the IGBP classification scheme, whereas the rest of the three bands covered the LCCS land cover layer, LCCS land use layer, and the LCCS surface hydrology layer. According to the authors, the overall acc for the layers are about 67% (IGBP), 74% (LCCS land cover), 81% (LCCS land use), and 87% (LCCS surface hydrology). There are known label noise to the SEN12MS dataset and hence these accuracies will constitute the upper bound of actually achievable predictive power.
+> a. For every scence (patch), we can identify the labels through land cover images from MODIS, in which the first band describes the IGBP classification scheme, whereas the rest of the three bands covered the LCCS land cover layer, LCCS land use layer, and the LCCS surface hydrology layer. According to the authors, the overall acc for the layers are about 67% (IGBP), 74% (LCCS land cover), 81% (LCCS land use), and 87% (LCCS surface hydrology). **There are known label noise to the SEN12MS dataset and hence these accuracies will constitute the upper bound of actually achievable predictive power**.
 
 > b. from (a), the authors has already processed and stored the labels of each image in SEN12MS with full IGBP classes into the file **IGBP_probability_labels.pkl**, meaning the percentage of the imange that belongs to each classes, where further label types and target classes can be derived during the training steps -- single label or multi-label for a scence (patch). Below is the parameters we can define on the fly when training. 
 
