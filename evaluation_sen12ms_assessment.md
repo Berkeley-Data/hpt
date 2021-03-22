@@ -62,7 +62,13 @@ WIP
 
 
 
-# Results (WIP on wandb, subject to changes)
+# C. Our Evaluation choices
+1. potential 1 -- using the exiting scence classificaion models and the current evalution in sen12ms dataset to evaluate the moco one
+2. potential 2 -- using openselfsup to evalute the sen12ms dataset?? (tbc)
+3. potential 3 -- others ?? (tbd)
+
+
+# D. Results (WIP on wandb, subject to changes)
 ### 1. SEN12MS - Supervised Learning Benchmark - Scence Classification
 These models were downloaded from their per-trained described in B-5, and evaluated.
 
