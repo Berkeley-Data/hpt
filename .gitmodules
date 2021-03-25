@@ -1,0 +1,3 @@
+[submodule "SEN12MS"]
+	path = SEN12MS
+	url = git@github.com:Berkeley-Data/SEN12MS.git
