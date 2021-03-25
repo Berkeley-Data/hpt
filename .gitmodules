@@ -1,6 +1,7 @@
 [submodule "SEN12MS"]
 	path = SEN12MS
-	url = git@github.com:Berkeley-Data/SEN12MS.git
+	url = https://github.com/Berkeley-Data/SEN12MS.git
+	branch = taeil
 [submodule "OpenSelfSup"]
 	path = OpenSelfSup
 	url = https://github.com/Berkeley-Data/OpenSelfSup.git
