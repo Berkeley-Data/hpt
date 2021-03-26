@@ -128,20 +128,6 @@ We compared supervised learning with HPT model
 
 **Qualitative Analyis**
 
-Average Accuracy (single-label); 
-| Backbone  | Land Type  | Modalitities | Average Accuracy (%) | Macro-F1 (%) | Micro-F1 (%) |
-|---|---|---|---|---|---|
-|ResNet50|_s2 |57.33|53.39|66.35|
-|ResNet50|_s1s2 |45.52|53.21|64.66|
-|ResNet50|_RGB |45.11|45.16|58.98|
-
-Overall Accuracy (multi-label)
-| Backbone  | Land Type  | Modalitities  | Overall Accuracy (%)| Macro-F1 (%) | Micro-F1 (%) |
-|---|---|---|---|---|---|
-|ResNet50|_s2|60.99 |56.14|69.88|
-|ResNet50|_s1s2|64.32|57.46|71.40|
-|ResNet50|_RGB|58.35|47.57|66.51|
-
 Comparison Accuracy ([TODO] switch to plot) 
 
 | Metrics | supervised-s2 | supervised-s1/s2 | supervised-RGB | HPT s2 | HPT s1/s2 |  
