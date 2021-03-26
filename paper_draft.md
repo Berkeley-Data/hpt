@@ -17,9 +17,7 @@ combination of sensor inputs([Reiche et al., 2018](https://doi.org/10.1016/j.rse
 
 While MoCo and other contrastive learning methods have demonstrated promising results on natural image classification tasks, their application to remote sensing applications has been limited.  
 
-Unlike contrastive learning for traditional computer vision images where different views (augmentations) of the same image serve as a positive pair, we propose to use positive pairs from different sensors for the same location.    
-
-![](web/images/moco_framework.png)![](web/images/current_approach.png)
+Traditional contrative learning utilizes augmentation to generate positive pair. Inspired by recent success (Geo-aware Paper) using natural augmentation to create positive pairs, we propose to use positive pairs from different sensors for the same location.    
 
 In this work, we demonstrate that pre-training [MoCo-v2](https://openaccess.thecvf.com/content_CVPR_2020/papers/He_Momentum_Contrast_for_Unsupervised_Visual_Representation_Learning_CVPR_2020_paper.pdf) on data from multiple sensors lead to improved representations for remote sensing applications.
 
@@ -88,6 +86,8 @@ In this section, we briefly review Contrastive Learning Framework for unsupervis
 **Multiple-Sensor**
 Update on different bands, different satellites etc. with images.  
 
+![](web/images/moco_framework.png)![](web/images/current_approach.png)
+
 #### Contrastive Learning Framework
 Contrastive methods attempt to learn a mapping f<sub>q</sub> from raw pixels to semantically meaningful representations z in an unsupervised way. The training objective encourages representations corresponding to pairs of images that are known a priori to be semantically similar (positive pairs) to be closer to each other than typical unrelated pairs (negative pairs). With similarity measured by dot product, recent approaches in contrastive learning differ in the type of contrastive loss and generation of positive and negative pairs. In this work, we focus on the state-of-the-art contrastive learning framework [MoCo-v2](https://arxiv.org/pdf/2003.04297.pdf), an improved version of [MoCo](https://arxiv.org/pdf/1911.05722.pdf), and study improved methods for the construction of positive and negative pairs tailored to remote sensing applications.
 
@@ -112,26 +112,46 @@ To overcome this structure constrain, a convolutional layer is included before t
 The momentum constant (***m***) is ***0.9*** and the learning rate is ***0.03***. The temperature factor for the loss function is ***0.2***. The batch size is ***64***.
 
 
- Figure ***x*** shows the comparison of loss of the 3 pretrained described. ***The number of epochs for all pre-training is 100***. For this dataset the loss converges very well after 30 epochs for all cases. When using MS as positive example without augmentation (current approach), the loss is significantly lower that the base pre-train (original implementation). When including augmentation for additionally to MS images the loos is slightly lower than without augmentation.    
-![](web/images/Loss_full_vs_35k_partial.png)
-
-
 #### Transfer Learning Experiments
-Will be updated once the tasks are identified.
 
-1. SEN12MS - Supervised Learning Benchmark - Classification
+We compared supervised learning with HPT model 
 
-| Backbone  | Land Type  | Modalitities  | Bactch size  | Epochs | Overall Accuracy (%) | Average Accuracy (%) | Macro-F1 (%) | Micro-F1 (%) |
-|---|---|---|---|---|---|---|---|---|
-|DenseNet|single-label|_s1s2|64|100| - |51.16|50.78|62.90|
-|DenseNet|single-label|_s2|64|100| - |54.41|52.32|64.74|
-|ResNet50|single-label|_RGB|64|100| - |45.11|45.16|58.98|
-|ResNet50|single-label|_s1s2|64|100| - |45.52|53.21|64.66|
-|ResNet50|single-label|_s2|64|100| - |57.33|53.39|66.35|
-|ResNet50|multi-label|_RGB|64|100|58.35| - |47.57|66.51|
-|ResNet50|multi-label|_s1s2|64|100|64.32| - |57.46|71.40|
-|ResNet50|multi-label|_s2|64|100|60.99| - |56.14|69.88|
+1. SEN12MS - Scene Classification 
 
+- Supervised Learning Benchmark vs HPT model 
+
+**Implementation Details **
+
+- downloaded pretrained models from t 
+- the original IGBP land cover scheme has 17 classes.
+- the simplified version of IGBP classes has 10 classes, which derived and consolidated from the original 17 classes.
+
+**Qualitative Analyis**
+
+Average Accuracy (single-label); 
+| Backbone  | Land Type  | Modalitities | Average Accuracy (%) | Macro-F1 (%) | Micro-F1 (%) |
+|---|---|---|---|---|---|
+|ResNet50|_s2 |57.33|53.39|66.35|
+|ResNet50|_s1s2 |45.52|53.21|64.66|
+|ResNet50|_RGB |45.11|45.16|58.98|
+
+Overall Accuracy (multi-label)
+| Backbone  | Land Type  | Modalitities  | Overall Accuracy (%)| Macro-F1 (%) | Micro-F1 (%) |
+|---|---|---|---|---|---|
+|ResNet50|_s2|60.99 |56.14|69.88|
+|ResNet50|_s1s2|64.32|57.46|71.40|
+|ResNet50|_RGB|58.35|47.57|66.51|
+
+Comparison Accuracy ([TODO] switch to plot) 
+
+| Metrics | supervised-s2 | supervised-s1/s2 | supervised-RGB | HPT s2 | HPT s1/s2 |  
+|---|---|---|---|---|---|
+| single-label Average Accuracy (%)| 57.33 |  45.52 |  45.11 |  44.76 |  44.1 | 
+| single-label Macro-F1 (%) | 53.39 |  53.21 | 45.16 |  42.99 |  43.98 | 
+| single-label Micro-F1 (%) | 66.35 |  64.66 |  58.98 |  64.39 |  **66.34** | 
+| multi-label Overall Accuracy (%)| 60.99 |  64.32 | 58.35 | 56.16  |  55.65 | 
+| multi-label Macro-F1 (%) | 56.14 |  57.46 | 47.57  | 46.91  |  46.69 | 
+| multi-label Micro-F1 (%) | 69.88 | 71.40 | 66.51  | **72.64** |  **75.67** | 
 
 ## Conclusion
 
