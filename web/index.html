@@ -1,226 +1,917 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
-   <head>
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-      <meta name="description" content="">
-      <meta name="author" content="">
-      <link rel="icon" href="images/favicon.ico">
-      <title>W210 - Deep Learning in Satellite Imagery</title>
-      <!-- Bootstrap core CSS -->
-      <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-      <!-- Custom styles for this template -->
-      <link href="css/scrolling-nav.css" rel="stylesheet">
-   </head>
-   <body id="page-top" style="text-align: justify;text-justify: inter-word;">
-      <!-- Navigation -->
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav" style="background-color:#003262 !important">
-         <div class="container">
-            <a class="navbar-brand js-scroll-trigger" href="#page-top">W210</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+
+<head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+   <meta name="description" content="">
+   <meta name="author" content="">
+   <link rel="icon" href="images/favicon.ico">
+   <title>W210 - Deep Learning in Satellite Imagery</title>
+   <!-- Bootstrap core CSS -->
+   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+   <!-- Font-awesome CSS -->
+   <link href="vendor/font-awesome/js/font-awesome.min.css" rel="stylesheet">
+   <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
+   <!-- Custom styles for this template -->
+   <link href="css/scrolling-nav.css" rel="stylesheet">
+   <style>
+      .fa {
+         padding: 3px;
+         font-size: 20px;
+         width: 25px;
+         text-align: center;
+         text-decoration: none;
+         margin: 2px 1px;
+         border-radius: 50%;
+      }
+
+      .fa-linkedin {
+         background: #007bb5;
+         color: white;
+      }
+   </style>
+</head>
+
+<body id="page-top" style="text-align: justify;text-justify: inter-word;">
+   <!-- Navigation -->
+   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav"
+      style="background-color:#003262 !important">
+      <div class="container">
+         <a class="navbar-brand js-scroll-trigger" href="#page-top">W210</a>
+         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+            aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-               <ul class="navbar-nav ml-auto">
-                  <li class="nav-item">
-                     <a class="nav-link js-scroll-trigger" href="#insight1">Introduction</a>
-                  </li>
-                  <li class="nav-item">
-                     <a class="nav-link js-scroll-trigger" href="#insight2">Related work</a>
-                  </li>
-                  <li class="nav-item">
-                     <a class="nav-link js-scroll-trigger" href="#insight3">Problem definition</a>
-                  </li>
-                  <li class="nav-item">
-                     <a class="nav-link js-scroll-trigger" href="#insight4">Target users</a>
-                  </li>
-                  <li class="nav-item">
-                     <a class="nav-link js-scroll-trigger" href="#insight5">Solution</a>
-                  </li>
-                  <li class="nav-item">
-                     <a class="nav-link js-scroll-trigger" href="#insight6">Dataset</a>
-                  </li>
-                  <li class="nav-item">
-                     <a class="nav-link js-scroll-trigger" href="#insight7">Results</a>
-                  </li>
-                  <li class="nav-item">
-                     <a class="nav-link js-scroll-trigger" href="#insight8">Future work</a>
-                  </li>
-                  <li class="nav-item">
-                     <a class="nav-link js-scroll-trigger" href="#insight9">Conclusion</a>
-                  </li>
-                   <li class="nav-item">
-				                       <a class="nav-link js-scroll-trigger" href="#insight10">GitHub</a>
-				                    </li>
-				                    <li class="nav-item">
-				                       <a class="nav-link js-scroll-trigger" href="#insight11">Team</a>
-                  </li>
-               </ul>
+         </button>
+         <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+               <li class="nav-item">
+                  <a class="nav-link js-scroll-trigger" href="#insight1">Introduction</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link js-scroll-trigger" href="#insight2">Related work</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link js-scroll-trigger" href="#insight3">Problem definition</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link js-scroll-trigger" href="#insight4">Target users</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link js-scroll-trigger" href="#insight5">Datasets</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link js-scroll-trigger" href="#insight6">Solution</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link js-scroll-trigger" href="#insight7">Results</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link js-scroll-trigger" href="#insight8">Future work</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link js-scroll-trigger" href="#insight9">Conclusion</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link js-scroll-trigger" href="#insight10">GitHub</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link js-scroll-trigger" href="#insight11">Team</a>
+               </li>
+            </ul>
+         </div>
+      </div>
+   </nav>
+   <header class="bg-primary text-white" style="height: 225px; padding: 80px 0; background-color:#d99803 !important">
+      <div class="container text-center">
+         <h1>Unsupervised Deep Learning in Satellite Imagery</h1>
+         <p class="lead">Contrastive Learning Research
+            <br>
+            <img src="images/satellite.png" width="140px" />
+         </p>
+      </div>
+   </header>
+   <section id="insight1" style="padding: 20px 0;">
+      <div class="container">
+         <div class="row">
+            <div class="col-lg-12 mx-auto">
+               <h2>Introduction</h2>
+               <p>The performance of deep convolutional neural networks depends on their capability and the amount of
+                  training data. The datasets are becoming larger in every domain and different kinds of network
+                  architectures like <a href="https://arxiv.org/pdf/1409.1556.pdf" target="_blank">VGG</a>, <a
+                     href="https://arxiv.org/pdf/1409.4842.pdf" target="_blank">GoogLeNet</a>, <a
+                     href="https://arxiv.org/pdf/1512.03385.pdf">ResNet</a>, <a
+                     href="https://arxiv.org/pdf/1608.06993.pdf" target="_blank">DenseNet</a>, etc., increased network
+                  models' capacity.</p>
+               <p>However, the collection and annotation of large-scale datasets are time-consuming and expensive. Many
+                  self-supervised methods were proposed to learn visual features from large-scale unlabeled data without
+                  using any human annotations to avoid time-consuming and costly data annotations. Contrastive learning
+                  of visual representations has emerged as the front-runner for self-supervision and has demonstrated
+                  superior performance on downstream tasks. All contrastive learning frameworks involve maximizing
+                  agreement between positive image pairs relative to negative/different images via a contrastive loss
+                  function; this pretraining paradigm forces the model to learn good representations. These approaches
+                  typically differ in how they generate positive and negative image pairs from unlabeled data and how
+                  the data are sampled during pretraining.</p>
+               <p>Self-supervised approaches such as Momentum Contrast (MoCo) (<a
+                     href="https://arxiv.org/pdf/1911.05722.pdf" target="_blank">He et al., 2019</a>, <a
+                     href="https://arxiv.org/pdf/2003.04297.pdf" target="_blank">Chen et al.,2020</a>) can leverage
+                  unlabeled data to produce pre-trained models for subsequent fine-tuning on labeled data. In addition
+                  to MoCo, these include frameworks such as SimCLR (<a href="https://arxiv.org/pdf/2002.05709.pdf">Chen
+                     et al., 2020</a>) and PIRL (<a
+                     href="https://openaccess.thecvf.com/content_CVPR_2020/papers/Misra_Self-Supervised_Learning_of_Pretext-Invariant_Representations_CVPR_2020_paper.pdf"
+                     target="_blank">Misra and Maaten, 2020</a>).</p>
+
+               <p>Remote sensing data has become broadly available at the petabyte scale, offering unprecedented
+                  visibility into natural and human activity across the Earth. In remote sensing, labeled data is
+                  usually scarce and hard to obtain. Due to the success of self-supervised learning methods, we explore
+                  their application to large-scale remote sensing datasets.</p>
+
+               <p>While most self-supervised image analysis techniques focus on natural imagery, remote sensing differs
+                  in several critical ways. Natural imagery often has one subject; remote sensing images contain
+                  numerous objects such as buildings, trees, roads, rivers, etc. Additionally, the important content
+                  changes unpredictably within just a few pixels or between images at the same location from different
+                  times. Multiple satellites capture images of the same locations on earth with a wide variety of
+                  resolutions, spectral bands (channels), and revisit rates, such that any specific problem can require
+                  a different
+                  combination of sensor inputs (<a href="https://doi.org/10.1016/j.rse.2017.10.034"
+                     target="blank">Reiche et al., 2018</a>,<a
+                     href="https://openaccess.thecvf.com/content_CVPRW_2019/papers/cv4gc/Rustowicz_Semantic_Segmentation_of_Crop_Type_in_Africa_A_Novel_Dataset_CVPRW_2019_paper.pdf"
+                     target="_blank">Rustowicz et al., 2019</a>).</p>
+
+               <p>While MoCo and other contrastive learning methods have demonstrated promising results on natural image
+                  classification tasks, their application to remote sensing applications has been limited.</p>
+               <p>
+                  Unlike contrastive learning for traditional computer vision images where different views
+                  (augmentations) of the same image serve
+                  as a positive pair, we propose to use positive pairs from different sensors for the same location.
+                  <div class="row">
+                     <div class="col-lg-12 mx-auto">
+                        <br>&nbsp;
+                        <div class="row">
+                           <div class="col-md-6 mx-auto border-right">
+
+                              <p>
+                                 <img src="images/moco_framework.png" width="500px" />
+                              </p>
+                           </div>
+                           <div class="col-md-6 mx-auto ">
+
+                              <p>
+                                 <img src="images/current_approach.png" width="500px" />
+                              </p>
+                           </div>
+                        </div>
+
+
+                     </div>
+                  </div>
+               </p>
+
+               <p>In this work, we demonstrate that pre-training <a
+                     href="https://openaccess.thecvf.com/content_CVPR_2020/papers/He_Momentum_Contrast_for_Unsupervised_Visual_Representation_Learning_CVPR_2020_paper.pdf"
+                     target="_blank">MoCo-v2</a> on data from multiple sensors lead to improved representations for
+                  remote sensing applications.</p>
             </div>
          </div>
-      </nav>
-      <header class="bg-primary text-white" style="height: 225px; padding: 80px 0; background-color:#d99803 !important">
-         <div class="container text-center">
-            <h1>Unsupervised Deep Learning in Satellite Imagery</h1>
-            <p class="lead">Contrastive Learning Research
+      </div>
+   </section>
+   <section id="insight2" class="bg-light" style="padding: 10px 0;">
+      <div class="container">
+         <div class="row">
+            <div class="col-lg-12 mx-auto">
+               <h2>Related work</h2>
+               <h5>Self-supervised contrastive learning</h5>
+               <p>
+                  Many self-supervised learning methods for visual
+                  feature learning have been developed without using any
+                  human-annotated labels. Compared to supervised learning methods which require a data pair
+                  X<sub>i</sub>
+                  and Y<sub>i</sub> while Y<sub>i</sub> is annotated by human labors,
+                  self-supervised learning also trained with data X<sub>i</sub> along
+                  with its pseudo label P<sub>i</sub> while P<sub>i</sub> is automatically generated
+                  for a pre-defined pretext task without involving any
+                  human annotation. The pseudo label P<sub>i</sub> can be generated by
+                  using attributes of images or videos such as the context of
+                  images or by traditional hand-designed methods. As long as the pseudo labels P are automatically
+                  generated
+                  without involving human annotations, then the
+                  methods belong to self-supervised learning. Recently, self-supervised
+                  learning methods have achieved great progress. </p>
+               <p>
+                  Self-supervised contrastive
+                  learning approaches such as <a href='https://arxiv.org/pdf/1911.05722.pdf' target='_blank'>MoCo</a> ,
+                  <a href='https://arxiv.org/pdf/2003.04297.pdf' target='_blank'>MoCo-v2</a>, <a
+                     href='https://arxiv.org/pdf/2002.05709.pdf' target='_blank'>SimCLR</a>, and <a
+                     href='https://openaccess.thecvf.com/content_CVPR_2020/papers/Misra_Self-Supervised_Learning_of_Pretext-Invariant_Representations_CVPR_2020_paper.pdf'
+                     target='_blank'>PIRL</a> have demonstrated
+                  superior performance and have emerged as the fore-runner
+                  on various downstream tasks. The intuition behind these
+                  methods are to learn representations by pulling positive
+                  image pairs from the same instance closer in latent space
+                  while pushing negative pairs from difference instances further
+                  away. These methods, on the other hand, differ in the
+                  type of contrastive loss, generation of positive and negative
+                  pairs, and sampling method. <br>
+                  Contrastive learning of visual representations using MoCo (<a
+                     href='https://arxiv.org/pdf/2003.04297.pdf' target='_blank'><strong>MoCo-v2</strong></a> - Chen, et
+                  al., Facebook AI Research, 2020) has emerged as the front-runner for
+                  self-supervision and has demonstrated superior performance on downstream tasks.
+               </p>
+               <h5>Performance gap in Satellite imagery</h5>
+               <p> There is a performance gap between supervised learning using labels and self-supervised contrastive
+                  learning method, <a href='https://arxiv.org/pdf/2003.04297.pdf' target='_blank'>MoCo-v2</a>, on remote
+                  sensing datasets. For instance, on the Functional Map of the World (<a
+                     href='https://arxiv.org/abs/1711.07846' target='_blank'>fMoW</a>) image classification
+                  benchmark, there is an 8% gap
+                  in top 1 accuracy between supervised and self-supervised methods. By leveraging spatially aligned
+                  images over time to construct temporal positive
+                  pairs in contrastive learning and geo-location in the design of pre-text tasks, <a
+                     href='https://arxiv.org/pdf/2011.09980.pdf' target='_blank'><strong>Geography-Aware
+                        Self-supervised Learning</strong></a> (Ayush, et al., Stanford University, 2020) were able to
+                  close
+                  the gap between
+                  self-supervised and supervised learning on image classification, object detection and semantic
+                  segmentation on remote
+                  sensing and other geo-tagged image datasets. </p>
+
+               <p>
+                  In this work, we provide an effective approach for improving representation learning using data from
+                  different satellite imagery using <a href='https://arxiv.org/pdf/2003.04297.pdf'
+                     target='_blank'>MoCo-v2</a>.</p>
+            </div>
+         </div>
+      </div>
+   </section>
+   <section id="insight3" style="padding: 10px 0;">
+      <div class="container">
+         <div class="row">
+            <div class="col-lg-12 mx-auto">
+               <h2>Problem definition</h2>
+               <p>
+                  <strong>Does contrastive pre-training with data from multiple sensors lead to improved representations
+                     for remote sensing applications?</strong>
+
+                  <br>
+                  <br>
+
+               </p>
+               <p class="text-center">
+                  <img src="images/problem_definition.png" class="img-responsive center-block" width="600px" />
+               </p>
+
+               <p>
+
+                  <br>
+                  Pre-train the contrastive model using unlabelled data from multiple satellites and use that model for
+                  downstream remote sensing tasks.<br><br>
+                  We want to show that our approach to using images from different satellites for the same location as
+                  naturally augmented images as input to the MoCo-v2 method provides high-quality representations and
+                  transferable initializations for satellite imagery interpretation.
+                  Despite many differences in the data and task properties between natural image classification and
+                  satellite imagery interpretation, we want to show the benefit of MoCo-v2 pretraining across multiple
+                  patches from different satellites for satellite imagery and investigate representation transfer to a
+                  target dataset.
+
+                  <br>
+
+               </p>
+
+            </div>
+         </div>
+      </div>
+   </section>
+   <section id="insight4" class="bg-light" style="padding: 10px 0;">
+      <div class="container">
+         <div class="row">
+            <div class="col-lg-12 mx-auto">
+               <h2>Target users</h2>
+               <p>
+                  <ul>
+                     <li>
+                        Research Community to aid their research on satellite imagery.
+                     </li>
+                     <li>
+                        Governmental institutions and policy makers to make data-driven decisions. The following are
+                        some of the benefits:
+                        <ul>
+
+                           <li><strong>Building Footprint Extraction</strong>: Building footprint layers are useful in
+                              preparing base
+                              maps and analysis workflows for urban planning and development, insurance, taxation,
+                              change detection, infrastructure planning, and a variety of other applications.</li>
+                           <li><strong>Road Extraction</strong>: Roads are one of the primary geographic information
+                              system (GIS) layers required by any county, city, state, or country governmental agency
+                              for infrastructure planning, urban
+                              planning, and developing an effective, efficient information model. Digitizing and
+                              updating roads can be time consuming. Satellite imagery models automates most of the
+                              digitizing process.
+                           </li>
+                           <li><strong>Land Cover Classification</strong>: The resultant land cover maps can be used for
+                              understanding urban planning, resource management, change detection, agriculture, and a
+                              variety of other applications in which information related to the earth surface is
+                              required. Can also be used for change detection to see the change in land cover, such as
+                              that caused by a wildfire. Also, useful to <strong>fight hunger</strong> by locating,
+                              tracking, and
+                              improving the growth of crops in many countries.</li>
+                           <li><strong>Human Settlements</strong>: Human settlements maps are useful in understanding
+                              growth patterns, population distribution, resource management, change detection and a
+                              variety of other applications where information related to earth surface is required. One
+                              example is <strong>vaccination planning</strong>; only by finding all the unmapped
+                              villages can you be sure that your vaccine is reaching all the people that need it.</li>
+                        </ul>
+
+                     </li>
+                  </ul>
+               </p>
+               <div class="container text-center">
+                  <div class="row">
+                     <div class="col-md-3 mx-auto border-right">
+                        <p>
+                           <img src="images/building_footprints.png" width="175px" /><br>Buildings
+                        </p>
+                     </div>
+                     <div class="col-md-3 mx-auto border-right">
+                        <p>
+                           <img src="images/roads_extraction.png" width="175px" /><br>Roads
+                        </p>
+                     </div>
+                     <div class="col-md-3 mx-auto border-right">
+                        <p>
+                           <img src="images/land_cover.png" width="175px" /><br>Land cover
+                        </p>
+                     </div>
+                     <div class="col-md-3 mx-auto">
+                        <p>
+                           <img src="images/human_settlements.png" width="175px" /><br>Human settlements
+                        </p>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+   <section id="insight5" style="padding: 10px 0;">
+      <div class="container">
+         <div class="row">
+            <div class="col-lg-12 mx-auto">
+               <h2>Datasets</h2>
+               To validate our ideas, we did experiments on datasets with different satellite imageries with variations
+               in dataset size, channels, and image ground resolutions.
+               The statistics of these datasets are given below. Readers are requested to see the the supplementary
+               materials for examples and additional details of these datasets.
+
+               <table class="table table-bordered table-hover table-responsive text-left">
+                  <thead class="thead-light">
+                     <tr>
+                        <th scope="col">Dataset</th>
+                        <th scope="col">Satellites</th>
+                        <th scope="col">Number of Images</th>
+                        <th scope="col">Image Size</th>
+                        <th scope="col">Labels</th>
+                        <th scope="col">Notes</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr>
+                        <th scope="row"><a href="https://arxiv.org/pdf/1902.06148.pdf" target='_blank'>BigEarthNet</a>
+                        </th>
+                        <td>
+                           <ul>
+                              <li>Sentinel-2A/B</li>
+                           </ul>
+                        </td>
+                        <td>590,326 patches <ul>
+                              <li>12 Bands</li>
+                           </ul>
+                        </td>
+                        <td>20x20 to 120x120</td>
+                        <td>Multiple, up to 43</td>
+                        <td>
+                           <ul>
+                              <li>No overlapping</li>
+                              <li>10 European Countries</li>
+                           </ul>
+                        </td>
+                     </tr>
+                     <tr>
+                        <th scope=" row"><a href="https://arxiv.org/pdf/1906.07789.pdf" target='_blank'>SEN12MS</a></th>
+                        <td>
+                           <ul>
+                              <li>Sentinel-1A/B</li>
+                              <li>Sentinel-2A/B</li>
+                              <li>MODIS (Terra and Aqua)</li>
+                           </ul>
+                        </td>
+                        <td>541,986 patches <ul>
+                              <li><strong>180662 triplets</strong> (3*180662)</li>
+                              <li>4, 2 and 13 Bands</li>
+                           </ul>
+                        </td>
+                        <td>256X256</td>
+                        <td>Single, 17 Full and 10 Simplified</td>
+                        <td>Partial overlapping</td>
+                     </tr>
+                     <tr>
+                        <th scope=" row"><a href="https://arxiv.org/abs/1711.07846" target='_blank'>FMoW</a></th>
+                        <td>
+                           <ul>
+                              <li>QuickBird-2</li>
+                              <li>GeoEye-1</li>
+                              <li>WorldView-2</li>
+                              <li>WorldView-3</li>
+                           </ul>
+                        </td>
+                        <td>1,047,691 patches<ul>
+                              <li>4, 8 and RGB Bands</li>
+                           </ul>
+                        </td>
+                        <td>Variable
+                           Over 2500x2500</td>
+                        <td>Multiple, up to 63<br>
+                           Bounding Box Annotations
+                        </td>
+                        <td>
+                           <ul>
+                              <li>Includes False Detection</li>
+                              <li>Variable timestamp overlapping</li>
+                           </ul>
+                        </td>
+                     </tr>
+                     <tr>
+                        <th scope=" row"><a href="https://arxiv.org/ftp/arxiv/papers/1703/1703.00121.pdf"
+                              target='_blank'>RESISC45</a></th>
+                        <td>NA</td>
+                        <td>31,500 Images<ul>
+                              <li>3 Bands(RGB)</li>
+                           </ul>
+                        </td>
+                        <td>256x256</td>
+                        <td>Single, 45 scene classes
+                        </td>
+                        <td>
+                           <ul>
+                              <li>Balanced</li>
+                              <li>700 images in each class</li>
+                           </ul>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+               <h5>BigEarthNet</h5>
+               <p>The <a href="https://arxiv.org/pdf/1902.06148.pdf" target='_blank'>BigEarthNet</a> archive was
+                  constructed by the Remote Sensing Image Analysis (<a
+                     href=" https://www.rsim.tu-berlin.de/menue/remote_sensing_image_analysis_group/"
+                     target="_blank">RSiM)</a> Group and the Database Systems and Information
+                  Management (<a
+                     href="https://www.dima.tu-berlin.de/menue/database_systems_and_information_management_group/?no_cache=1"
+                     target="_blank">DIMA</a>)
+                  Group at the Technische Universität Berlin (<a
+                     href="https://www.tu-berlin.de/menue/home/parameter/en/" target="_blank">TU
+                     Berlin</a>). This work is supported by the European Research Council under the
+                  ERC Starting Grant BigEarthNet
+                  and by the Berlin Institute for the Foundations of Learning and Data (BIFOLD).
+                  Before BIFOLD, the Berlin
+                  Big Data Center (BBDC) supported the work.
+                  BigEarthNet is a benchmark archive, consisting of 590,326 pairs of Sentinel-1 and
+                  Sentinel-2 image patches. To construct BigEarthNet with Sentinel-2 image patches
+                  (called as BigEarthNet-S2
+                  now, previously BigEarthNet), 125 Sentinel-2 tiles acquired between June 2017 and
+                  May 2018 over the 10 countries (Austria, Belgium, Finland, Ireland, Kosovo,
+                  Lithuania, Luxembourg, Portugal, Serbia, Switzerland) of Europe were initially
+                  selected. All the tiles were atmospherically corrected by the Sentinel-2 Level 2A
+                  product generation and formatting tool (sen2cor). Then, they were divided into
+                  590,326 non-overlapping image patches. Each image patch was annotated by the
+                  multiple land-cover classes (i.e., multi-labels) that were provided from the CORINE
+                  Land Cover database of the year 2018 (CLC 2018).
+                  To construct BigEarthNet with Sentinel-1 image patches (called as BigEarthNet-S1),
+                  321 Sentinel-1 scenes acquired between June 2017 and May 2018 that jointly cover the
+                  area of all original 125 Sentinel-2 tiles with close temporal proximity were
+                  selected and processed. BigEarthNet-S1 consists of 590,326 preprocessed Sentinel-1
+                  image patches - one for each Sentinel-2 patch.</p>
+               <h5>SEN12MS</h5>
+               <p>The <a href="https://arxiv.org/pdf/1906.07789.pdf" target='_blank'>SEN12MS</a> dataset
+                  contains 180,662 patch triplets of corresponding Sentinel-1
+                  dual-pol SAR data, Sentinel-2 multi-spectral images, and MODIS-derived land cover
+                  maps. The patches are distributed across the land masses of the Earth and spread
+                  over all four meteorological seasons. This is reflected by the dataset structure.
+                  The captured scenes were tiled into patches of 256 X 256 pixels in size and
+                  implemented a stride of 128 pixels, resulting in an overlap
+                  between adjacent patches of 50% assuming 50% overlap is the ideal trade-off between
+                  patch independence and maximization of
+                  the number of samples.
+                  All patches are provided in the form of 16-bit GeoTiffs containing the following
+                  specific information:
+                  <ul>
+                     <li>Sentinel-1 SAR: 2 channels corresponding to sigma nought backscatter values
+                        in dB
+                        scale for VV and VH polarization.</li>
+                     <li>Sentinel-2 Multi-Spectral: 13 channels corresponding to the 13 spectral bands
+                        (B1,
+                        B2, B3, B4, B5, B6, B7, B8, B8a, B9, B10, B11, B12).</li>
+                     <li>MODIS Land Cover: 4 channels corresponding to IGBP, LCCS Land Cover, LCCS
+                        Land
+                        Use, and LCCS Surface Hydrology layers.</li>
+                  </ul>
+               </p>
+               <h5>FMoW</h5>
+               <p>Functional Map of the World (<a href=" https://arxiv.org/abs/1711.07846" target='_blank'>fMoW</a>) is
+                  a
+                  large-scale publicly available remote
+                  sensing dataset consisting of
+                  approximately 363,571 training images and 53,041 test images across 62 highly
+                  granular class categories. It provides
+                  images (temporal views) from the same location over time as well as geo-location
+                  metadata (lat; lon)
+                  for each image. Most of the areas have multiple temporal views from 1 to 21, and on
+                  average there is about 2.5-3 years of
+                  difference between the images from an area. FMoW is a global dataset consisting of
+                  images from seven continents which can be ideal for learning global remote
+                  sensing representations. There are two versions of the dataset: fMoW-full and
+                  fMoW-rgb. fMoW-full is in TIFF
+                  format, contains 4-band and 8-band multispectral imagery, and is quite large at
+                  ~3.5TB in size. fMoW-rgb is in JPEG format, all multispectral imagery has been
+                  converted to RGB, and it is significantly smaller in size at ~200GB.</p>
+               <h5>RESISC45</h5>
+               <p><a href=" https://arxiv.org/ftp/arxiv/papers/1703/1703.00121.pdf" target='_blank'>RESISC45</a>
+                  dataset is a publicly available benchmark for Remote Sensing Image Scene
+                  Classification (RESISC), created by Northwestern Polytechnical University (NWPU). This dataset was
+                  extracted,
+                  by the experts in the field of remote sensing image interpretation, from Google Earth (Google Inc.)
+                  that maps the
+                  Earth by the superimposition of images obtained from satellite imagery, aerial photography and
+                  geographic information system (GIS) onto a 3D globe. This dataset contains 31,500 256x256 RGB images,
+                  covering 45 scene classes with 700 images in each class and cover more than 100 countries and regions
+                  all over the world,
+                  including developing, transition, and highly developed economies. It is one of the most comprehensive
+                  datasets regarding
+                  land use. RESISC45 has a more diverse assortment of classes as well as more samples per class. The
+                  authors developed it while
+                  keeping in mind the desire to have both urban and rural classes as well as scenes classifiable by
+                  large
+                  features and small features alike. The dataset includes scenes including large features such as
+                  dense_residential,
+                  chaparral, mobile_home_park, river; smaller features such as storage-tank and basketball court;
+                  and even classes such as sea-ice and cloud.</p>
+               <h4>SEN12MS EDA</h4>
+
+               <p calss="text-center">
+                  <div class="container text-center">
+                     <img src="images/patch_count_utm.png" width='95%' />
+                     <br>
+                     Figure: Patches per UTM zone</div>
+                  <br>
+                  There are 35,792 non-overlapping patches out of 180662. Only 3847 patches do not have any overlap on
+                  them. Most patches have up to 8 overlapping areas (few have up to 24).
+               </p>
+               <div class="container text-center">
+                  <div class="row">
+                     <div class="col-md-9 mx-auto ">
+                        <br>
+                        <img src="images/patch_overlap.png" />
+                     </div>
+                     <div class="col-md-3 text-left">
+                        <table class="table table-bordered table-hover ">
+                           <thead class="thead-light">
+                              <tr>
+                                 <th scope="col">Overlap (%)</th>
+                                 <th scope="col">Patches</th>
+                              </tr>
+                           </thead>
+                           <tbody>
+                              <tr>
+                                 <td>
+                                    0-15
+                                 </td>
+                                 <td>1313
+                                 </td>
+                              </tr>
+                              <tr>
+                                 <td>
+                                    15-25
+                                 </td>
+                                 <td>60195
+                                 </td>
+                              </tr>
+                              <tr>
+                                 <td>
+                                    25-50
+                                 </td>
+                                 <td>82618
+                                 </td>
+                              </tr>
+                              <tr>
+                                 <td>
+                                    50-95
+                                 </td>
+                                 <td>529
+                                 </td>
+                              </tr>
+                              <tr>
+                                 <td>
+                                    >75
+                                 </td>
+                                 <td>215
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </div>
+                  </div>
+                  Figure: Patches overlap
+               </div><br>
+               The data in SEN12MS has 180,662 patches consisting of 3 Geotif files from Sentinel-1, Sentinel-2, and
+               MODIS
+               satellites. Sentinel-1 includes two VV and VH polarized images. Sentinel-2 consists of 13 images for
+               different wavelength bands where bands 4,3, and 2 are the RGB bands. MODIS Land Cover (Moderate
+               Resolution Imaging Spectroradiometer) includes two images per satellite. The patches are organized by
+               seasons winter, spring, summer, and fall. There is an overlap of 50% per image in the same season.
                <br>
-               <!--<img src="images/aircraft5.png" width="110px"/> -->
-            </p>
+            </div>
          </div>
-      </header>
-      <section id="insight1" style="padding: 20px 0;">
-         <div class="container">
-            <div class="row">
-               <div class="col-lg-12 mx-auto">
-                  <h2>Introduction</h2>
-                 &nbsp;
+      </div>
+   </section>
+   <section id="insight6" class="bg-light" style="padding: 10px 0;">
+      <div class="container">
+         <h2>Solution</h2>
+         <p>
+            In this section, we briefly review Contrastive Learning Framework for unsupervised learning and detail
+            our proposed approach to improve Moco-v2, a recent contrastive learning framework, on satellite imagery
+            from multiple sensors data.</p>
+         <p>
+            <h5>Contrastive Learning Framework</h5>
+            Contrastive methods attempt to learn a mapping <strong>f<sub>q</sub></strong> from raw pixels to
+            semantically
+            meaningful
+            representations <strong>z</strong> in an unsupervised way. The training objective encourages representations
+            corresponding to pairs of images that are known a priori to be semantically similar (positive pairs) to be
+            closer
+            to each other than typical unrelated pairs (negative pairs). With similarity measured by dot product, recent
+            approaches
+            in contrastive learning differ in the type of contrastive loss and generation of positive and negative
+            pairs.
+            In this work, we focus on the state-of-the-art contrastive learning framework <a
+               href="https://arxiv.org/pdf/2003.04297.pdf" target="_blank">MoCo-v2</a>, an improved version of
+            <a href="https://arxiv.org/pdf/1911.05722.pdf" target="_blank">MoCo</a>, and
+            study improved methods for the construction of positive and negative pairs tailored to remote sensing
+            applications.
+         </p>
+         <p>
+            <h5>Naturally Augmented Positive Pairs</h5>
+            <div class="container text-center">
+
+               <div class="row">
+                  <div class="col-md-3 mx-auto border-right">
+                     <br>
+                     <img src="images/sentinel_1.png" />
+                  </div>
+                  <div class="col-md-6 mx-auto border-right">
+                     <br>
+                     <img src="images/sentinel_2.png" />
+                  </div>
+                  <div class="col-md-3 mx-auto">
+                     <br>
+                     <img src="images/modis.png" />
+
+                  </div>
+               </div>
+               Figure: Images from different satellites for the same location
+            </div><br>
+            Given these observations, it is natural to leverage imagery for the same location from different remote
+            sensing sensors while constructing positive
+            or negative pairs since it can provide us with extra semantically meaningful information of a place from
+            different sensors.
+
+         </p>
+
+         <p>
+            <h5>Pre-training on SEN12MS</h5>
+            Provide description on how the positive images have been identified based on the dataset and how they have
+            been provided as positive samples to MoCo-v2.
+
+
+         </p>
+
+         <p>
+            <h5>Transfer Learning Experiments</h5>
+            Will be updated once the tasks are identified.
+         </p>
+         <br><br>
+         TODO: Provide deep dive analysis on the Solution.
+
+
+      </div>
+   </section>
+
+   <section id="insight7" style="padding: 10px 0;">
+      <div class="container">
+         <div class="row">
+            <div class="col-lg-12 mx-auto text-left">
+               <h2>Results</h2>
+               <br>
+               <h5>BigEarthNet - Supervised Learning</h5>
+               <div class="col-md-10 text-left">
+                  <table class="table table-bordered table-hover table-responsive text-left">
+                     <thead class="thead-light">
+                        <tr>
+                           <th scope="col">Data</th>
+                           <th scope="col">50/50 [AUC (F1-score)]</th>
+                           <th scope="col">10/90 [AUC (F1-score)]</th>
+                           <th scope="col">No downsample [AUC (F1-score)]</th>
+                           <th scope="col">Multiclass - No downsample [F1-score (P/R)]</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr>
+                           <th scope="row">1%
+                           </th>
+                           <td>
+                              0.845 (0.090)
+                           </td>
+                           <td>0.893 (0.153)
+                           </td>
+                           <td>0.5 (0)</td>
+                           <td>0.647 (0.688/0.606)</td>
+                        </tr>
+                        <tr>
+                           <th scope="row">3%
+                           </th>
+                           <td>
+                              0.904 (0.159)
+                           </td>
+                           <td>0.921 (0.284)
+                           </td>
+                           <td>0.814 (0)</td>
+                           <td> 0.666 (0.711/0.626)</td>
+                        </tr>
+                        <tr>
+                           <th scope="row">5%</th>
+                           <td>
+                              0.923 (0.242)
+                           </td>
+                           <td>0.943 (0.300)
+                           </td>
+                           <td>0.884 (0)</td>
+                           <td>0.688 (0.767/0.624)
+                           </td>
+                        </tr>
+                        <tr>
+                           <th scope=" row">10%</th>
+                           <td>0.944 (0.251)</td>
+                           <td>0.932 (0.255)
+                           </td>
+                           <td>0.913 (0)</td>
+                           <td>0.714 (0.790/0.652)
+                           </td>
+                        </tr>
+                        <tr>
+                           <th scope=" row">100%</th>
+                           <td>0.964 (0.314)</td>
+                           <td>0.973 (0.529)
+                           </td>
+                           <td>0.973 (0.478)</td>
+                           <td>0.749 (0.796/0.708)
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+               <br>
+               <h5>SEN12MS - Supervised Learning</h5>
+               <div class="col-md-4 text-left">
+                  <table class="table table-bordered table-hover ">
+                     <thead class="thead-light">
+                        <tr>
+                           <th scope="col">Data</th>
+                           <th scope="col">Acc.</th>
+                           <th scope="col">Pre.</th>
+                           <th scope="col">Rec.</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr>
+                           <td>
+                              30%
+                           </td>
+                           <td>0.791
+                           </td>
+                           <td>0.874</td>
+                           <td>0.878</td>
+                        </tr>
+                     </tbody>
+                  </table>
                </div>
             </div>
          </div>
-      </section>
-      <section id="insight2" class="bg-light" style="padding: 10px 0;">
-         <div class="container">
-            <div class="row">
-               <div class="col-lg-12 mx-auto">
-                  <h2>Related work</h2>
-                  &nbsp;
-
-               </div>
+      </div>
+   </section>
+   <section id="insight8" class="bg-light" style="padding: 10px 0;">
+      <div class="container">
+         <div class="row">
+            <div class="col-lg-12 mx-auto">
+               <h2>Future work</h2>
+               <p>Will be updated once the results from MoCo-v2 are available and analysis is done.</p>
             </div>
          </div>
-      </section>
-      <section id="insight3" style="padding: 10px 0;">
-         <div class="container">
-            <div class="row">
-               <div class="col-lg-12 mx-auto">
-                  <h2>Problem definition</h2>
-                  &nbsp;
-
-                  <br>
-
-               </div>
+      </div>
+   </section>
+   <section id="insight9" style="padding: 10px 0;">
+      <div class="container">
+         <div class="row">
+            <div class="col-lg-12 mx-auto">
+               <h2>Conclusion</h2>
+               <p>
+                  Conclusion will be provided once the results are available from Moco-V2. The following is the current
+                  research direction:
+                  <ul>
+                     <li>Using MoCo-v2 as contrastive self-supervised learning algorithm</li>
+                     <li>Pre-training on SEN12MS using positive pairs (same location) from multiple sensors</li>
+                     <li>Downstream task will be identified soon</li>
+                  </ul>
+               </p>
+               <p>
+                  We believe that our approach to using images from different satellites for the same location as
+                  naturally augmented images as input to the MoCo-v2 method provides high-quality representations and
+                  transferable initializations for satellite imagery interpretation.
+               </p>
             </div>
          </div>
-      </section>
-      <section id="insight4" class="bg-light" style="padding: 10px 0;">
-         <div class="container">
-            <div class="row">
-               <div class="col-lg-12 mx-auto">
-                  <h2>Target users</h2>
-                 &nbsp;
-                  <br>
-                 &nbsp;
-                  <br>
+      </div>
+   </section>
+   <section id="insight10" class="bg-light" style="padding: 10px 0;">
+      <div class="container">
+         <div class="row">
+            <div class="col-lg-12 mx-auto">
+               <h2>GitHub</h2>
+               <ol>
+                  <li>
+                     Main: <a href="https://github.com/Berkeley-Data/hpt"
+                        target="_blank">https://github.com/Berkeley-Data/hpt</a>
+                  </li>
+                  <li>Irrigation: <a href="https://github.com/Berkeley-Data/irrigation_detection"
+                        target="_blank">https://github.com/Berkeley-Data/irrigation_detection</a>
+                  </li>
+               </ol>
+               <br>
 
-               </div>
             </div>
          </div>
-      </section>
-      <section id="insight5" style="padding: 10px 0;">
-         <div class="container">
-            <div class="row">
-               <div class="col-lg-12 mx-auto">
-                  <h2>Solution</h2>
-                  &nbsp;
-                  <br>
+      </div>
+   </section>
+   <section id="insight11" style="padding: 10px 0;">
+      <div class="container">
+         <div class="row">
+            <div class="col-lg-12 mx-auto">
 
+               <h2>Team</h2>
+               &nbsp;
+               <div class="row">
+                  <div class="col-md-3 mx-auto border-right">
+                     <h5>Ernesto Oropeza</h5>
+                     <p>
+                        ernesto.oropeza@berkeley.edu
+                     </p>
+                  </div>
+                  <div class="col-md-3 mx-auto border-right">
+                     <h5>Ken Tsung-Chin Han</h5>
+                     <p>
+                        tc.han@ischool.berkeley.edu
+                     </p>
+                  </div>
+                  <div class="col-md-3 mx-auto border-right">
+                     <h5>Surya Gutta</h5>
+                     <p>
+                        suryag@berkeley.edu<br>
+                     </p>
+
+                  </div>
+                  <div class="col-md-3 mx-auto">
+                     <h5>Taeil Goh</h5>
+                     <p>
+                        taeil.goh@berkeley.edu
+                     </p>
+                  </div>
                </div>
             </div>
+            <div class="col-md-12 text-center">Spring 2021 - section2 (tuesday 6:30 - 8:00 pm)</div>
          </div>
-      </section>
-      <section id="insight6" class="bg-light" style="padding: 10px 0;">
-         <div class="container">
-            <div class="row">
-               <div class="col-lg-12 mx-auto">
-                  <h2>Dataset</h2>
-                  &nbsp;<br>
-                  &nbsp;<br>
-                  &nbsp;<br>
-                  <h4>EDA</h4>
-                  &nbsp;<br>
-                  &nbsp;<br>
-                  <br>
+      </div>
+   </section>
+   <!-- Footer -->
+   <footer class="py-5 bg-dark"
+      style="padding-top: 1rem !important;padding-bottom: 1rem !important; background-color:#003262 !important">
+      <div class="container">
+         <p class="m-0 text-center text-white">Copyright &copy; W210 datascience@berkeley 2021</p>
+      </div>
+      <!-- /.container -->
+   </footer>
+   <!-- Bootstrap core JavaScript -->
+   <script src="vendor/jquery/jquery.min.js"></script>
+   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+   <!-- Plugin JavaScript -->
+   <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+   <!-- Custom JavaScript for this theme -->
+   <script src="js/scrolling-nav.js"></script>
+</body>
 
-               </div>
-            </div>
-         </div>
-      </section>
-      <section id="insight7" style="padding: 10px 0;">
-         <div class="container">
-            <div class="row">
-               <div class="col-lg-12 mx-auto">
-                  <h2>Results</h2>
-                  &nbsp;
-				                   <br>
-
-				                </div>
-				             </div>
-				          </div>
-      </section>
-      <section id="insight8" class="bg-light" style="padding: 10px 0;">
-         <div class="container">
-            <div class="row">
-               <div class="col-lg-12 mx-auto">
-                  <h2>Future work</h2>
-                   &nbsp;
-				                    <br>
-
-				                 </div>
-				              </div>
-				           </div>
-      </section>
-      <section id="insight9" style="padding: 10px 0;">
-         <div class="container">
-            <div class="row">
-               <div class="col-lg-12 mx-auto">
-                  <h2>Conclusion</h2>
-                   &nbsp;
-				                    <br>
-
-				                 </div>
-				              </div>
-				           </div>
-      </section>
-      <section id="insight10" class="bg-light" style="padding: 10px 0;">
-         <div class="container">
-            <div class="row">
-               <div class="col-lg-12 mx-auto">
-                  <h2>GitHub</h2>
-                  &nbsp;
-				                   <br>
-
-				                </div>
-				             </div>
-				          </div>
-      </section>
-      <section id="insight11" style="padding: 10px 0;">
-          <div class="container">
-		             <div class="row">
-		                <div class="col-lg-12 mx-auto">
-		                   <h2>Team</h2>
-		                   &nbsp;
-		 				                   <br>
-
-		 				                </div>
-		 				             </div>
-		 				          </div>
-      </section>
-      <!-- Footer -->
-      <footer class="py-5 bg-dark" style="padding-top: 1rem !important;padding-bottom: 1rem !important; background-color:#003262 !important" >
-         <div class="container">
-            <p class="m-0 text-center text-white">Copyright &copy; W210 datascience@berkeley 2021</p>
-         </div>
-         <!-- /.container -->
-      </footer>
-      <!-- Bootstrap core JavaScript -->
-      <script src="vendor/jquery/jquery.min.js"></script>
-      <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-      <!-- Plugin JavaScript -->
-      <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-      <!-- Custom JavaScript for this theme -->
-      <script src="js/scrolling-nav.js"></script>
-   </body>
 </html>
-
