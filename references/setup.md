@@ -120,3 +120,31 @@ tensorboard --logdir .
 ```
 
 
+## setup sub-modules for sen12ms and openselfsup repo
+
+Cloning
+```console
+git clone --recurse-submodules https://github.com/Berkeley-Data/hpt.git 
+
+```
+
+or alternatiely 
+```
+git submodule init
+git submodule update
+```
+
+additional config 
+```
+git config push.recurseSubmodules on-demand
+# show status including submodule 
+git config status.submodulesummary 1
+```
+
+update
+```
+git submodule update --remote
+```
+
+For mroe info: [7.11 Git Tools - Submodules](https://git-scm.com/book/en/v2/Git-Tools-Submodules)
+ 
