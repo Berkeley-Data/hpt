@@ -3,3 +3,4 @@
 - ResNet50: original ResNet50 used by sen12ms
 - Moco: original ResNet50 initialized the weight by Moco backbone 
 - Moco_1x1: ResNet50_1x1 initialized the weight by Moco backbone and input module 
+- Moco_1x1random: ResNet50_1x1 randomly the weight by Moco backbone and input module 
