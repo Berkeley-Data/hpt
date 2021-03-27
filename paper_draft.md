@@ -130,14 +130,14 @@ We compared supervised learning with HPT model
 
 Comparison Accuracy ([TODO] switch to plot) 
 
-| Metrics | supervised-s2 | supervised-s1/s2 | supervised-RGB | HPT s2 | HPT s1/s2 |  
-|---|---|---|---|---|---|
-| single-label Average Accuracy (%)| 57.33 |  45.52 |  45.11 |  44.76 |  44.1 | 
-| single-label Macro-F1 (%) | 53.39 |  53.21 | 45.16 |  42.99 |  43.98 | 
-| single-label Micro-F1 (%) | 66.35 |  64.66 |  58.98 |  64.39 |  **66.34** | 
-| multi-label Overall Accuracy (%)| 60.99 |  64.32 | 58.35 | 56.16  |  55.65 | 
-| multi-label Macro-F1 (%) | 56.14 |  57.46 | 47.57  | 46.91  |  46.69 | 
-| multi-label Micro-F1 (%) | 69.88 | 71.40 | 66.51  | **72.64** |  **75.67** | 
+| Metrics | supervised-s2 | supervised-s1/s2 | supervised-RGB | Moco s2 | Moco s1/s2 | Moco s1 | Moco (1x1) s2 | Moco (1x1) s1/s2 | Moco s1 (1x1) | 
+|---|---|---|---|---|---|---|---|---|---|
+| single-label Average Accuracy (%)| 57.33 |  45.52 |  45.11 |  44.76 |  44.1 | - | - |  - |  - | 
+| single-label Macro-F1 (%) | 53.39 |  53.21 | 45.16 |  42.99 |  43.98 | - | - |  - |  - | 
+| single-label Micro-F1 (%) | 66.35 |  64.66 |  58.98 |  64.39 |  **66.34** | - | - |  - |  - | 
+| multi-label Overall Accuracy (%)| 60.99 |  64.32 | 58.35 | 56.16  |  55.65 | - | - |  - |  - | 
+| multi-label Macro-F1 (%) | 56.14 |  57.46 | 47.57  | 46.91  |  46.69 | - | - |  - |  - | 
+| multi-label Micro-F1 (%) | 69.88 | 71.40 | 66.51  | **72.64** |  **75.67** | - | - |  - |  - | 
 
 ## Conclusion
 
