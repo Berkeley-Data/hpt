@@ -92,14 +92,21 @@ Update on different bands, different satellites etc. with images.
 Contrastive methods attempt to learn a mapping f<sub>q</sub> from raw pixels to semantically meaningful representations z in an unsupervised way. The training objective encourages representations corresponding to pairs of images that are known a priori to be semantically similar (positive pairs) to be closer to each other than typical unrelated pairs (negative pairs). With similarity measured by dot product, recent approaches in contrastive learning differ in the type of contrastive loss and generation of positive and negative pairs. In this work, we focus on the state-of-the-art contrastive learning framework [MoCo-v2](https://arxiv.org/pdf/2003.04297.pdf), an improved version of [MoCo](https://arxiv.org/pdf/1911.05722.pdf), and study improved methods for the construction of positive and negative pairs tailored to remote sensing applications.
 
 #### 2. Naturally Augmented Positive Pairs
-Instead of using augmented images of the same input, it is natural to leverage the imagery for the same location from different remote sensing sensors while constructing positive pairs since it can provide us with extra semantically meaningful information.
-For example, Sentinel 1 consists of 2 images (vertical and horizontal polarization) and Sentinel 2 consist of 13 images (different wavelength bands) of the same patch.
-Any combination from the same patch would corresponds to a positive pair without the need of additional augmentation, while negative pair would correspond to any image from different patch without restriction  of same or different satellite.
-Figure 2 shows 19 images from the 3 available satellites at the same patch.\
+Given the SEN12MS that provides the largest remote sensing dataset available with its global scene distribution and the wealth of versatile remote sensing information, It is natural to leverage the geo-alignment imagery from different remote sensing sensors  while constructing positive or negative pairs . For example, Sentinel 1 consists of two images (vertical and horizontal polarization) and Sentinel 2 consist of thirteen images (different wavelength bands) of the same patch. Any combination from the same patch would correspond to a positive pair without the need of additional augmentation, while negative pairs would correspond to any image from different patches without restriction of the same or different satellites. 
+
+In short, given an image x_i(s1) collected from sentinel 1, we can randomly select another image x_i(s2) collected from sentinel 2 that is geographically aligned with the x_i(s1), and then have them passthrough MoCo-v2 to the geographically aligned image pair x_i(s1) and x_i(s2), which provides us with a sensor-based geo-alignment positive pair ( v and v’ in Figure xxx) that can be used for training the contrastive learning framework by the query and key encoders in MoCo-v2. 
+
+For a sample of x_i(s1), our GeoSensorInforNCE objective loss can be demonstrated as follows:
+
 ***INSERT FIGURE HERE (GeoSensorInfoNCE)***
 
+where z_i(s1) and z_i(s2) are the encoded representation of the randomly geo-aligned positive pair x_i(s1) and x_i(s2). N denotes the number of negative samples, {k_j}j=1_n are the encoded negative pairs, and \lambda is the temperature hyperparameter. 
+
+What we used are the actual images from the same location but different sensors. With the inspiration of the <geo xxxxx paper> that constructs temporal pairs from real images, we also rely on the assumptions that the actual images for positive pairs encourages the entire network to learn better representations for real sensors data than the one focusing on augmentation strategies and synthetic images. 
+xxxxx
 
 #### 3. 1x1 Convolution filters
+
 
 
 
