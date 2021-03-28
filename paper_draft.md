@@ -99,7 +99,7 @@ Figure 2 shows 19 images from the 3 available satellites at the same patch.\
 ***INSERT FIGURE HERE (GeoSensorInfoNCE)***
 
 
-#### 3. Convolution layers 
+#### 3. 1x1 Convolution filters
 
 
 
