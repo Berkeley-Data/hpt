@@ -142,23 +142,23 @@ Comparison Accuracy ([TODO] switch to plot)
 | ResNet50 s2 (full)	|  .57	| .60| 
 | ResNet50 s1/s2 (full)	| .45	| .64| 
 | ResNet50 RGB (full)	| .45	| .58| 
-| ResNet50 s2 (1024)	| _**.43**_	| .514 | 
+| ResNet50 s2 (1024)	| **.43**	| 0.5425 | 
 | ResNet50 s1/s2 (1024)	| -	| - | 
 | ResNet50 RGB (1024)	| -	| -| 
-| ResNet50 1x1 s2 (1024)	| _**.3568**_	| .4842 | 
+| ResNet50 1x1 s2 (1024)	| **.3568**	| .4842 | 
 | ResNet50 1x1 s1/s2 (1024)	| -	| - | 
 | ResNet50 1x1 RGB (1024)	| -	| -| 
-| Moco s2 (1024)	| .4069	| .5074 | 
+| Moco s2 (1024)	| .4453 (.4069)	| .6277 (.5609) | 
 | Moco s1/s2 (1024)	| -	| - | 
 | Moco s1 (1024)| - | - | 
-| Moco 1x1 s2 (1024)| .4454	| .5165 | 
+| Moco 1x1 s2 (1024)| .4454 (.3887)	| **0.601** (.5165) | 
 | Moco 1x1 s1/s2 (1024)| -	| -| 
 | Moco 1x1 s1 (1024)| -	| -| 
 | Moco 1x1 RND s2 (1024)|-| -| 	
 | Moco 1x1 RND s1/s2 (1024)| -| -| 	
 | Moco 1x1 RND s1 (1024)| -| -| 	
 
-
+(before): before learning rate adjustment
 
 ## Conclusion
 
