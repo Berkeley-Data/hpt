@@ -102,7 +102,7 @@ For a sample of x_i(s1), our GeoSensorInforNCE objective loss can be demonstrate
 
 where z_i(s1) and z_i(s2) are the encoded representation of the randomly geo-aligned positive pair x_i(s1) and x_i(s2). N denotes the number of negative samples, {k_j}j=1_n are the encoded negative pairs, and \lambda is the temperature hyperparameter. 
 
-What we used are the actual images from the same location but different sensors. With the inspiration of the <geo xxxxx paper> that constructs temporal pairs from real images, we also rely on the assumptions that the actual images for positive pairs encourages the entire network to learn better representations for real sensors data than the one focusing on augmentation strategies and synthetic images. 
+What we used are the actual images from the same location but different sensors. With the inspiration of the **geo xxxxx paper** that constructs temporal pairs from real images, we also rely on the assumptions that the actual images for positive pairs encourages the entire network to learn better representations for real sensors data than the one focusing on augmentation strategies and synthetic images. 
 xxxxx
 
 #### 3. 1x1 Convolution filters (WIP)
