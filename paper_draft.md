@@ -88,15 +88,20 @@ Update on different bands, different satellites etc. with images.
 
 ![](web/images/moco_framework.png)![](web/images/current_approach.png)
 
-#### Contrastive Learning Framework
+#### 1. Contrastive Learning Framework
 Contrastive methods attempt to learn a mapping f<sub>q</sub> from raw pixels to semantically meaningful representations z in an unsupervised way. The training objective encourages representations corresponding to pairs of images that are known a priori to be semantically similar (positive pairs) to be closer to each other than typical unrelated pairs (negative pairs). With similarity measured by dot product, recent approaches in contrastive learning differ in the type of contrastive loss and generation of positive and negative pairs. In this work, we focus on the state-of-the-art contrastive learning framework [MoCo-v2](https://arxiv.org/pdf/2003.04297.pdf), an improved version of [MoCo](https://arxiv.org/pdf/1911.05722.pdf), and study improved methods for the construction of positive and negative pairs tailored to remote sensing applications.
 
-#### Naturally Augmented Positive Pairs
+#### 2. Naturally Augmented Positive Pairs
 Instead of using augmented images of the same input, it is natural to leverage the imagery for the same location from different remote sensing sensors while constructing positive pairs since it can provide us with extra semantically meaningful information.
 For example, Sentinel 1 consists of 2 images (vertical and horizontal polarization) and Sentinel 2 consist of 13 images (different wavelength bands) of the same patch.
 Any combination from the same patch would corresponds to a positive pair without the need of additional augmentation, while negative pair would correspond to any image from different patch without restriction  of same or different satellite.
 Figure 2 shows 19 images from the 3 available satellites at the same patch.\
-***INSERT FIGURE HERE***
+***INSERT FIGURE HERE (GeoSensorInfoNCE)***
+
+
+#### 3. Convolution layers 
+
+
 
 ## Experiments
 #### Pre-training on SEN12MS
