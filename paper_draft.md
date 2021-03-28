@@ -137,14 +137,28 @@ Comparison Accuracy ([TODO] switch to plot)
 - Moco_1x1random: ResNet50_1x1 randomly the weight by Moco backbone and input module (transfer learning)
 
 
-| Metrics | ResNet50-s2 (full) | ResNet50-s1/s2 (full) | supervised-RGB (full) | Moco s2 (1024) | Moco s1/s2 (1024) | Moco s1 | Moco (1x1) s2 | Moco (1x1) s1/s2 | Moco s1 (1x1) | 
-|---|---|---|---|---|---|---|---|---|---|
-| single-label Average Accuracy (%)| 57.33 |  45.52 |  45.11 |  44.76 |  44.1 | - | - |  - |  - | 
-| single-label Macro-F1 (%) | 53.39 |  53.21 | 45.16 |  42.99 |  43.98 | - | - |  - |  - | 
-| single-label Micro-F1 (%) | 66.35 |  64.66 |  58.98 |  64.39 |  **66.34** | - | - |  - |  - | 
-| multi-label Overall Accuracy (%)| 60.99 |  64.32 | 58.35 | 56.16  |  55.65 | - | - |  - |  - | 
-| multi-label Macro-F1 (%) | 56.14 |  57.46 | 47.57  | 46.91  |  46.69 | - | - |  - |  - | 
-| multi-label Micro-F1 (%) | 69.88 | 71.40 | 66.51  | **72.64** |  **75.67** | - | - |  - |  - | 
+| Metrics|single-label Average Accuracy (%)|multi-label Overall Accuracy (%) | 
+| --- | --- | --- | 
+| ResNet50 s2 (full)	|  .57	| .60| 
+| ResNet50 s1/s2 (full)	| .45	| .64| 
+| ResNet50 RGB (full)	| .45	| .58| 
+| ResNet50 s2 (1024)	| _**.43**_	| .514 | 
+| ResNet50 s1/s2 (1024)	| -	| - | 
+| ResNet50 RGB (1024)	| -	| -| 
+| ResNet50 1x1 s2 (1024)	| _**.3568**_	| .4842 | 
+| ResNet50 1x1 s1/s2 (1024)	| -	| - | 
+| ResNet50 1x1 RGB (1024)	| -	| -| 
+| Moco s2 (1024)	| .4069	| .5074 | 
+| Moco s1/s2 (1024)	| -	| - | 
+| Moco s1 (1024)| - | - | 
+| Moco 1x1 s2 (1024)| .4454	| .5165 | 
+| Moco 1x1 s1/s2 (1024)| -	| -| 
+| Moco 1x1 s1 (1024)| -	| -| 
+| Moco 1x1 RND s2 (1024)|-| -| 	
+| Moco 1x1 RND s1/s2 (1024)| -| -| 	
+| Moco 1x1 RND s1 (1024)| -| -| 	
+
+
 
 ## Conclusion
 
