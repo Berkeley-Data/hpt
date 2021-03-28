@@ -105,8 +105,9 @@ where z_i(s1) and z_i(s2) are the encoded representation of the randomly geo-ali
 What we used are the actual images from the same location but different sensors. With the inspiration of the <geo xxxxx paper> that constructs temporal pairs from real images, we also rely on the assumptions that the actual images for positive pairs encourages the entire network to learn better representations for real sensors data than the one focusing on augmentation strategies and synthetic images. 
 xxxxx
 
-#### 3. 1x1 Convolution filters
+#### 3. 1x1 Convolution filters (WIP)
 
+xxxxx
 
 
 
