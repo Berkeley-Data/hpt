@@ -130,7 +130,14 @@ We compared supervised learning with HPT model
 
 Comparison Accuracy ([TODO] switch to plot) 
 
-| Metrics | supervised-s2 | supervised-s1/s2 | supervised-RGB | Moco s2 | Moco s1/s2 | Moco s1 | Moco (1x1) s2 | Moco (1x1) s1/s2 | Moco s1 (1x1) | 
+- ResNet50_1x1: adding conv1x1 to original ResNet50 used by sen12ms (supervised training)
+- ResNet50: original ResNet50 used by sen12ms (supervised training)
+- Moco: original ResNet50 initialized the weight by Moco backbone (transfer learning)
+- Moco_1x1: ResNet50_1x1 initialized the weight by Moco backbone and input module (transfer learning)
+- Moco_1x1random: ResNet50_1x1 randomly the weight by Moco backbone and input module (transfer learning)
+
+
+| Metrics | ResNet50-s2 (full) | ResNet50-s1/s2 (full) | supervised-RGB (full) | Moco s2 (1024) | Moco s1/s2 (1024) | Moco s1 | Moco (1x1) s2 | Moco (1x1) s1/s2 | Moco s1 (1x1) | 
 |---|---|---|---|---|---|---|---|---|---|
 | single-label Average Accuracy (%)| 57.33 |  45.52 |  45.11 |  44.76 |  44.1 | - | - |  - |  - | 
 | single-label Macro-F1 (%) | 53.39 |  53.21 | 45.16 |  42.99 |  43.98 | - | - |  - |  - | 
