@@ -107,7 +107,8 @@ xxxxx
 
 #### 3. 1x1 Convolution filters
 
-From the above perspective of constructing naturally augmented positive and negative pairs in contrastive learning, we noticed that the volume (bands) of the inputs from different sensors are different. In order to match the typical dimensions of the image channels, our study also applies the Network in Network concept (Min Lin et al) to the sourced images. As such, we introduced an extra layer of one by one convolution filter block to perform cross channel sampling, thereby matching and aligning the number of channels from different sensor images while introducing non-linearity before the MoCo v2 encoding. With the implementation, we leverage this trick to carry out a pretty non-trivial computation on the input volume whereas we hope to increase the generalization ability of the network.  
+From the above perspective of constructing naturally augmented positive and negative pairs in contrastive learning, we noticed that the volume (bands) of the inputs from different sensors are different. In order to match the typical dimensions of the image channels, our study also applies the Network in Network concept (Min Lin et al)(insert ref --**NIN**) to the sourced images. As such, we introduced an extra layer of one by one convolution filter block to perform cross channel sampling, thereby matching and aligning the depth of the channels from different sensor images while introducing non-linearity before the MoCo v2 encoding. With the implementation, we leverage this trick to carry out a pretty non-trivial computation on the input volume whereas we hope to increase the generalization ability in the network.  
+  
 
 
 
