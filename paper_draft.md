@@ -159,7 +159,7 @@ Comparison Accuracy ([TODO] switch to plot)
 | ResNet50 s2 (1024)	| **.4355**	| 0.5425 | 
 | ResNet50 s1/s2 (1024)	| -	| - | 
 | ResNet50 RGB (1024)	| -	| -| 
-| ResNet50 1x1 s2 (1024)	| **.3863**	| .4842 | 
+| ResNet50 1x1 s2 (1024)	| **.3863**	| .4893 | 
 | ResNet50 1x1 s1/s2 (1024)	| .4094	| - | 
 | ResNet50 1x1 RGB (1024)	| -	| -| 
 | Moco s2 (1024)	| .4453 (.4069)	| .6277 (.5609) | 
@@ -169,10 +169,14 @@ Comparison Accuracy ([TODO] switch to plot)
 | Moco 1x1 s1/s2 (1024)| _.425_ (?)	| -| 
 | Moco 1x1 s1 (1024)| -	| -| 
 | Moco 1x1 RND s2 (1024)|0.371| -| 	
-| Moco 1x1 RND s1/s2 (1024)| 0.3268| -| 	
+| Moco 1x1 RND s1/s2 (1024)| 0.3268 | -| 	
 | Moco 1x1 RND s1 (1024)| -| -| 	
 
 (before): before learning rate adjustment
+
+other findings:
+- ResNet50_1x1 (s2) 100 epoch and 500 epoch shows similar accuracy. (especially for multi-label). 
+- ResNet50_1x1 (s2) shows significantly better result with 0.001 than 0.00001 (both single label and multi-label) 
 
 ## Conclusion
 
