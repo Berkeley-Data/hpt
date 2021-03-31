@@ -168,7 +168,7 @@ We compared supervised learning with HPT model
 | Moco 1x1 s2 (1024)| .4454	| **.601**| 
 | Moco 1x1 s1/s2 (1024)| _.425_ (?)	| .5302 | 
 | Moco 1x1 RND s2 (1024)| 0.371 | .5374 | 	
-| Moco 1x1 RND s1/s2 (1024)| .4477 | - |
+| Moco 1x1 RND s1/s2 (1024)| .4477 | .5152 |
 
 (before): before learning rate adjustment
 
