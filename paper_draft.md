@@ -142,26 +142,29 @@ We compared supervised learning with HPT model
 
 **Qualitative Analyis**
 
-Comparison Accuracy ([TODO] switch to plot) 
-
-- ResNet50_1x1: adding conv1x1 to original ResNet50 used by sen12ms (supervised training)
-- ResNet50: original ResNet50 used by sen12ms (supervised training)
-- Moco: original ResNet50 initialized the weight by Moco backbone (transfer learning)
-- Moco_1x1: ResNet50_1x1 initialized the weight by Moco backbone and input module (transfer learning)
-- Moco_1x1random: ResNet50_1x1 randomly the weight by Moco backbone and input module (transfer learning)
-
+-   Supervised training (full dataset)
+    -   baseline: downloaded the pre-trained the models and evaluate without finetuning.
+-   Supervised training (1k dataset)
+    -   Supervised: original ResNet50 used by Sen12ms
+    -   Supervised_1x1: adding conv1x1 block to the ResNet50 used by Sen12ms
+-   Finetune/transfer learning (1k dataset)
+    -   Moco: the ResNet50 used by Sen12ms is initialized with the weight from Moco backbone
+    -   Moco_1x1: adding conv1x1 block to the ResNet50 used by Sen12ms and both input module and ResNet50 layers are initialized with the weight from Moco
+    -   Moco_1x1Rnd: adding conv1x1 block to the ResNet50 used by Sen12ms. ResNet50 layers are initialized with the weight from Moco but input module is initialized with random weights
+-   Finetune v2 (1k dataset)
+    -   freezing ResNet50 fully or partially does not seem to help with accuracy. We will continue explore and share the results once we are sure there is no issue with implementation. 
 
 | Metrics|single-label Average Accuracy (%)|multi-label Overall Accuracy (%) | 
 | --- | --- | --- | 
-| ResNet50 s2 (full)	|  .57	| .60| 
-| ResNet50 s1/s2 (full)	| .45	| .64| 
-| ResNet50 RGB (full)	| .45	| .58| 
-| ResNet50 s2 (1024)	| **.4355**	| 0.5425 | 
-| ResNet50 s1/s2 (1024)	| -	| - | 
-| ResNet50 RGB (1024)	| -	| -| 
-| ResNet50 1x1 s2 (1024)	| **.3863**	| .4893 | 
-| ResNet50 1x1 s1/s2 (1024)	| .4094	| - | 
-| ResNet50 1x1 RGB (1024)	| -	| -| 
+| Supervised s2 (full)	|  .57	| .60| 
+| Supervised s1/s2 (full)	| .45	| .64| 
+| Supervised RGB (full)	| .45	| .58| 
+| Supervised s2 (1024)	| **.4355**	| 0.5425 | 
+| Supervised s1/s2 (1024)	| -	| - | 
+| Supervised RGB (1024)	| -	| -| 
+| Supervised 1x1 s2 (1024)	| **.3863**	| .4893 | 
+| Supervised 1x1 s1/s2 (1024)	| .4094	| - | 
+| Supervised 1x1 RGB (1024)	| -	| -| 
 | Moco s2 (1024)	| .4453 (.4069)	| .6277 (.5609) | 
 | Moco s1/s2 (1024)	| .4489	| - | 
 | Moco s1 (1024)| - | - | 
