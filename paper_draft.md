@@ -176,6 +176,9 @@ other findings:
 - ResNet50_1x1 (s2) 100 epoch and 500 epoch shows similar accuracy. (especially for multi-label). 
 - ResNet50_1x1 (s2) shows significantly better result with 0.001 than 0.00001 (both single label and multi-label) 
 
+(findings pending verifications)
+- By looking at the results between models with 1x1 conv and without 1x1 conv counterparts, almost all models with 1x1 conv block underperform the ones without 1x1 conv block. It appears that adding 1x1 conv layer as a volumn filters may loss some bands information overall with the finetune evalutions. 
+
 ## Conclusion
 
 
