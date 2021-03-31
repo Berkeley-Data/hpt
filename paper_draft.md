@@ -159,15 +159,16 @@ We compared supervised learning with HPT model
 | Supervised s2 (full)	|  .57	| .60| 
 | Supervised s1/s2 (full)	| .45	| .64| 
 | Supervised RGB (full)	| .45	| .58| 
-| Supervised s2 (1024)	| **.4355**	| 0.5425 | 
+| Supervised s2 (1024)	| **.4355**	| .5931 |
+| Supervised s1/s2 (1024)	| .4652	| .4652 | 
 | Supervised 1x1 s2 (1024)	| **.3863**	| .4893 | 
-| Supervised 1x1 s1/s2 (1024)	| .4094	| - | 
-| Moco s2 (1024)	| .4453 (.4069)	| .6277 (.5609) | 
-| Moco s1/s2 (1024)	| .4489	| - | 
-| Moco 1x1 s2 (1024)| .4454 (.3887)	| **.601** (.5165) | 
-| Moco 1x1 s1/s2 (1024)| _.425_ (?)	| -| 
-| Moco 1x1 RND s2 (1024)|0.371| -| 	
-| Moco 1x1 RND s1/s2 (1024)| 0.3268 | -| 	
+| Supervised 1x1 s1/s2 (1024)	| .4094	| .5843 | 
+| Moco s2 (1024)	| .4545	| **.6277** | 
+| Moco s1/s2 (1024)	| .4514	| **.6697** | 
+| Moco 1x1 s2 (1024)| .4454	| **.601**| 
+| Moco 1x1 s1/s2 (1024)| _.425_ (?)	| .5302 | 
+| Moco 1x1 RND s2 (1024)| 0.371 | .5374 | 	
+| Moco 1x1 RND s1/s2 (1024)| .4477 | - |
 
 (before): before learning rate adjustment
 
