@@ -159,6 +159,7 @@ We compared supervised learning with HPT model
 | Supervised s2 (full)	|  .57	| .60| 
 | Supervised s1/s2 (full)	| .45	| .64| 
 | Supervised RGB (full)	| .45	| .58| 
+| --- | --- | --- | 
 | Supervised s2 (1024)	| **.4355**	| .5931 |
 | Supervised s1/s2 (1024)	| .4652	| .4652 | 
 | Supervised 1x1 s2 (1024)	| **.3863**	| .4893 | 
