@@ -1,6 +1,6 @@
 ## Abstract
 
-[todo] This will be added last. 
+We present a sensor-based location invariance momentum contrast for unsupervised visual representation learning in remote sensing application, where unlabeled data is well-known challenges to deep learning domain and accurate training data remains comparably scarce. In this study, we first introduce the use of SEN12MS datasets, a curated large-scale training data that include versatile remote sensing information from different sensors with global scene distributions. To continually bridge the gap between supervised and unsupervised learning on computer vision tasks in remote sensing application, we exploit the geo-alignment data structure from SEN12MS and construct sensor-based geo-alignment positive pairs in contrastive learning to design the natural augmentation. [last sentence subject to changes] Our experiments show that the proposed method outperforms the supervised learning counterpart when transferring to downstream tasks in scene classification for remote sensing data.
 
 
 ## Introduction
