@@ -31,11 +31,13 @@ conda activate hpt
 
 # NOTE: if you are not using CUDA 10.2, you need to change the 10.2 in this command appropriately. Make sure to use torch 1.6.0
 # (check CUDA version with e.g. `cat /usr/local/cuda/version.txt`)
-# latest 
+
+# latest torch 
 conda install pytorch torchvision torchaudio cudatoolkit=10.2 -c pytorch
 
 # 1.6 torch (no support for torchvision transform on tensor)
 conda install pytorch==1.6.0 torchvision==0.7.0 cudatoolkit=10.2 -c pytorch
+
 #colorado machine 
 conda install pytorch==1.2.0 torchvision==0.7.0 cudatoolkit=10.2 -c pytorch
 
@@ -61,7 +63,7 @@ mkdir ~/data
 mv resisc45 ~/data 
 
 # replace/set $DATA and $CODE as appropriate 
-# e.g., ln -s /home/ubuntu/data/resisc45 /home/ubuntu/hpt/OpenSelfSup/data/resisc45/all
+# e.g., ln -s /home/ubuntu/data/resisc45 /home/ubuntu/OpenSelfSup/data/resisc45/all
 ln -s $DATA/resisc45 $CODE/OpenSelfSup/data/resisc45/all
 
 e.g., ln -s /home/ubuntu/data/resisc45 /home/ubuntu/hpt/OpenSelfSup/data/resisc45/all
@@ -69,8 +71,8 @@ e.g., ln -s /home/ubuntu/data/resisc45 /home/ubuntu/hpt/OpenSelfSup/data/resisc4
 
 ### Download Pretrained Models
 ``` shell
-cd OpenSelfSup/data/basetrain_chkpts/
-./download-pretrained-models.sh
+mkdir OpenSelfSup/data/basetrain_chkpts
+tools/download-pretrained-models.sh
 ```
 
 ## Verify Install With RESISC DataSet
@@ -82,18 +84,22 @@ Check installation by pretraining using mocov2, extracting the model weights, ev
 ```bash
 export WANDB_API_KEY=<use your API key>
 export WANDB_ENTITY=cal-capstone
-export WANDB_PROJECT=hpt2
+export WANDB_PROJECT=hpt3
 #export WANDB_MODE=dryrun
+
+
+
+
 
 cd OpenSelfSup
 
 # Sanity check with single train and single epoch 
-CUDA_VISIBLE_DEVICES=1 ./tools/single_train.sh configs/selfsup/moco/r50_v2_resisc_in_basetrain_20ep.py --debug 
+CUDA_VISIBLE_DEVICES=x ./tools/single_train.sh configs/selfsup/moco/r50_v2_resisc_in_basetrain_20ep.py --debug 
 
-CUDA_VISIBLE_DEVICES=1 ./tools/single_train.sh  /scratch/crguest/OpenSelfSup/configs/selfsup/moco/r50_v2_sen12ms_in_basetrain_20ep.py --work_dir work_dirs/selfsup/moco/r50_v2_sen12ms_in_basetrain_20ep/ --debug
+CUDA_VISIBLE_DEVICES=x ./tools/single_train.sh  configs/selfsup/moco/r50_v2_sen12ms_in_basetrain_20ep.py --work_dir work_dirs/selfsup/moco/r50_v2_sen12ms_in_basetrain_1ep/ --debug
 
 # Sanity check: MoCo for 20 epoch on 4 gpus
-./tools/dist_train.sh configs/selfsup/moco/r50_v2_resisc_in_basetrain_20ep.py 4
+CUDA_VISIBLE_DEVICES=0,1,2,3 ./tools/dist_train.sh configs/selfsup/moco/r50_v2_resisc_in_basetrain_20ep.py 4
 
 # if debugging, use 
 tools/train.py configs/selfsup/moco/r50_v2_resisc_in_basetrain_1ep.py --work_dir work_dirs/selfsup/moco/r50_v2_resisc_in_basetrain_1ep/ --debug
@@ -102,7 +108,7 @@ tools/train.py configs/selfsup/moco/r50_v2_resisc_in_basetrain_1ep.py --work_dir
 CHECKPOINT=work_dirs/selfsup/moco/r50_v2_resisc_in_basetrain_20ep/epoch_20.pth
 BACKBONE=work_dirs/selfsup/moco/r50_v2_resisc_in_basetrain_20ep/epoch_20_moco_in_basetrain.pth
 # Extract the backbone
-python tools/extract_backbone_weights.py ${CHECKPOINT} ${BACKBONE}
+python tools/extract_backbone_weights.py ${BACKBONE} ${CHECKPOINT} 
 
 # Evaluate the representations
 ./benchmarks/dist_train_linear.sh configs/benchmarks/linear_classification/resisc45/r50_last.py ${BACKBONE}
@@ -114,47 +120,31 @@ tensorboard --logdir .
 ```
 
 
-## Verify Install With SEN12MS Dataset
-[OpenSelfSup](https://github.com/Berkeley-Data/OpenSelfSup) 
+## setup sub-modules for sen12ms and openselfsup repo
 
-Check installation by pretraining using mocov2, extracting the model weights, evaluating the representations, and then viewing the results on tensorboard or [wandb](https://wandb.ai/cal-capstone/hpt):
-
-```bash
-export WANDB_API_KEY=<use your API key>
-export WANDB_ENTITY=cal-capstone
-export WANDB_PROJECT=hpt2
-
-cd OpenSelfSup
-
-# single GPU training 
-CUDA_VISIBLE_DEVICES=1 ./tools/single_train.sh configs/selfsup/moco/r50_v2_sen12ms_in_basetrain_20ep.py --debug
-
-CUDA_VISIBLE_DEVICES=1 ./tools/single_train.sh configs/selfsup/moco/r50_v2_sen12ms_in_fulltrain_20ep.py --debug
-
-
-# command for remote debugging, use full path
-python /scratch/crguest/OpenSelfSup/tools/train.py /scratch/crguest/OpenSelfSup/configs/selfsup/moco/r50_v2_sen12ms_in_fulltrain_20ep.py --debug
-
-CUDA_VISIBLE_DEVICES=1 python ./tools/single_train.sh configs/selfsup/moco/r50_v2_sen12ms_in_fulltrain_20ep.py --debug
-
-# Sanity check: MoCo for 20 epoch on 4 gpus
-#CUDA_VISIBLE_DEVICES=0,1,2,3 
-CUDA_VISIBLE_DEVICES=1 ./tools/dist_train.sh configs/selfsup/moco/r50_v2_sen12ms_in_basetrain_20ep.py 4
-
-# distributed training 
-#CUDA_VISIBLE_DEVICES=0,1,2,3 
-./tools/dist_train.sh configs/selfsup/moco/r50_v2_sen12ms_in_fulltrain_20ep.py 4
-
-BACKBONE=work_dirs/selfsup/moco/r50_v2_sen12ms_in_basetrain_20ep/epoch_20_moco_in_baseline.pth
-# method 1: from working dir
-CHECKPOINT=work_dirs/selfsup/moco/r50_v2_resisc_in_basetrain_20ep/epoch_20.pth
-# method 2: from W&B, {projectid}/{W&B run id}
-CHECKPOINT=hpt2/3l4yg63k  
-
-# Extract the backbone
-python tools/extract_backbone_weights.py ${BACKBONE} ${CHECKPOINT} 
-
-# Evaluate the representations
-./benchmarks/dist_train_linear.sh configs/benchmarks/linear_classification/resisc45/r50_last.py ${BACKBONE}
+Cloning
+```console
+git clone --recurse-submodules https://github.com/Berkeley-Data/hpt.git 
 
 ```
+
+or alternatiely 
+```
+git submodule init
+git submodule update
+```
+
+additional config 
+```
+git config push.recurseSubmodules on-demand
+# show status including submodule 
+git config status.submodulesummary 1
+```
+
+update
+```
+git submodule update --remote
+```
+
+For mroe info: [7.11 Git Tools - Submodules](https://git-scm.com/book/en/v2/Git-Tools-Submodules)
+ 
