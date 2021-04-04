@@ -71,7 +71,7 @@ export WANDB_ENTITY=cal-capstone
 export WANDB_PROJECT=hpt4
 ```
 
-Run pre-training 
+#### Run pre-training 
 ```bash
 cd OpenSelfSup
 
@@ -96,7 +96,22 @@ cd OpenSelfSup
 /tools/dist_train.sh configs/selfsup/moco/r50_v2_sen12ms_in_fulltrain_20ep.py 4
 ```
 
-Extract pre-trained model 
+####  (OPTIONAL) download pre-trained models
+
+Some of key pre-trained models are on s3 (s3://sen12ms/pretrained): 
+- [200 epochs w/o augmentation: vivid-resonance-73](https://wandb.ai/cjrd/BDOpenSelfSup-tools/runs/3qjvxo2p/overview?workspace=user-cjrd) 
+- [20 epochs w/o augmentation: silvery-oath7-2rr3864e](https://wandb.ai/cal-capstone/hpt2/runs/2rr3864e?workspace=user-taeil) 
+- [sen12ms-baseline: soft-snowflake-3.pth](https://wandb.ai/cal-capstone/SEN12MS/runs/3gjhe4ff/overview?workspace=user-taeil)
+
+```
+aws configure 
+aws s3 sync s3://sen12ms/pretrained . --dryrun
+aws s3 sync s3://sen12ms/pretrained_sup . --dryrun
+```
+
+#### Extract pre-trained model 
+Any other models can be restored by run ID if stored with W&B. Go to files section under the run to find `*.pth` files  
+
 ```bash
 BACKBONE=work_dirs/selfsup/moco/r50_v2_sen12ms_in_basetrain_20ep/epoch_20_moco_in_baseline.pth
 
