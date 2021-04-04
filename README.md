@@ -2,7 +2,7 @@
 
 This is a research repository for the submission "Self-Supervised Pretraining Improves Self-Supervised Pretraining" 
 
-For initial setup, refer to [setup instructions](references/setup.md). 
+For initial setup, refer to [setup instructions](setup_pretraining.md). 
 
 ## Setup Weight & Biases Tracking 
 
@@ -68,21 +68,32 @@ Set up experimental tracking and model versioning:
 ```bash
 export WANDB_API_KEY=<use your API key>
 export WANDB_ENTITY=cal-capstone
-export WANDB_PROJECT=hpt2
+export WANDB_PROJECT=hpt4
 ```
 
 Run pre-training 
 ```bash
 cd OpenSelfSup
 
+# set which GPUs to use  
+# CUDA_VISIBLE_DEVICES=1 
+# CUDA_VISIBLE_DEVICES=0,1,2,3 
+
 # (sanity check) Single GPU training on samll dataset 
-CUDA_VISIBLE_DEVICES=1 ./tools/single_train.sh configs/selfsup/moco/r50_v2_sen12ms_in_basetrain_20ep.py --debug
+/tools/single_train.sh configs/selfsup/moco/r50_v2_sen12ms_in_basetrain_aug_20ep.py --debug
+
+# (sanity check) Single GPU training on samll dataset on sen12ms fusion
+./tools/single_train.sh configs/selfsup/moco/r50_v2_sen12ms_12ch_in_smoketrain_aug_2ep.py --debug
+
 
 # (sanity check) 4 GPUs training on samll dataset 
-CUDA_VISIBLE_DEVICES=0,1,2,3 ./tools/dist_train.sh configs/selfsup/moco/r50_v2_sen12ms_in_basetrain_20ep.py 4
+./tools/dist_train.sh configs/selfsup/moco/r50_v2_sen12ms_in_basetrain_aug_20ep.py 4
+
+# (sanity check) 4 GPUs training on samll fusion dataset 
+./tools/dist_train.sh configs/selfsup/moco/r50_v2_sen12ms_12ch_in_smoketrain_aug_2ep.py 4
 
 # distributed full training 
-CUDA_VISIBLE_DEVICES=0,1,2,3 ./tools/dist_train.sh configs/selfsup/moco/r50_v2_sen12ms_in_fulltrain_20ep.py 4
+/tools/dist_train.sh configs/selfsup/moco/r50_v2_sen12ms_in_fulltrain_20ep.py 4
 ```
 
 Extract pre-trained model 

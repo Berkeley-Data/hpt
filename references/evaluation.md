@@ -13,16 +13,15 @@ aws s3 sync s3://sen12ms/pretrained_sup . --dryrun
 
 Any other models can be restored by run ID if stored with W&B. Go to files section under the run to find `*.pth` files  
 
-#### Extract Backbone 
+#### Extract and Convert Backbone 
 ```
-BACKBONE=work_dirs/selfsup/moco/r50_v2_sen12ms_in_basetrain_20ep/epoch_20_moco_in_baseline.pth
 # method 1: from working dir
 CHECKPOINT=work_dirs/selfsup/moco/r50_v2_resisc_in_basetrain_20ep/epoch_20.pth
 # method 2: from W&B, {projectid}/{W&B run id}
-CHECKPOINT=hpt2/3l4yg63k  
+CHECKPOINT=hpt3/2brjqb28
 
 # Extract the backbone
-python tools/extract_backbone_weights.py ${BACKBONE} ${CHECKPOINT} 
+python classification/models/convert_moco_to_resnet50.py -i hpt3/2brjqb28 -o pretrained/moco
 ```
 
 #### Evaluate the representations :confused: :question:
