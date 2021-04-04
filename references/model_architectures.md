@@ -1,6 +1,12 @@
 #### Key model architectures and terms:
-- ResNet50_1x1: adding conv1x1 to original ResNet50 used by sen12ms
-- ResNet50: original ResNet50 used by sen12ms
-- Moco: original ResNet50 initialized the weight by Moco backbone 
-- Moco_1x1: ResNet50_1x1 initialized the weight by Moco backbone and input module 
-- Moco_1x1RND: ResNet50_1x1 randomly the weight by Moco backbone and input module 
+-   Supervised training (full dataset)
+    -   baseline: downloaded the pre-trained the models and evaluate without finetuning.
+-   Supervised training (1k dataset)
+    -   Supervised: original ResNet50 used by Sen12ms
+    -   Supervised_1x1: adding conv1x1 block to the ResNet50 used by Sen12ms
+-   Finetune/transfer learning (1k dataset)
+    -   Moco: the ResNet50 used by Sen12ms is initialized with the weight from Moco backbone
+    -   Moco_1x1: adding conv1x1 block to the ResNet50 used by Sen12ms and both input module and ResNet50 layers are initialized with the weight from Moco
+    -   Moco_1x1Rnd: adding conv1x1 block to the ResNet50 used by Sen12ms. ResNet50 layers are initialized with the weight from Moco but input module is initialized with random weights
+-   Finetune v2 (1k dataset)
+    -   freezing ResNet50 fully or partially does not seem to help with accuracy. We will continue explore and share the results once we are sure there is no issue with implementation.
