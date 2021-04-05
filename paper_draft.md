@@ -115,8 +115,11 @@ xxxxx
 
 From the above perspective of constructing naturally augmented positive and negative pairs in contrastive learning, we noticed that the volume (bands) of the inputs from different sensors are different. In order to match the typical dimensions of the image channels, our study also applies the Network in Network concept (Min Lin et al)(insert ref --**NIN**) to the sourced images. As such, we introduced an extra layer of one by one convolution filter block to perform cross channel sampling, thereby matching and aligning the depth of the channels from different sensor images while introducing non-linearity before the MoCo v2 encoding. With the implementation, we leverage this trick to carry out a pretty non-trivial computation on the input volume whereas we hope to increase the generalization capability in the network.  
   
+#### 4. data fusion
+(todo) architecture diagram 
+Instead of the first approach, we data fusioned sentinel 1 (2 bands) and sentinel 2 images (10 bands) together with the same locations and apply a set of combinations of images including sentinel 1 and sentinel 2 together, sentinel 2 only, and sentinel 1 only to construct one fusioned image. In a sense that we build a straightforward constraving learning directly under MoCo v2. 
 
-
+Similarly, our finetune/ transfer learning for the SEN12MS sense classification would adopt the same strategy for us to compare the evaluation results. We will continue to update and report.
 
 ## Experiments
 #### Pre-training on SEN12MS
@@ -190,7 +193,9 @@ other findings:
 (findings pending verifications)
 - By looking at the results between models with 1x1 conv and without 1x1 conv counterparts, almost all models with 1x1 conv block underperform the ones without 1x1 conv block. It appears that adding 1x1 conv layer as a volumn filters may loss some bands information overall with the finetune evalutions. 
 
-### First Approach Summary
+### results 
+
+#### Duplex approach summary 
 
 Our above approach took sentinel 2 images with 10 bands and sentinel 1 images with 2 bands with the same locations, and had them pass through a convolution 1x1 block before the MoCo v2 framework. Thereafter each of the images outputted a generalizable 3 channels wide images from sentinel 2 and sentinel 1 separately for us to construct the query and key encoder under MoCo v2. 
 
@@ -199,11 +204,8 @@ The evaluations utilizing SEN12MS sense classification pipeline. Overall, multi-
 As a result of the finetune/ transfer learning, introducing 1x1 convolution weight from MoCo underperforms the ones without 1x1 convolution block, it appears models adding 1x1 convolution block from MoCo may distort the finetune evaluations, suggesting the representation of the learning may not be optimal. We continue to explore transfer learning using either the simplified dataset and evaluations, or the dataset that has less label noises.
 
 
-### New approach (WIP) 
+### Fusion approach (WIP) 
 
-Instead of the first approach, we data fusioned sentinel 1 (2 bands) and sentinel 2 images (10 bands) together with the same locations and apply a set of combinations of images including sentinel 1 and sentinel 2 together, sentinel 2 only, and sentinel 1 only to construct one fusioned image. In a sense that we build a straightforward constraving learning directly under MoCo v2. 
-
-Similarly, our finetune/ transfer learning for the SEN12MS sense classification would adopt the same strategy for us to compare the evaluation results. We will continue to update and report.
 
 #### 1. Pre-training on SEN12MS
 #### 2. Transfer Learning Experiments
