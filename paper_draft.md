@@ -153,8 +153,8 @@ We compared supervised learning with HPT model
     -   Moco_1x1Rnd: adding conv1x1 block to the ResNet50 used by Sen12ms. ResNet50 layers are initialized with the weight from Moco but input module is initialized with random weights
 -   Finetune v2 (1k dataset)
     -   freezing ResNet50 fully or partially does not seem to help with accuracy. We will continue explore and share the results once we are sure there is no issue with implementation. 
-
-| | Metrics|single-label Average Accuracy (%)|multi-label Overall Accuracy (%) | Note | 
+ 
+| | Metrics|single-label |multi-label | Note | 
 | --- | --- | --- | --- | --- | 
 |  |  |   |   | | 
 | full dataset | Supervised s2	|  .57	| .60| |
@@ -174,6 +174,8 @@ We compared supervised learning with HPT model
 | | **Moco**	| .4718	| **.6697** | not necessarily better |
 
 (before): before learning rate adjustment
+- single-label Average Accuracy 
+- multi-label Overall Accuracy 
 
 other findings:
 - ResNet50_1x1 (s2) 100 epoch and 500 epoch shows similar accuracy. (especially for multi-label). 
