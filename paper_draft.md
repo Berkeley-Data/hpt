@@ -80,6 +80,12 @@ Most of the overlap occurs around 25% and 50% of the area with few patches overl
 * Sentinel-2 Multi-Spectral: 13 channels corresponding to the 13 spectral bands (B1, B2, B3, B4, B5, B6, B7, B8, B8a, B9, B10, B11, B12).
 * MODIS Land Cover: 4 channels corresponding to IGBP, LCCS Land Cover, LCCS Land Use, and LCCS Surface Hydrology layers.
 
+(TODO for Ernesto) should discuss dataset split for training and test (holdout set) 
+- 32K set
+- potential issue with full set 
+- test set 
+- 1K set 
+
 ## Method
 In this section, we briefly review Contrastive Learning Framework for unsupervised learning and detail our proposed approach to improve Moco-v2, a recent contrastive learning framework, on satellite imagery from multiple sensors data.
 
