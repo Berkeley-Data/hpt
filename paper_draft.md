@@ -155,21 +155,23 @@ We compared supervised learning with HPT model
     -   freezing ResNet50 fully or partially does not seem to help with accuracy. We will continue explore and share the results once we are sure there is no issue with implementation. 
 
 | Metrics|single-label Average Accuracy (%)|multi-label Overall Accuracy (%) | 
-| --- | --- | --- | 
-| Supervised s2 (full)	|  .57	| .60| 
-| Supervised s1/s2 (full)	| .45	| .64| 
-| Supervised RGB (full)	| .45	| .58| 
-| --- | --- | --- | 
-| Supervised s2 (1024)	| **.4355**	| .5931 |
-| Supervised s1/s2 (1024)	| .4652	| .4652 | 
-| Supervised 1x1 s2 (1024)	| **.3863**	| .4893 | 
-| Supervised 1x1 s1/s2 (1024)	| .4094	| .5843 | 
-| Moco s2 (1024)	| .4545	| **.6277** | 
-| Moco s1/s2 (1024)	| .4514	| **.6697** | 
-| Moco 1x1 s2 (1024)| .4454	| **.601**| 
-| Moco 1x1 s1/s2 (1024)| _.425_ (?)	| .5302 | 
-| Moco 1x1 RND s2 (1024)| 0.371 | .5374 | 	
-| Moco 1x1 RND s1/s2 (1024)| .4477 | .5152 |
+| --(full)- | --- | --- | 
+| Supervised s2	|  .57	| .60| 
+| Supervised s1/s2	| .45	| .64| 
+| Supervised RGB | .45	| .58| 
+| --(s2)-- | --- | --- | 
+| Supervised 1x1	| **.3863**	| .4893 | 
+| Supervised	| **.4355**	| .5931 |
+| Moco 1x1 RND | .4345 | .6004 | 	
+| Moco 1x1 | .4469	| **.601**| 
+| Moco | .4688	| **.6277** | 
+| --- s1/s2 -- | --- | --- | 
+| Supervised 1x1 | .4094	| .5843 | 
+| Supervised	| .4426	| .4652 | 
+| Moco 1x1 RND | .4477 | .5317 |
+| Moco	| .4718	| **.6697** | 
+| Moco 1x1 |  .4474	| .5302 | 
+
 
 (before): before learning rate adjustment
 
