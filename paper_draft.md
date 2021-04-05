@@ -157,7 +157,7 @@ We compared supervised learning with HPT model
 | | Metrics|single-label Average Accuracy (%)|multi-label Overall Accuracy (%) | Note | 
 | --- | --- | --- | --- | --- | 
 |  |  |   |   | | 
-| full| Supervised s2	|  .57	| .60| |
+| full dataset | Supervised s2	|  .57	| .60| |
 | | Supervised s1/s2	| .45	| .64|| 
 | | Supervised RGB | .45	| .58| |
 | |  |   |   | | 
