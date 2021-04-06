@@ -213,7 +213,7 @@ As a result of the finetune/ transfer learning, introducing 1x1 convolution weig
 | | Supervised s1/s2	| .45	| .64| | 
 | | Supervised RGB | .45	| .58| |
 | |  |   |   | | 
-| s1/s2 | Supervised	| .4426	| .4652 | | 
+| 1k dataset (s1/s2) | Supervised	| .4426	| .4652 | | 
 |  | **Moco (all fusion)**	| .4365	| .575 | |
 |  | **Moco (partial fusion)**	| .4421	| .5729 | |
 
