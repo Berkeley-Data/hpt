@@ -88,7 +88,7 @@ def load_s2(path, imgTransform, s2_band):
     # return s2
 
 
-def load_sample(sample, imgTransform, use_s1, use_s2, use_RGB):
+def load_sample(sample, imgTransform, use_s1, use_s2):
     """util to load sample data (wip)
     """
     # # load s2 data
