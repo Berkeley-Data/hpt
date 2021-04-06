@@ -163,6 +163,15 @@ We compared supervised learning with HPT model
 -   Finetune v2 (1k dataset)
     -   freezing ResNet50 fully or partially does not seem to help with accuracy. We will continue explore and share the results once we are sure there is no issue with implementation. 
  
+other findings:
+- ResNet50_1x1 (s2) 100 epoch and 500 epoch shows similar accuracy. (especially for multi-label). 
+- ResNet50_1x1 (s2) shows significantly better result with 0.001 than 0.00001 (both single label and multi-label) 
+
+(findings pending verifications)
+- By looking at the results between models with 1x1 conv and without 1x1 conv counterparts, almost all models with 1x1 conv block underperform the ones without 1x1 conv block. It appears that adding 1x1 conv layer as a volumn filters may loss some bands information overall with the finetune evalutions. 
+
+### results 
+
 | | Metrics|single-label |multi-label | Note | 
 | --- | --- | --- | --- | --- | 
 |  |  |   |   | | 
@@ -182,18 +191,8 @@ We compared supervised learning with HPT model
 | | :no_entry_sign: Moco 1x1 |  .4474	| .5302 | no conv1 weight transfer | 
 |  | :no_entry_sign: **Moco**	| .4718	| **.6697** | no conv1 weight transfer |
 
-(before): before learning rate adjustment
-- single-label Average Accuracy 
-- multi-label Overall Accuracy 
-
-other findings:
-- ResNet50_1x1 (s2) 100 epoch and 500 epoch shows similar accuracy. (especially for multi-label). 
-- ResNet50_1x1 (s2) shows significantly better result with 0.001 than 0.00001 (both single label and multi-label) 
-
-(findings pending verifications)
-- By looking at the results between models with 1x1 conv and without 1x1 conv counterparts, almost all models with 1x1 conv block underperform the ones without 1x1 conv block. It appears that adding 1x1 conv layer as a volumn filters may loss some bands information overall with the finetune evalutions. 
-
-### results 
+- single-label: Average Accuracy 
+- multi-label: Overall Accuracy 
 
 #### Duplex approach summary 
 
