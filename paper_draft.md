@@ -171,16 +171,16 @@ We compared supervised learning with HPT model
 | | Supervised RGB | .45	| .58| |
 | |  |   |   | | 
 |s2 | Supervised 1x1	| .3863	| .4893 | | 
-| | Supervised	| .4355	| .5931 | too good?| 
-| | Moco 1x1 RND | .4345 | .6004 | 	| 
-| | Moco 1x1 | .4469	| **.601**| valid but not necessarily better | 
-| | **Moco** | .4688	| **.6277** | no conv1 weight transfer | 
+| valid | Supervised	| .4355	| .5931 | too good?| 
+| valid | Moco 1x1 RND | .4345 | .6004 | 	| 
+| valid | Moco 1x1 | .4469	| **.601**| not necessarily better | 
+| invalid | **Moco** | .4688	| **.6277** | no conv1 weight transfer | 
 |  |  |  |   | | 
 |s1/s2 | Supervised 1x1 | .4094	| .5843 | | 
-| | Supervised	| .4426	| .4652 | | 
-| | Moco 1x1 RND | .4477 | .5317 | | 
-| | Moco 1x1 |  .4474	| .5302 | no conv1 weight transfer | 
-| | **Moco**	| .4718	| **.6697** | no conv1 weight transfer |
+| valid | Supervised	| .4426	| .4652 | | 
+| invalid | Moco 1x1 RND | .4477 | .5317 | | 
+| invalid | Moco 1x1 |  .4474	| .5302 | no conv1 weight transfer | 
+| invalid | **Moco**	| .4718	| **.6697** | no conv1 weight transfer |
 
 (before): before learning rate adjustment
 - single-label Average Accuracy 
