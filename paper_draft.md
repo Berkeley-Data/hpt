@@ -172,6 +172,8 @@ other findings:
 
 ### results 
 
+#### Duplex approach summary 
+
 | | Metrics|single-label |multi-label | Note | 
 | --- | --- | --- | --- | --- | 
 |  |  |   |   | | 
@@ -180,9 +182,9 @@ other findings:
 | | Supervised RGB | .45	| .58| |
 | |  |   |   | | 
 |s2 | :white_check_mark: Supervised 1x1	| .3863	| .4893 | | 
-|  | :white_check_mark: Supervised	| .4355	| .5931 | too good?| 
-|  | :white_check_mark: Moco 1x1 RND | .4345 | .6004 | 	| 
-|  | :white_check_mark: Moco 1x1 | .4469	| **.601**| not necessarily better | 
+|  | :white_check_mark:  Supervised	| .4355	| .5931 | too good?| 
+|  | :white_check_mark:  Moco 1x1 RND | .4345 | .6004 | 	| 
+|  | :white_check_mark:  Moco 1x1 | .4469	| **.601**| not necessarily better | 
 |  | :no_entry_sign: **Moco** | .4688	| **.6277** | no conv1 weight transfer | 
 |  |  |  |   | | 
 |s1/s2 | :white_check_mark: Supervised 1x1 | .4094	| .5843 | | 
@@ -194,7 +196,7 @@ other findings:
 - single-label: Average Accuracy 
 - multi-label: Overall Accuracy 
 
-#### Duplex approach summary 
+
 
 Our above approach took sentinel 2 images with 10 bands and sentinel 1 images with 2 bands with the same locations, and had them pass through a convolution 1x1 block before the MoCo v2 framework. Thereafter each of the images outputted a generalizable 3 channels wide images from sentinel 2 and sentinel 1 separately for us to construct the query and key encoder under MoCo v2. 
 
@@ -202,9 +204,21 @@ The evaluations utilizing SEN12MS sense classification pipeline. Overall, multi-
 
 As a result of the finetune/ transfer learning, introducing 1x1 convolution weight from MoCo underperforms the ones without 1x1 convolution block, it appears models adding 1x1 convolution block from MoCo may distort the finetune evaluations, suggesting the representation of the learning may not be optimal. We continue to explore transfer learning using either the simplified dataset and evaluations, or the dataset that has less label noises.
 
-
 ### Fusion approach (WIP) 
 
+| | Metrics|single-label |multi-label | Note | 
+| --- | --- | --- | --- | --- | 
+|  |  |   |   | | 
+| full dataset | Supervised s2	|  .57	| .60| |
+| | Supervised s1/s2	| .45	| .64|| 
+| | Supervised RGB | .45	| .58| |
+| |  |   |   | | 
+| s1/s2 | Supervised	| .4426	| .4652 | | 
+|  | **Moco (all fusion)**	| .4365	| **.575** | |
+|  | **Moco (partial fusion)**	| .4421	| **.5729** | |
+
+* all fusion: s1/s2 stacked image are augmented and used as q, k. 
+* partial fusion: s1, s2, s1/s2 image are equally mixed in the train dataset. 
 
 #### 1. Pre-training on SEN12MS
 #### 2. Transfer Learning Experiments
