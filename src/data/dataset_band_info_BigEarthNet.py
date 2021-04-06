@@ -89,7 +89,7 @@ def load_s2(path, imgTransform, s2_band):
 
 
 def load_sample(sample, imgTransform, use_s1, use_s2, use_RGB):
-    """util to load sample data
+    """util to load sample data (wip)
     """
     # # load s2 data
     # if use_s2:
@@ -142,14 +142,12 @@ def load_sample(sample, imgTransform, use_s1, use_s2, use_RGB):
 
 
 #  calculate number of input channels
-def get_ninputs(use_s1, use_s2, use_RGB):
+def get_ninputs(use_s1, use_s2):
     n_inputs = 0
-    if use_s2:
-        n_inputs += len(S2_BANDS_LD)
+    # if use_s2:
+    #     n_inputs += len(S2_BANDS_LD)
     if use_s1:
         n_inputs += 2
-    if use_RGB and use_s2 == False:
-        n_inputs += 3
 
     return n_inputs
 
@@ -169,7 +167,7 @@ class bigearthnet(Dataset):
     """pytorch dataset class custom for BigEarthNet
     """
 
-    def __init__(self, path=None, data_index_dir=None, imgTransform=None, use_s2=False, use_s1=False, use_RGB=False, band=None):
+    def __init__(self, path=None, data_index_dir=None, imgTransform=None, use_s2=False, use_s1=False, band=None):
         """Initialize the dataset
         """
 
@@ -178,14 +176,13 @@ class bigearthnet(Dataset):
         self.imgTransform = imgTransform
 
         # make sure input parameters are okay
-        if not (use_s2 or use_s1 or use_RGB):
+        if not (use_s2 or use_s1):
             raise ValueError("No input specified, set at least one of " + "use_[s2, s1, RGB] to True!")
         self.use_s2 = use_s2
         self.use_s1 = use_s1
-        self.use_RGB = use_RGB
 
         # provide number of input channels
-        self.n_inputs = get_ninputs(use_s1, use_s2, use_RGB)
+        self.n_inputs = get_ninputs(use_s1, use_s2)
 
         # make sure parent dir exists
         # assert os.path.exists(path)
@@ -229,7 +226,7 @@ class bigearthnet(Dataset):
         # get and load sample from index file
         sample = self.samples[index]
         # labels = self.labels
-        return load_sample(sample, self.imgTransform, self.use_s1, self.use_s2, self.use_RGB)
+        return load_sample(sample, self.imgTransform, self.use_s1, self.use_s2)
 
     def __len__(self):
         """Get number of samples in the dataset"""
@@ -245,7 +242,7 @@ def main(args):
     ])
 
     dataset = bigearthnet(path=args.path, data_index_dir=args.data_index_dir, imgTransform=data_transforms,\
-                          use_s1=args.use_s1, use_s2=args.use_s2, use_RGB=args.use_RGB, band=args.band)
+                          use_s1=args.use_s1, use_s2=args.use_s2, band=args.band)
 
     data_loader = DataLoader(dataset=dataset, batch_size=args.batchsize, num_workers=args.numworkers, shuffle=True)
 
