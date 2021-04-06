@@ -1,4 +1,13 @@
 
+"""
+- Tsung-Chin Han (Ken)-
+
+- Descritions -
+This script is to help calculate for each of the band mean and standard deviation for
+BigEarthNet dataset. Note that this custom load does not stack all channels together.
+Instead, by specifying the channel name, it helps compute the band mean and standard deviation.
+"""
+
 import argparse
 import os
 import pickle as pkl
@@ -12,32 +21,29 @@ import torchvision.datasets as datasets
 import torchvision.transforms as transforms
 from torch.utils.data import DataLoader, Dataset
 
-
-parser = argparse.ArgumentParser(description='Compute image statistics from ImageFolder')
+parser = argparse.ArgumentParser(description='Compute band image mean and stdev from BigEarthNet class')
 parser.add_argument('--numworkers', type=int, default=30)
 parser.add_argument('--batchsize', type=int, default=1)
 
-# data dir path and index dir
+# data path & data index directory
 parser.add_argument('--path', type=str, default=None,
                     help='path to BigEarthNet dataset')
 parser.add_argument('--data_index_dir', type=str, default=None,
                     help="path to generated data list")
-
 # data modality
 parser.add_argument('--use_s1', action='store_true', default=True,
                     help='use sentinel-1 data')
 parser.add_argument('--use_s2', action='store_true', default=False,
                     help='use sentinel-2 bands')
-parser.add_argument('--use_RGB', action='store_true', default=False,
-                    help='use sentinel-2 RGB bands')
-
-# band (channel)
+# band (channel) name
+# S1 - VV, VH
+# S2 - B01, B02, B03, B04, B05, B06, B07, B08, B09, B11, B12, B8A
 parser.add_argument('--band', type=str, default=None,
                     help='band(channel) name from BigEarthNet dataset')
 
-
-### new check vh, vv
 def calc_mean_std(loader):
+    """calc band image dataset mean and standard deviation
+    """
     # var --> std
     channel_sum, channel_sq_sum, num_batch = 0, 0, 0
     for data in loader:
@@ -53,7 +59,6 @@ def calc_mean_std(loader):
     return mean, std
 
 
-# util function for reading s1 data
 def load_s1(path, imgTransform):
     """util to load s1 data
     """
@@ -68,7 +73,7 @@ def load_s1(path, imgTransform):
     s1 = s1.astype(np.float32)
     return s1
 
-# util function for reading s2 data
+
 def load_s2(path, imgTransform, s2_band):
     """wip
     """
@@ -83,9 +88,8 @@ def load_s2(path, imgTransform, s2_band):
     # return s2
 
 
-# util function for reading data from single sample
 def load_sample(sample, imgTransform, use_s1, use_s2, use_RGB):
-    """loading sample data
+    """util to load sample data
     """
     # # load s2 data
     # if use_s2:
@@ -160,7 +164,7 @@ class ToTensor(object):
         return rt_sample
 
 
-### write a class
+### custom BigEarthNet dataset class
 class bigearthnet(Dataset):
     """pytorch dataset class custom for BigEarthNet
     """
@@ -175,8 +179,7 @@ class bigearthnet(Dataset):
 
         # make sure input parameters are okay
         if not (use_s2 or use_s1 or use_RGB):
-            raise ValueError("No input specified, set at least one of "
-                             + "use_[s2, s1, RGB] to True!")
+            raise ValueError("No input specified, set at least one of " + "use_[s2, s1, RGB] to True!")
         self.use_s2 = use_s2
         self.use_s1 = use_s1
         self.use_RGB = use_RGB
