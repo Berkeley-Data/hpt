@@ -301,3 +301,22 @@ python tools/train.py configs/hpt-pretrain/resisc/moco_v2_800ep_basetrain/500-it
 
 ```
 
+## (Other) BigEarthNet bands mean and standard deviation
+
+For S-1 data, band name {'VV', 'VH'}
+```bash
+python dataset_band_info_BigEarthNet.py\
+ --path <data_dir>\
+ --data_index_dir <data index dir>\
+ --numworkers 30\
+ --batchsize 256\
+ --use_s1\
+ --band <band name>
+
+```
+
+
+
+
+
+
