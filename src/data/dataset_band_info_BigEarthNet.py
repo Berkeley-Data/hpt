@@ -107,36 +107,12 @@ def load_sample(sample, imgTransform, use_s1, use_s2):
 
     if use_s1:
         img = load_s1(sample["s1"], imgTransform)
-    # print(sample['id'])
-    # print(img)
 
-
-    # load label
-    # lc = labels[sample["id"]]
-
-    # covert label to IGBP simplified scheme
-    # if IGBP_s:
-    #     cls1 = sum(lc[0:5]);
-    #     cls2 = sum(lc[5:7]);
-    #     cls3 = sum(lc[7:9]);
-    #     cls6 = lc[11] + lc[13];
-    #     lc = np.asarray([cls1, cls2, cls3, lc[9], lc[10], cls6, lc[12], lc[14], lc[15], lc[16]])
-
-    # if label_type == "multi_label":
-    #     lc_hot = (lc >= threshold).astype(np.float32)
-    # else:
-    #     loc = np.argmax(lc, axis=-1)
-    #     lc_hot = np.zeros_like(lc).astype(np.float32)
-    #     lc_hot[loc] = 1
 
     # rt_sample = {'image': img, 'label': lc_hot, 'id': sample["id"]}
 
     rt_sample = {'image': img, 'id': sample["id"]}
-    # print(rt_sample['image'])
-    # print(rt_sample)
 
-    # if imgTransform is not None:
-    #     rt_sample = imgTransform(rt_sample)
 
     return rt_sample['image']
 
@@ -184,10 +160,6 @@ class bigearthnet(Dataset):
         # provide number of input channels
         self.n_inputs = get_ninputs(use_s1, use_s2)
 
-        # make sure parent dir exists
-        # assert os.path.exists(path)
-        # assert os.path.exists(ls_dir)
-
         self.samples = []
         # file = os.path.join(data_index_dir, 's1_list.pkl')
 
@@ -206,19 +178,9 @@ class bigearthnet(Dataset):
             pbar.update()
 
         pbar.close()
-        # ----------------------------------------------------------------------
 
-        # sort list of samples
-        # self.samples = sorted(self.samples, key=lambda i: i['id'])
-        #
-        # print(f"loaded {len(self.samples)} from {path}")
+        return
 
-        # import lables as a dictionary
-        # label_file = os.path.join(ls_dir,'IGBP_probability_labels.pkl')
-
-        # a_file = open(label_file, "rb")
-        # self.labels = pkl.load(a_file)
-        # a_file.close()
 
     def __getitem__(self, index):
         """Get a single example from the dataset"""
@@ -231,6 +193,7 @@ class bigearthnet(Dataset):
     def __len__(self):
         """Get number of samples in the dataset"""
         return len(self.samples)
+
 
 
 def main(args):
