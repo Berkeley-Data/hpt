@@ -304,15 +304,13 @@ python tools/train.py configs/hpt-pretrain/resisc/moco_v2_800ep_basetrain/500-it
 ## (Other) BigEarthNet bands mean and standard deviation
 
 For S-1 data, band name {'VV', 'VH'}
+For S-2 data, band name {'B01', 'B02', 'B03', 'B04', 'B05', 'B06', 'B07', 'B08', 'B09', 'B11', 'B12', 'B8A'}
+```
+cd into hpt/src/data/
+```
+Calc band stats by running 
 ```bash
-python dataset_band_info_BigEarthNet.py\
- --path <data_dir>\
- --data_index_dir <data index dir>\
- --numworkers 30\
- --batchsize 256\
- --use_s1\
- --band <band name>
-
+bash dataset_calc_BigEarthNet.sh
 ```
 
 
