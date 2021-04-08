@@ -52,7 +52,7 @@ parser.add_argument('--band', type=str, default=None,
 # S1 - VV, VH
 # S2 - B01, B02, B03, B04, B05, B06, B07, B08, B09, B11, B12, B8A
 # band info
-s1_band = ['VV', 'VW']
+s1_band = ['VV', 'VH']
 s2_band = ['B01', 'B02', 'B03', 'B04', 'B05', 'B06', 'B07', 'B08', 'B09', 'B11', 'B12', 'B8A']
 
 
