@@ -219,6 +219,7 @@ As a result of the finetune/ transfer learning, introducing 1x1 convolution weig
 | 1k dataset (s1/s2) | Supervised	| .4426	| .4652 | | 
 |  | **Moco (all fusion)**	| .4365	| .575 | |
 |  | **Moco (partial fusion)**	| .4453	| .5877 | |
+|  | **Moco (fusion mixed)**	| **.4814**	| - | |
 
 * all fusion: s1/s2 stacked image are augmented and used as q, k. 
 * partial fusion: s1, s2, s1/s2 image are equally mixed in the train dataset. 
