@@ -185,6 +185,8 @@ other findings:
 |  | Supervised	| .4355	| .5931 | too good?| 
 |  | Moco 1x1 RND | .4345 | .6004 | 	| 
 |  | Moco 1x1 | .4469	| **.601**| not necessarily better | 
+|  | Moco 1x1 RND (1000ep) | .4264 | .5757 | 	| 
+|  | Moco 1x1 (1000ep) | .4073	| .5622 |  | 
 
 | | Metrics|single-label |multi-label | Note | 
 | --- | --- | --- | --- | --- | 
