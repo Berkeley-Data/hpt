@@ -172,7 +172,7 @@ other findings:
 
 ### results 
 
-#### Duplex approach summary 
+#### Sensor Augmentation Method
 
 | | Metrics|single-label |multi-label | Note | 
 | --- | --- | --- | --- | --- | 
