@@ -174,30 +174,7 @@ other findings:
 
 #### Sensor Augmentation Method
 
-| | Metrics|single-label |multi-label | Note | 
-| --- | --- | --- | --- | --- | 
-|  |  |   |   | | 
-| full dataset | Supervised s2	|  .57	| .60| |
-| | Supervised s1/s2	| .45	| .64|| 
-| | Supervised RGB | .45	| .58| |
-| |  |   |   | | 
-|s2 | Supervised 1x1	| .3863	| .4893 | | 
-|  | Supervised	| .4355	| .5931 | too good?| 
-|  | Moco 1x1 RND | .4345 | .6004 | 	| 
-|  | Moco 1x1 | .4469	| **.601**| not necessarily better | 
-|  | Moco 1x1 RND (1000ep) | .4264 | .5757 | overfitting? | 
-|  | Moco 1x1 (1000ep) | .4073	| .5622 | overfitting? | 
 
-| | Metrics|single-label |multi-label | Note | 
-| --- | --- | --- | --- | --- | 
-|s1/s2 | :white_check_mark: Supervised 1x1 | .4094	| .5843 | | 
-|  | :white_check_mark: Supervised	| .4426	| .4652 | | 
-|  | :no_entry_sign: Moco 1x1 RND | .4477 | .5317 | | 
-| | :no_entry_sign: Moco 1x1 |  .4474	| .5302 | no conv1 weight transfer | 
-|  | :no_entry_sign: **Moco**	| .4718	| **.6697** | no conv1 weight transfer |
-
-- single-label: Average Accuracy 
-- multi-label: Overall Accuracy 
 
 
 
