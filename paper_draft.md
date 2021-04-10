@@ -194,6 +194,19 @@ aug set 3: aug set 2 + color jittering/ grayscale (optional for now)
 #### SEN12MS evaluation
 scence classification (multi-label?)
 
+**aug set 1**
+
+| aug set 1| s1 | s2 | s1/s2 | Note | 
+| --- | --- | --- | --- | --- | 
+| Supervised (full) | xx | xx | xx | xx | 
+| Supervised (1024) | xx | xx | xx | xx |
+| [all fusion] | xx | xx | xx|  xx | xx |
+| [partial fusion] | xx | xx | xx | xx |
+| [optional fusion] | xx | xx | xx|  xx|
+
+
+**aug set 2**
+
 | aug set 2| s1 | s2 | s1/s2 | Note | 
 | --- | --- | --- | --- | --- | 
 | Supervised (full) | ? | .60 | .64 | need to retest s1, s2 with zero padding | 
@@ -209,14 +222,26 @@ scence classification (multi-label?)
 #### BigEarthNet Evaluation
 scence classification (multi or single label?)
 
+**aug set 1**
+
+| aug set 1| s1 | s2 | s1/s2 | Note | 
+| --- | --- | --- | --- | --- | 
+| Supervised (full) | xx | xx | xx | xx | 
+| Supervised (1024) | xx | xx | xx | xx |
+| [all fusion] | xx | xx | xx|  xx | xx |
+| [partial fusion] | xx | xx | xx | xx |
+| [optional fusion] | xx | xx | xx|  xx|
+
+
+**aug set 2**
+
 | aug set 2| s1 | s2 | s1/s2 | Note | 
 | --- | --- | --- | --- | --- | 
-| Supervised (full) | ? | .60 | .64 | need to retest s1, s2 with zero padding | 
-| Supervised (1024) | [.3712](https://wandb.ai/cal-capstone/sup_scene_cls/runs/3bk413rl) | [.4592](https://wandb.ai/cal-capstone/sup_scene_cls/runs/11rib1kx) | [.4678](https://wandb.ai/cal-capstone/sup_scene_cls/runs/1hofubnr) | 
-| [all fusion](https://wandb.ai/cal-capstone/hpt4/runs/ak0xdbfu/overview) | ? | ? | [.5957](https://wandb.ai/cal-capstone/scene_classification/runs/2y2q8boi) | |
-| [partial fusion](https://wandb.ai/cal-capstone/hpt4/runs/367tz8vs) | ? | ? | .5877 | |
-| [optional fusion](https://wandb.ai/cal-capstone/hpt4/runs/2iu8yfs6) | ? | ? | [.6072](https://wandb.ai/cal-capstone/scene_classification/runs/1meu9iym) | |
-
+| Supervised (full) | xx | xx | xx | xx | 
+| Supervised (1024) | xx | xx | xx | xx |
+| [all fusion] | xx | xx | xx|  xx | xx |
+| [partial fusion] | xx | xx | xx | xx |
+| [optional fusion] | xx | xx | xx|  xx|
 
 - Supervised (full) s1, s2 need to be retested with zero padding 12 channel. 
 
