@@ -207,22 +207,20 @@ The evaluations utilizing SEN12MS sense classification pipeline. Overall, multi-
 
 As a result of the finetune/ transfer learning, introducing 1x1 convolution weight from MoCo underperforms the ones without 1x1 convolution block, it appears models adding 1x1 convolution block from MoCo may distort the finetune evaluations, suggesting the representation of the learning may not be optimal. We continue to explore transfer learning using either the simplified dataset and evaluations, or the dataset that has less label noises.
 
-### Fusion approach (WIP) 
+### Fusion approach 
 
-| | Metrics|single-label |multi-label | Note | 
-| --- | --- | --- | --- | --- | 
-|  |  |   |   | | 
-| full dataset | Supervised s2	|  .57	| .60| |
-| | Supervised s1/s2	| .45	| .64| | 
-| | Supervised RGB | .45	| .58| |
-| |  |   |   | | 
-| 1k dataset (s1/s2) | Supervised	| .4426	| .4652 | | 
-|  | **Moco (all fusion)**	| .4365	| .575 | |
-|  | **Moco (partial fusion)**	| .4453	| .5877 | |
-|  | **Moco (fusion mixed)**	| **.4814**	| - | |
+aug set 1: resizecrop 
+aug set 2: resizecrop, blur 
 
 * all fusion: s1/s2 stacked image are augmented and used as q, k. 
-* partial fusion: s1, s2, s1/s2 image are equally mixed in the train dataset. 
+* partial fusion: s1, s2, s1/s2 image are equally mixed in the train dataset
+
+| aug set 2| s1 | s2 | s1/s2 | Note | 
+| --- | --- | --- | --- | --- | 
+| all fusion	| ?	| ? | .575 | |
+| partial fusion	| ?	| ? | .5877 | |
+| optional fusion | ? | ? | .4814 | |
+
 
 #### 1. Pre-training on SEN12MS
 #### 2. Transfer Learning Experiments
