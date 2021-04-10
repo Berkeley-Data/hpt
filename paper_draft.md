@@ -218,10 +218,10 @@ aug set 2: resizecrop, blur
 | aug set 2| s1 | s2 | s1/s2 | Note | 
 | --- | --- | --- | --- | --- | 
 | Supervised (full) | ? | .60 | .64 | need to retest s1, s2 with zero padding | 
-| Supervised (1024) | ? | ? | .4652 | 
+| Supervised (1024) | ? | .5931 (?) | .4652 | 
 | all fusion | ? | ? | .575 | |
-| partial fusion	| ?	| ? | .5877 | |
-| optional fusion | ? | ? | ? | |
+| [partial fusion](https://wandb.ai/cal-capstone/hpt4/runs/367tz8vs) | ? | ? | .5877 | |
+| optional fusion | ? | ? | .6072 | |
 
 - Supervised (full) s1, s2 need to be retested with zero padding 12 channel. 
 
