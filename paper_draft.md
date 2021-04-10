@@ -170,27 +170,29 @@ other findings:
 (findings pending verifications)
 - By looking at the results between models with 1x1 conv and without 1x1 conv counterparts, almost all models with 1x1 conv block underperform the ones without 1x1 conv block. It appears that adding 1x1 conv layer as a volumn filters may loss some bands information overall with the finetune evalutions. 
 
-### results 
+### Results 
 
-#### Sensor Augmentation Method
+#### Sensor-based Naturally Augmentations
 
-
-
-
-
-Our above approach took sentinel 2 images with 10 bands and sentinel 1 images with 2 bands with the same locations, and had them pass through a convolution 1x1 block before the MoCo v2 framework. Thereafter each of the images outputted a generalizable 3 channels wide images from sentinel 2 and sentinel 1 separately for us to construct the query and key encoder under MoCo v2. 
+Our sensor-based geo-alignment postive pair approach took sentinel 2 images with 10 bands and sentinel 1 images with 2 bands with the same locations, and had them pass through a convolution 1x1 block before the MoCo v2 framework. Thereafter each of the images outputted a generalizable 3 channels wide images from sentinel 2 and sentinel 1 separately for us to construct the query and key encoder under MoCo v2. 
 
 The evaluations utilizing SEN12MS sense classification pipeline. Overall, multi-label accuracy resulted better than single-label accuracy across supervised and MoCo models. In general, due to the label noise for the SEN12MS dataset, the highest accuracy we could get may introduce irreducible errors. Knowing the provided supervised pre-train models on the full dataset does not contain s1-only data, In order to bring comparisons with the provided supervised model (full dataset) to our approach, our finetune started with 1k dataset and applied both supervised models and MoCo models with s2 dataset as well as s1/s2 dataset. In addition, we applied different finetune strategies with or without introducing the 1x1 conv block outputted weights from MoCo. 
 
 As a result of the finetune/ transfer learning, introducing 1x1 convolution weight from MoCo underperforms the ones without 1x1 convolution block, it appears models adding 1x1 convolution block from MoCo may distort the finetune evaluations, suggesting the representation of the learning may not be optimal. We continue to explore transfer learning using either the simplified dataset and evaluations, or the dataset that has less label noises.
 
-### Fusion approach 
+### Geo-alignment Data Fusion
 
 aug set 1: resizecrop 
 aug set 2: resizecrop, blur 
+aug set 3: aug set 2 + color jittering/ grayscale (optional for now)
 
 * all fusion: s1/s2 stacked image are augmented and used as q, k. 
 * partial fusion: s1, s2, s1/s2 image are equally mixed in the train dataset
+
+### Ablation
+
+#### SEN12MS evaluation
+scence classification (multi-label?)
 
 | aug set 2| s1 | s2 | s1/s2 | Note | 
 | --- | --- | --- | --- | --- | 
@@ -203,18 +205,28 @@ aug set 2: resizecrop, blur
 
 - Supervised (full) s1, s2 need to be retested with zero padding 12 channel. 
 
-#### 1. Pre-training on SEN12MS
-#### 2. Transfer Learning Experiments
-a. xxx
-b. xxx
-c. xxx
 
+#### BigEarthNet Evaluation
+scence classification (multi or single label?)
+
+| aug set 2| s1 | s2 | s1/s2 | Note | 
+| --- | --- | --- | --- | --- | 
+| Supervised (full) | ? | .60 | .64 | need to retest s1, s2 with zero padding | 
+| Supervised (1024) | [.3712](https://wandb.ai/cal-capstone/sup_scene_cls/runs/3bk413rl) | [.4592](https://wandb.ai/cal-capstone/sup_scene_cls/runs/11rib1kx) | [.4678](https://wandb.ai/cal-capstone/sup_scene_cls/runs/1hofubnr) | 
+| [all fusion](https://wandb.ai/cal-capstone/hpt4/runs/ak0xdbfu/overview) | ? | ? | [.5957](https://wandb.ai/cal-capstone/scene_classification/runs/2y2q8boi) | |
+| [partial fusion](https://wandb.ai/cal-capstone/hpt4/runs/367tz8vs) | ? | ? | .5877 | |
+| [optional fusion](https://wandb.ai/cal-capstone/hpt4/runs/2iu8yfs6) | ? | ? | [.6072](https://wandb.ai/cal-capstone/scene_classification/runs/1meu9iym) | |
+
+
+- Supervised (full) s1, s2 need to be retested with zero padding 12 channel. 
+
+
+**Note -- [placeholder] to rationale the multi or single label transfer learning** 
 
 
 
 ## Conclusion
-
-
+xxx
 
 ## References  
 TODO: Use APA style later. Do this once the draft is ready by taking the links in the document, giving them a number and use APA style generator.  
@@ -223,3 +235,5 @@ TODO: Use APA style later. Do this once the draft is ready by taking the links i
 [3]  
 [4]  
 [5]  
+
+
