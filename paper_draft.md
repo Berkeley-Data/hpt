@@ -210,7 +210,7 @@ scence classification (multi-label?)
 | aug set 2| s1 | s2 | s1/s2 | Note | 
 | --- | --- | --- | --- | --- | 
 | Supervised (full) | [Model is not provided](https://syncandshare.lrz.de/getlink/fiCDbqiiSFSNwot5exvUcW1y/trained_models) | [.60](https://wandb.ai/cal-capstone/sup_scene_cls/runs/3mg9zr5t) | [.64](https://wandb.ai/cal-capstone/sup_scene_cls/runs/2lda2016) | need to retest s1, s2 with zero padding | 
-| Supervised (1024) | [.3712](https://wandb.ai/cal-capstone/sup_scene_cls/runs/3bk413rl) | [.61](https://wandb.ai/cal-capstone/sup_scene_cls/runs/3m1h27zt) | [.5856](https://wandb.ai/cal-capstone/sup_scene_cls/runs/dpwjby4o) | 
+| Supervised (1024) | [.3712](https://wandb.ai/cal-capstone/sup_scene_cls/runs/3bk413rl) | [.5637](https://wandb.ai/cal-capstone/sup_scene_cls/runs/2t4hbz1a) | [.5856](https://wandb.ai/cal-capstone/sup_scene_cls/runs/dpwjby4o) | 
 | [all fusion](https://wandb.ai/cal-capstone/hpt4/runs/ak0xdbfu/overview) | ? | ? | [.5957](https://wandb.ai/cal-capstone/scene_classification/runs/2y2q8boi) | |
 | [partial fusion](https://wandb.ai/cal-capstone/hpt4/runs/367tz8vs) | ? | ? | .5877 | |
 | [optional fusion](https://wandb.ai/cal-capstone/hpt4/runs/2iu8yfs6) | ? | ? | [.6072](https://wandb.ai/cal-capstone/scene_classification/runs/1meu9iym) | |
