@@ -200,9 +200,9 @@ scence classification (multi-label?)
 | --- | --- | --- | --- | --- | 
 | Supervised (full) | xx | xx | xx | xx | 
 | Supervised (1024) | xx | xx | xx | xx |
-| [all fusion] | xx | xx | xx|  xx | xx |
+| [all fusion] | xx | xx|  xx | xx |
 | [partial fusion] | xx | xx | xx | xx |
-| [optional fusion] | xx | xx | xx|  xx|
+| [optional fusion] | xx | xx | xx | xx|
 
 
 **aug set 2**
@@ -228,9 +228,9 @@ scence classification (multi or single label?)
 | --- | --- | --- | --- | --- | 
 | Supervised (full) | xx | xx | xx | xx | 
 | Supervised (1024) | xx | xx | xx | xx |
-| [all fusion] | xx | xx | xx|  xx | xx |
+| [all fusion]  | xx | xx | xx | xx |
 | [partial fusion] | xx | xx | xx | xx |
-| [optional fusion] | xx | xx | xx|  xx|
+| [optional fusion] | xx | xx | xx | xx|
 
 
 **aug set 2**
@@ -239,9 +239,9 @@ scence classification (multi or single label?)
 | --- | --- | --- | --- | --- | 
 | Supervised (full) | xx | xx | xx | xx | 
 | Supervised (1024) | xx | xx | xx | xx |
-| [all fusion] | xx | xx | xx|  xx | xx |
+| [all fusion]  | xx | xx | xx | xx |
 | [partial fusion] | xx | xx | xx | xx |
-| [optional fusion] | xx | xx | xx|  xx|
+| [optional fusion] | xx | xx | xx | xx|
 
 - Supervised (full) s1, s2 need to be retested with zero padding 12 channel. 
 
