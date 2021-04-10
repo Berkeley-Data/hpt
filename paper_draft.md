@@ -209,7 +209,7 @@ scence classification (multi-label?)
 
 | aug set 2| s1 | s2 | s1/s2 | Note | 
 | --- | --- | --- | --- | --- | 
-| Supervised (full) | ? | .60 | .64 | need to retest s1, s2 with zero padding | 
+| Supervised (full) | ? | [.60](https://wandb.ai/cal-capstone/sup_scene_cls/runs/3mg9zr5t) | [.64](https://wandb.ai/cal-capstone/sup_scene_cls/runs/2lda2016) | need to retest s1, s2 with zero padding | 
 | Supervised (1024) | [.3712](https://wandb.ai/cal-capstone/sup_scene_cls/runs/3bk413rl) | [.4592](https://wandb.ai/cal-capstone/sup_scene_cls/runs/11rib1kx) | [.4678](https://wandb.ai/cal-capstone/sup_scene_cls/runs/1hofubnr) | 
 | [all fusion](https://wandb.ai/cal-capstone/hpt4/runs/ak0xdbfu/overview) | ? | ? | [.5957](https://wandb.ai/cal-capstone/scene_classification/runs/2y2q8boi) | |
 | [partial fusion](https://wandb.ai/cal-capstone/hpt4/runs/367tz8vs) | ? | ? | .5877 | |
