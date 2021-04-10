@@ -217,10 +217,13 @@ aug set 2: resizecrop, blur
 
 | aug set 2| s1 | s2 | s1/s2 | Note | 
 | --- | --- | --- | --- | --- | 
-| all fusion	| ?	| ? | .575 | |
+| Supervised (full) | ? | .60 | .64 | need to retest s1, s2 with zero padding | 
+| Supervised (1024) | ? | ? | .4652 | 
+| all fusion | ? | ? | .575 | |
 | partial fusion	| ?	| ? | .5877 | |
-| optional fusion | ? | ? | .4814 | |
+| optional fusion | ? | ? | ? | |
 
+- Supervised (full) s1, s2 need to be retested with zero padding 12 channel. 
 
 #### 1. Pre-training on SEN12MS
 #### 2. Transfer Learning Experiments
