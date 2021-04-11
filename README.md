@@ -9,7 +9,7 @@ For initial setup, refer to [setup instructions](setup_pretraining.md).
 ```bash
 export WANDB_API_KEY=<use your API key>
 export WANDB_ENTITY=cal-capstone
-export WANDB_PROJECT=hpt
+export WANDB_PROJECT=scene_classification
 #export WANDB_MODE=dryrun
 ```
 
@@ -83,14 +83,13 @@ cd OpenSelfSup
 /tools/single_train.sh configs/selfsup/moco/r50_v2_sen12ms_in_basetrain_aug_20ep.py --debug
 
 # (sanity check) Single GPU training on samll dataset on sen12ms fusion
-./tools/single_train.sh configs/selfsup/moco/r50_v2_sen12ms_12ch_in_smoketrain_aug_2ep.py --debug
-
+./tools/single_train.sh configs/selfsup/moco/r50_v2_sen12ms_fusion_in_smoke_aug.py --debug
 
 # (sanity check) 4 GPUs training on samll dataset 
 ./tools/dist_train.sh configs/selfsup/moco/r50_v2_sen12ms_in_basetrain_aug_20ep.py 4
 
 # (sanity check) 4 GPUs training on samll fusion dataset 
-./tools/dist_train.sh configs/selfsup/moco/r50_v2_sen12ms_12ch_in_smoketrain_aug_2ep.py 4
+./tools/dist_train.sh configs/selfsup/moco/r50_v2_sen12ms_fusion_in_smoke_aug.py 4
 
 # distributed full training 
 /tools/dist_train.sh configs/selfsup/moco/r50_v2_sen12ms_in_fulltrain_20ep.py 4
