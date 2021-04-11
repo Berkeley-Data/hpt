@@ -241,7 +241,7 @@ scence classification (multi or single label?)
 | Supervised (1024) | xx | xx | xx | xx |
 | [all fusion]  | xx | xx | xx | xx |
 | [partial fusion] | [.4279](https://wandb.ai/cal-capstone/scene_classification/runs/2a1tlnbv) | [.5351](https://wandb.ai/cal-capstone/scene_classification/runs/2f0pjxwx) | [.5352](https://wandb.ai/cal-capstone/scene_classification/table?workspace=user-kenhan) | xx |
-| [optional fusion] | [.4478](https://wandb.ai/cal-capstone/scene_classification/runs/36c8z6ae) | (.5120)(https://wandb.ai/cal-capstone/scene_classification/runs/3oazvjke) | [.5294](https://wandb.ai/cal-capstone/scene_classification/runs/nar53xcn) | xx|
+| [optional fusion] | [.4478](https://wandb.ai/cal-capstone/scene_classification/runs/36c8z6ae) | [.5120](https://wandb.ai/cal-capstone/scene_classification/runs/3oazvjke) | [.5294](https://wandb.ai/cal-capstone/scene_classification/runs/nar53xcn) | xx|
 
 - Supervised (full) s1, s2 need to be retested with zero padding 12 channel. 
 
