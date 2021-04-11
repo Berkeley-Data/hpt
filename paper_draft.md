@@ -192,7 +192,7 @@ aug set 3: aug set 2 + color jittering/ grayscale (optional for now)
 ### Ablation
 
 #### SEN12MS evaluation
-scence classification (multi-label?)
+scence classification (multi-label)
 
 **aug set 1(TBD)**
 
@@ -247,7 +247,7 @@ scence classification (multi or single label?)
 
 
 **Note -- [placeholder] to rationale the multi or single label transfer learning** 
-
+(tmp) multi-label classification results is more appropratie to evaluate the transfer learning in our scene classfication satelitle imagery, becasue xxx
 
 
 ## Conclusion
