@@ -194,12 +194,15 @@ aug set 3: aug set 2 + color jittering/ grayscale (optional for now)
 #### SEN12MS evaluation
 scence classification (multi-label)
 
+
 **aug set 1(TBD)**
 
 | aug set 1| s1 | s2 | s1/s2 | Note | 
 | --- | --- | --- | --- | --- | 
 | Supervised (full) | xx | xx | xx | xx | 
 | Supervised (1024) | xx | xx | xx | xx |
+| --- | --- | --- | --- | --- | 
+| [sensor-based augmentation] | xx | xx | xx | xx | 
 | [all fusion] | xx | xx|  xx | xx |
 | [partial fusion] | xx | xx | xx | xx |
 | [optional fusion] | xx | xx | xx | xx|
@@ -211,6 +214,8 @@ scence classification (multi-label)
 | --- | --- | --- | --- | --- | 
 | Supervised (full) | [Pretrained model is not provided](https://syncandshare.lrz.de/getlink/fiCDbqiiSFSNwot5exvUcW1y/trained_models) | [.60](https://wandb.ai/cal-capstone/sup_scene_cls/runs/3mg9zr5t) | [.64](https://wandb.ai/cal-capstone/sup_scene_cls/runs/2lda2016) | need to retest s1, s2 with zero padding | 
 | Supervised (1024) | [0.3478](https://wandb.ai/cal-capstone/sup_scene_cls/runs/1j82r3c0) | [0.5226](https://wandb.ai/cal-capstone/sup_scene_cls/runs/20b7py7w) | [.5637](https://wandb.ai/cal-capstone/sup_scene_cls/runs/2t4hbz1a) | Uses the same hyper parameters as full supervised model by sen12ms | 
+| --- | --- | --- | --- | --- | 
+| [sensor-based augmentation] | xx | xx | xx | xx | 
 | [all fusion](https://wandb.ai/cal-capstone/hpt4/runs/ak0xdbfu/overview) | ? | ? | [.5957](https://wandb.ai/cal-capstone/scene_classification/runs/2y2q8boi) | |
 | [partial fusion](https://wandb.ai/cal-capstone/hpt4/runs/367tz8vs) | [.4729](https://wandb.ai/cal-capstone/scene_classification/runs/1qx384cs) | [.5812](https://wandb.ai/cal-capstone/scene_classification/runs/1bdmms2d) |[.6072](https://wandb.ai/cal-capstone/scene_classification/runs/1meu9iym) | |
 | [optional fusion](https://wandb.ai/cal-capstone/hpt4/runs/2iu8yfs6) | [.4824](https://wandb.ai/cal-capstone/scene_classification/runs/tu3vuefx) | [.5601](https://wandb.ai/cal-capstone/scene_classification/runs/2hdbuxtv) | TBD | |
@@ -219,7 +224,21 @@ scence classification (multi-label)
 - Supervised (full) s1, s2 need to be retested with zero padding 12 channel. 
 
 
-#### BigEarthNet Evaluation
+### note
+We perform transfer learning experiments with our two proposed methods on land cover scene classification across xx label class using SEN12MS dataset to understand the quality of the learned representations.
+
+Using the pre-trained with our sensor-based geo-aligned pairs approach, our finetune on the 1,024 samples for the multi-label classification shows that xxx
+
+
+Whereas by looking at the evaluation results with our geo-alignment data fusion approach on 1,024 samples, as shown in the table, we can see that 
+In general, the downstream multi-class accuracy of our data fusion on moco framework outperform the supervised counterparts.
+Evaluation on both s1 and s2’s performance shows better accuracy compared to s1 or s2 alone. This is inline with our expectations. 
+In terms of the fusion combination, xx
+
+
+
+
+#### BigEarthNet Evaluation (TBD)
 scence classification (multi or single label?)
 
 **aug set 1(TBD)**
@@ -228,6 +247,8 @@ scence classification (multi or single label?)
 | --- | --- | --- | --- | --- | 
 | Supervised (full) | xx | xx | xx | xx | 
 | Supervised (1024) | xx | xx | xx | xx |
+| --- | --- | --- | --- | --- | 
+| [sensor-based augmentation] | xx | xx | xx | xx | 
 | [all fusion]  | xx | xx | xx | xx |
 | [partial fusion] | xx | xx | xx | xx |
 | [optional fusion] | xx | xx | xx | xx|
@@ -239,6 +260,8 @@ scence classification (multi or single label?)
 | --- | --- | --- | --- | --- | 
 | Supervised (full) | xx | xx | xx | xx | 
 | Supervised (1024) | xx | xx | xx | xx |
+| --- | --- | --- | --- | --- | 
+| [sensor-based augmentation] | xx | xx | xx | xx | 
 | [all fusion]  | xx | xx | xx | xx |
 | [partial fusion] | [.4279](https://wandb.ai/cal-capstone/scene_classification/runs/2a1tlnbv) | [.5351](https://wandb.ai/cal-capstone/scene_classification/runs/2f0pjxwx) | [.5352](https://wandb.ai/cal-capstone/scene_classification/table?workspace=user-kenhan) | xx |
 | [optional fusion] | [.4478](https://wandb.ai/cal-capstone/scene_classification/runs/36c8z6ae) | [.5120](https://wandb.ai/cal-capstone/scene_classification/runs/3oazvjke) | [.5294](https://wandb.ai/cal-capstone/scene_classification/runs/nar53xcn) | xx|
