@@ -194,6 +194,7 @@ aug set 3: aug set 2 + color jittering/ grayscale (optional for now)
 #### SEN12MS evaluation
 scence classification (multi-label)
 
+**?Quesiont/Discussion -- should we bring dp place down, or perhaps transform to % number? as other paper like moco, moco v2, simclr all show more succinet number format in terms of the acc results. and it looks more clear**
 
 **aug set 1(TBD)**
 
