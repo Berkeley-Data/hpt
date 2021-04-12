@@ -194,7 +194,7 @@ aug set 3: aug set 2 + color jittering/ grayscale (optional for now)
 #### SEN12MS evaluation
 scence classification (multi-label)
 
-**?Quesiont/Discussion -- should we bring dp place down, or perhaps transform to % number? as other paper like moco, moco v2, simclr all show more succinet number format in terms of the acc results. and it looks more clear**
+**?Quesiont/Discussion -- (1) should we bring dp place down, or perhaps transform to % number? as other paper like moco, moco v2, simclr all show more succinet number format in terms of the acc results. and it looks more clear. (2) should we temporarily choose the best resuls for each of the dataset. moco has a randomly sample mechencism unless we further details and fintune with different paramters. but now, would it be goood if showcase our results that we are in the promising direction (and for presenation). we definilty need to visit back for this part tho.**
 
 **aug set 1(TBD)**
 
@@ -226,7 +226,7 @@ scence classification (multi-label)
 
 
 ### para
-We perform transfer learning experiments with our two proposed methods on land cover scene classification across xx label class using SEN12MS dataset to understand the quality of the learned representations.
+We perform transfer learning experiments with our two proposed methods on land cover scene classification across xx label class using SEN12MS dataset to understand the quality of the learned representations. Given that the image samples are randomly sampled to positive and negative pairs in MoCo v2 to compute the loss during training processes, we have finetune with different hyper-parameters and selected the best results on each of the evaluation dataset in our reporting. 
 
 Using the pre-trained with our sensor-based geo-aligned pairs approach, our finetune on the 1,024 samples for the multi class classification shows that the performance on s1 and s2 data together has better performance than the supervised model with the same size of samples. Due to our learned representation being constructed by encoders from two sensor images data with multiple bands information, we argue that the downstream results would perform better on the dataset including both s1 and s2 data, as it appears in the results.
 
