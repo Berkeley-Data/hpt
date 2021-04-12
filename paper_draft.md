@@ -276,7 +276,7 @@ scence classification (multi or single label?)
 
 <img width="308" alt="Screen Shot 2021-04-11 at 11 02 09 PM" src="https://user-images.githubusercontent.com/39634122/114335078-f31a3200-9b19-11eb-8c8a-032bb42fb86e.png">
 
-Table xx shows the impact of batch size when models are trained and evaluate on. When training epochs is small(100, 200), larger batch sizes have a significant advantage over the smaller ones. Having more training epochs, we also shows that the gaps would decrease between different batch size. As such, our pre-trained approach on the MoCo v2 contrastive learning framework in remote sensing imagery helps stabilize the model performance as a function of labeled data set size, compared to supervised model across the same size of data.
+Table xx shows the impact of batch size when models are trained and evaluated on. When training epochs is small(100, 200), larger batch sizes have a significant advantage over the smaller ones. Having more training epochs, we also shows that the gaps would decrease between different batch size. As such, our pre-trained approach on the MoCo v2 contrastive learning framework in remote sensing imagery helps stabilize the model performance as a function of labeled data set size, compared to supervised model across the same size of data.
 
 
 
