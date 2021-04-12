@@ -224,7 +224,7 @@ scence classification (multi-label)
 - Supervised (full) s1, s2 need to be retested with zero padding 12 channel. 
 
 
-### note
+### para
 We perform transfer learning experiments with our two proposed methods on land cover scene classification across xx label class using SEN12MS dataset to understand the quality of the learned representations.
 
 Using the pre-trained with our sensor-based geo-aligned pairs approach, our finetune on the 1,024 samples for the multi-label classification shows that xxx
@@ -233,8 +233,7 @@ Using the pre-trained with our sensor-based geo-aligned pairs approach, our fine
 Whereas by looking at the evaluation results with our geo-alignment data fusion approach on 1,024 samples, as shown in the table, we can see that 
 In general, the downstream multi-class accuracy of our data fusion on moco framework outperform the supervised counterparts.
 Evaluation on both s1 and s2’s performance shows better accuracy compared to s1 or s2 alone. This is inline with our expectations. 
-In terms of the fusion combination, xx
-
+In terms of the fusion combination, xxx
 
 
 
