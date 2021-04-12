@@ -213,7 +213,7 @@ scence classification (multi-label)
 | aug set 2| s1 | s2 | s1/s2 | Note | 
 | --- | --- | --- | --- | --- | 
 | Supervised (full) | [Pretrained model is not provided](https://syncandshare.lrz.de/getlink/fiCDbqiiSFSNwot5exvUcW1y/trained_models) | [.60](https://wandb.ai/cal-capstone/sup_scene_cls/runs/3mg9zr5t) | [.64](https://wandb.ai/cal-capstone/sup_scene_cls/runs/2lda2016) | need to retest s1, s2 with zero padding | 
-| Supervised (1024) | [0.3804](https://wandb.ai/cal-capstone/sup_scene_cls/runs/1j82r3c0) | [0.5342](https://wandb.ai/cal-capstone/sup_scene_cls/runs/20b7py7w) | [.5515](https://wandb.ai/cal-capstone/sup_scene_cls/runs/2t4hbz1a) | Uses the same hyper parameters as full supervised model by sen12ms | 
+| Supervised (1024) | [0.4003](https://wandb.ai/cal-capstone/sup_scene_cls/runs/555fv4cb) | [0.6108](https://wandb.ai/cal-capstone/sup_scene_cls/runs/3m1h27zt) | [.5856](https://wandb.ai/cal-capstone/sup_scene_cls/runs/dpwjby4o) | Uses the same hyper parameters as full supervised model by sen12ms | 
 | --- | --- | --- | --- | --- | 
 | [sensor-based augmentation] | xx | xx | xx | xx | 
 | [all fusion](https://wandb.ai/cal-capstone/hpt4/runs/ak0xdbfu/overview) | ? | ? | [.5957](https://wandb.ai/cal-capstone/scene_classification/runs/2y2q8boi) | |
@@ -261,7 +261,7 @@ scence classification (multi or single label?)
 | aug set 2| s1 | s2 | s1/s2 | Note | 
 | --- | --- | --- | --- | --- | 
 | Supervised (full) | xx | xx | xx | xx | 
-| Supervised (1024) | [.3807] | [.5110] | [.4747] | xx |
+| Supervised (1024) | [.4008](https://wandb.ai/cal-capstone/sup_scene_cls/runs/1lnfsmdi) | [.5496](https://wandb.ai/cal-capstone/sup_scene_cls/runs/3fpzht5f) | [.5423](https://wandb.ai/cal-capstone/sup_scene_cls/runs/1qma48o1) | xx |
 | --- | --- | --- | --- | --- | 
 | [sensor-based augmentation] | xx | xx | xx | xx | 
 | [all fusion]  | xx | xx | xx | xx |
