@@ -215,7 +215,7 @@ scence classification (multi-label)
 | Supervised (full) | [Pretrained model is not provided](https://syncandshare.lrz.de/getlink/fiCDbqiiSFSNwot5exvUcW1y/trained_models) | [.60](https://wandb.ai/cal-capstone/sup_scene_cls/runs/3mg9zr5t) | [.64](https://wandb.ai/cal-capstone/sup_scene_cls/runs/2lda2016) | need to retest s1, s2 with zero padding | 
 | Supervised (1024) | [0.4003](https://wandb.ai/cal-capstone/sup_scene_cls/runs/555fv4cb) | [0.6108](https://wandb.ai/cal-capstone/sup_scene_cls/runs/3m1h27zt) | [.5856](https://wandb.ai/cal-capstone/sup_scene_cls/runs/dpwjby4o) | Uses the same hyper parameters as full supervised model by sen12ms | 
 | --- | --- | --- | --- | --- | 
-| [sensor-based augmentation] | - | [0.63](https://wandb.ai/cal-capstone/SEN12MS/runs/2826nuca) | [0.67](https://wandb.ai/cal-capstone/SEN12MS/runs/22tv0kud) | xx | 
+| [sensor-based augmentation] | - | [0.6277](https://wandb.ai/cal-capstone/SEN12MS/runs/2826nuca) | [0.6697](https://wandb.ai/cal-capstone/SEN12MS/runs/22tv0kud) | xx | 
 | [all fusion](https://wandb.ai/cal-capstone/hpt4/runs/ak0xdbfu/overview) | xx | xx | [.5957](https://wandb.ai/cal-capstone/scene_classification/runs/2y2q8boi) | |
 | [partial fusion](https://wandb.ai/cal-capstone/hpt4/runs/367tz8vs) | [.4729](https://wandb.ai/cal-capstone/scene_classification/runs/1qx384cs) | [.5812](https://wandb.ai/cal-capstone/scene_classification/runs/1bdmms2d) |[.6072](https://wandb.ai/cal-capstone/scene_classification/runs/1meu9iym) | |
 | [optional fusion](https://wandb.ai/cal-capstone/hpt4/runs/2iu8yfs6) | [.4824](https://wandb.ai/cal-capstone/scene_classification/runs/tu3vuefx) | [.5601](https://wandb.ai/cal-capstone/scene_classification/runs/2hdbuxtv) | xx | |
