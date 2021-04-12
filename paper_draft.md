@@ -172,7 +172,7 @@ other findings:
 
 ### Results 
 
-#### Sensor-based Naturally Augmentations
+#### Sensor-based Augmentation
 
 Our sensor-based geo-alignment postive pair approach took sentinel 2 images with 10 bands and sentinel 1 images with 2 bands with the same locations, and had them pass through a convolution 1x1 block before the MoCo v2 framework. Thereafter each of the images outputted a generalizable 3 channels wide images from sentinel 2 and sentinel 1 separately for us to construct the query and key encoder under MoCo v2. 
 
@@ -180,7 +180,7 @@ The evaluations utilizing SEN12MS sense classification pipeline. Overall, multi-
 
 As a result of the finetune/ transfer learning, introducing 1x1 convolution weight from MoCo underperforms the ones without 1x1 convolution block, it appears models adding 1x1 convolution block from MoCo may distort the finetune evaluations, suggesting the representation of the learning may not be optimal. We continue to explore transfer learning using either the simplified dataset and evaluations, or the dataset that has less label noises.
 
-### Geo-alignment Data Fusion
+#### Geo-alignment Data Fusion
 
 aug set 1: resizecrop 
 aug set 2: resizecrop, blur 
