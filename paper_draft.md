@@ -239,12 +239,6 @@ The results of the optional fusion approach also perform slightly less accuracy 
 By only looking at the pre-trained model. The evaluation on both s1 and s2’s performance shows better accuracy compared to s1 or s2 alone. This is inline with our expectations.
 
 
-
-### larger batch size and longer training
-xxx
-
-
-
 #### BigEarthNet Evaluation (TBD)
 scence classification (multi or single label?)
 
@@ -274,6 +268,11 @@ scence classification (multi or single label?)
 | [optional fusion] | [.4478](https://wandb.ai/cal-capstone/scene_classification/runs/36c8z6ae) | [.5120](https://wandb.ai/cal-capstone/scene_classification/runs/3oazvjke) | [.5294](https://wandb.ai/cal-capstone/scene_classification/runs/nar53xcn) | xx|
 
 - Supervised (full) s1, s2 need to be retested with zero padding 12 channel. 
+
+
+### Relationship between different batch size and training epochs (WIP)
+Table xx shows the impact of batch size when models are trained for different number of epochs. When training epochs is small, larger batch sizes have a significant advantage over the smaller ones. Having more training epochs, we shows that the gaps would decrease between different batch size. As such, our pre-trained approach on the MoCo v2 contrastive learning framework in remote sensing imagery helps stabilize the model performance as a function of labeled data set size, compared to supervised model across the same size of data.
+
 
 
 **Note -- [placeholder] to rationale the multi or single label transfer learning** 
