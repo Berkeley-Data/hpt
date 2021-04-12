@@ -219,7 +219,7 @@ scence classification (multi-label)
 | [sensor-based augmentation] | - | [0.6277](https://wandb.ai/cal-capstone/SEN12MS/runs/2826nuca) | [0.6697](https://wandb.ai/cal-capstone/SEN12MS/runs/22tv0kud) | xx | 
 | [all fusion](https://wandb.ai/cal-capstone/hpt4/runs/ak0xdbfu/overview) | xx | [.6251]? | [.5957](https://wandb.ai/cal-capstone/scene_classification/runs/2y2q8boi) | |
 | [partial fusion](https://wandb.ai/cal-capstone/hpt4/runs/367tz8vs) | [.4729](https://wandb.ai/cal-capstone/scene_classification/runs/1qx384cs) | [.5812](https://wandb.ai/cal-capstone/scene_classification/runs/1bdmms2d) |[.6072](https://wandb.ai/cal-capstone/scene_classification/runs/1meu9iym) | |
-| [optional fusion](https://wandb.ai/cal-capstone/hpt4/runs/2iu8yfs6) | [.4824](https://wandb.ai/cal-capstone/scene_classification/runs/tu3vuefx) | [.5601](https://wandb.ai/cal-capstone/scene_classification/runs/2hdbuxtv) | xx | |
+| [optional fusion](https://wandb.ai/cal-capstone/hpt4/runs/2iu8yfs6) | [.4824](https://wandb.ai/cal-capstone/scene_classification/runs/tu3vuefx) | [.5601](https://wandb.ai/cal-capstone/scene_classification/runs/2hdbuxtv) | [.5884](https://wandb.ai/cal-capstone/scene_classification/runs/y5x2xce6) | |
 
 
 - Supervised (full) s1, s2 need to be retested with zero padding 12 channel. 
