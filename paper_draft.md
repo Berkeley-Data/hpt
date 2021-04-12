@@ -227,17 +227,17 @@ scence classification (multi-label)
 ### para
 We perform transfer learning experiments with our two proposed methods on land cover scene classification across xx label class using SEN12MS dataset to understand the quality of the learned representations.
 
-Using the pre-trained with our sensor-based geo-aligned pairs approach, our finetune on the 1,024 samples for the multi-label classification shows that xxx
-
+Using the pre-trained with our sensor-based geo-aligned pairs approach, our finetune on the 1,024 samples for the multi class classification shows that the performance on s1 and s2 data together has better performance than the supervised model with the same size of samples. Due to our learned representation being constructed by encoders from two sensor images data with multiple bands information, we argue that the downstream results would perform better on the dataset including both s1 and s2 data, as it appears in the results.
 
 
 Whereas by looking at the evaluation results with our geo-alignment data fusion approach on 1,024 samples, as shown in the table, we can see that 
 
- - (1) In general, the downstream multi-class accuracy of our data fusion on moco framework results in better performance of the supervised counterparts applying on s1 and s2 data together. Due to our learned representation for the data fusion is on sets of combinations of s1 and s2 data, we argue that the downstream results would perform better on the dataset including both s1 and s2 data, as it appears in the results.
+In general, the downstream multi-class accuracy of our data fusion on moco framework results in better performance of the supervised counterparts applying on s1 and s2 data together. Similar to our first approach result, as our learned representation for the data fusion is on sets of combinations of s1 and s2 data, the downstream results perform better on the dataset including s1 and s2 data.
 
- - (2) The results of the optional fusion approach also perform slightly less accuracy than the full fusion and partial fusion strategy across the combination of the evaluation dataset. 
+The results of the optional fusion approach also perform slightly less accuracy than the full fusion and partial fusion strategy across the combination of the evaluation dataset. 
 
- - (3) By only looking at the pre-trained model. The evaluation on both s1 and s2’s performance shows better accuracy compared to s1 or s2 alone. This is inline with our expectations. 
+By only looking at the pre-trained model. The evaluation on both s1 and s2’s performance shows better accuracy compared to s1 or s2 alone. This is inline with our expectations.
+
 
 
 ### larger batch size and longer training
