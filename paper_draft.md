@@ -271,6 +271,13 @@ scence classification (multi or single label?)
 
 
 ### Relationship between different batch size and training epochs (WIP)
+(similiar to below charts, we don't have time/ train differet batch and epochs, but if we could provide simpler example just to show we are seeting the trends could be good to inline with other papers)
+
+<img width="319" alt="Screen Shot 2021-04-11 at 10 52 27 PM" src="https://user-images.githubusercontent.com/39634122/114334458-98340b00-9b18-11eb-8d55-795e582c6419.png">
+**or**
+<img width="353" alt="Screen Shot 2021-04-11 at 10 52 48 PM" src="https://user-images.githubusercontent.com/39634122/114334483-a4b86380-9b18-11eb-92ab-1402c7ab534a.png">
+
+
 Table xx shows the impact of batch size when models are trained for different number of epochs. When training epochs is small, larger batch sizes have a significant advantage over the smaller ones. Having more training epochs, we shows that the gaps would decrease between different batch size. As such, our pre-trained approach on the MoCo v2 contrastive learning framework in remote sensing imagery helps stabilize the model performance as a function of labeled data set size, compared to supervised model across the same size of data.
 
 
