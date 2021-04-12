@@ -233,11 +233,11 @@ Using the pre-trained with our sensor-based geo-aligned pairs approach, our fine
 
 Whereas by looking at the evaluation results with our geo-alignment data fusion approach on 1,024 samples, as shown in the table, we can see that 
 
-In general, the downstream multi-class accuracy of our data fusion on moco framework results in better performance of the supervised counterparts applying on s1 and s2 data together. Due to our learned representation for the data fusion is on sets of combinations of s1 and s2 data, we argue that the downstream results would perform better on the dataset including both s1 and s2 data, as it appears in the results.
+ - (1) In general, the downstream multi-class accuracy of our data fusion on moco framework results in better performance of the supervised counterparts applying on s1 and s2 data together. Due to our learned representation for the data fusion is on sets of combinations of s1 and s2 data, we argue that the downstream results would perform better on the dataset including both s1 and s2 data, as it appears in the results.
 
- The results of the optional fusion approach also perform slightly less accuracy than the full fusion and partial fusion strategy across the combination of the evaluation dataset. 
+ - (2) The results of the optional fusion approach also perform slightly less accuracy than the full fusion and partial fusion strategy across the combination of the evaluation dataset. 
 
-By only looking at the pre-trained model. The evaluation on both s1 and s2’s performance shows better accuracy compared to s1 or s2 alone. This is inline with our expectations. 
+ - (3) By only looking at the pre-trained model. The evaluation on both s1 and s2’s performance shows better accuracy compared to s1 or s2 alone. This is inline with our expectations. 
 
 
 ### larger batch size and longer training
