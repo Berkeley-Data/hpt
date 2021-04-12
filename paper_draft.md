@@ -216,9 +216,9 @@ scence classification (multi-label)
 | Supervised (1024) | [0.4003](https://wandb.ai/cal-capstone/sup_scene_cls/runs/555fv4cb) | [0.6108](https://wandb.ai/cal-capstone/sup_scene_cls/runs/3m1h27zt) | [.5856](https://wandb.ai/cal-capstone/sup_scene_cls/runs/dpwjby4o) | Uses the same hyper parameters as full supervised model by sen12ms | 
 | --- | --- | --- | --- | --- | 
 | [sensor-based augmentation] | xx | xx | xx | xx | 
-| [all fusion](https://wandb.ai/cal-capstone/hpt4/runs/ak0xdbfu/overview) | ? | ? | [.5957](https://wandb.ai/cal-capstone/scene_classification/runs/2y2q8boi) | |
+| [all fusion](https://wandb.ai/cal-capstone/hpt4/runs/ak0xdbfu/overview) | xx | xx | [.5957](https://wandb.ai/cal-capstone/scene_classification/runs/2y2q8boi) | |
 | [partial fusion](https://wandb.ai/cal-capstone/hpt4/runs/367tz8vs) | [.4729](https://wandb.ai/cal-capstone/scene_classification/runs/1qx384cs) | [.5812](https://wandb.ai/cal-capstone/scene_classification/runs/1bdmms2d) |[.6072](https://wandb.ai/cal-capstone/scene_classification/runs/1meu9iym) | |
-| [optional fusion](https://wandb.ai/cal-capstone/hpt4/runs/2iu8yfs6) | [.4824](https://wandb.ai/cal-capstone/scene_classification/runs/tu3vuefx) | [.5601](https://wandb.ai/cal-capstone/scene_classification/runs/2hdbuxtv) | TBD | |
+| [optional fusion](https://wandb.ai/cal-capstone/hpt4/runs/2iu8yfs6) | [.4824](https://wandb.ai/cal-capstone/scene_classification/runs/tu3vuefx) | [.5601](https://wandb.ai/cal-capstone/scene_classification/runs/2hdbuxtv) | xx | |
 
 
 - Supervised (full) s1, s2 need to be retested with zero padding 12 channel. 
