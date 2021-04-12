@@ -282,10 +282,6 @@ Table xx shows the impact of batch size when models are trained for different nu
 
 
 
-**Note -- [placeholder] to rationale the multi or single label transfer learning** 
-(tmp) multi-label classification results is more appropratie to evaluate the transfer learning in our scene classfication satelitle imagery, becasue xxx
-
-
 ## Conclusion
 xxx
 
@@ -296,5 +292,15 @@ TODO: Use APA style later. Do this once the draft is ready by taking the links i
 [3]  
 [4]  
 [5]  
+
+## Appendix
+
+(1) [placeholder] to rationale the multi or single label transfer learning** 
+(tmp) multi-label classification results is more appropratie to evaluate the transfer learning in our scene classfication satelitle imagery, becasue xxx
+
+(2) more detailed table results if needed xxx
+
+(3) xxx
+
 
 
