@@ -235,6 +235,9 @@ In general, the downstream multi-class accuracy of our data fusion on moco frame
 Evaluation on both s1 and s2’s performance shows better accuracy compared to s1 or s2 alone. This is inline with our expectations. 
 In terms of the fusion combination, xxx
 
+### larger batch size and longer training
+xxx
+
 
 
 #### BigEarthNet Evaluation (TBD)
