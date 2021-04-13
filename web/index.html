@@ -494,6 +494,23 @@
                   area of all original 125 Sentinel-2 tiles with close temporal proximity were
                   selected and processed. BigEarthNet-S1 consists of 590,326 preprocessed Sentinel-1
                   image patches - one for each Sentinel-2 patch.</p>
+               <strong>12 Bands</strong><br>
+               <ol>
+                  <li>B01: Coastal aerosol; 60m (20x20 Pixels)
+                  </li>
+                  <li>B02: Blue; 10m (120x120 Pixels)</li>
+                  <li>B03: Green; 10m (120x120 Pixels)</li>
+                  <li>B04: Red; 10m (120x120 Pixels)</li>
+                  <li>B05: Vegetation red edge 1; 20m (60x60 Pixels)</li>
+                  <li>B06: Vegetation red edge 2; 20m (60x60 Pixels)</li>
+                  <li>B07: Vegetation red edge 3; 20m (60x60 Pixels)</li>
+                  <li>B08: NIR; 10m (120x120 Pixels)</li>
+                  <li>B8A: Narrow NIR; 20m (60x60 Pixels)</li>
+                  <li>B09: Water vapor; 60m (20x20 Pixels)</li>
+                  <li>B11: SWIR; 20m (60x60 Pixels)</li>
+                  <li>B12: SWIR; 20m (60x60 Pixels)</li>
+               </ol><br>
+
                <h5>SEN12MS</h5>
                <p>The <a href="https://arxiv.org/pdf/1906.07789.pdf" target='_blank'>SEN12MS</a> dataset
                   contains 180,662 patch triplets of corresponding Sentinel-1
@@ -518,6 +535,82 @@
                         Land
                         Use, and LCCS Surface Hydrology layers.</li>
                   </ul>
+
+                  <p calss="text-center">
+                     <div class="container text-center">
+                        <img src="images/patch_count_utm.png" width='95%' />
+                        <br>
+                        Figure: Patches per UTM zone</div>
+                     <br>
+                     There are 35,792 non-overlapping patches out of 180662. Only 3847 patches do not have any overlap
+                     on
+                     them. Most patches have up to 8 overlapping areas (few have up to 24).
+                  </p>
+                  <div class="container text-center">
+                     <div class="row">
+                        <div class="col-md-9 mx-auto ">
+                           <br>
+                           <img src="images/patch_overlap.png" />
+                        </div>
+                        <div class="col-md-3 text-left">
+                           <table class="table table-bordered table-hover ">
+                              <thead class="thead-light">
+                                 <tr>
+                                    <th scope="col">Overlap (%)</th>
+                                    <th scope="col">Patches</th>
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                 <tr>
+                                    <td>
+                                       0-15
+                                    </td>
+                                    <td>1313
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td>
+                                       15-25
+                                    </td>
+                                    <td>60195
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td>
+                                       25-50
+                                    </td>
+                                    <td>82618
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td>
+                                       50-95
+                                    </td>
+                                    <td>529
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td>
+                                       >75
+                                    </td>
+                                    <td>215
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                     </div>
+                     Figure: Patches overlap
+                  </div><br>
+                  The data in SEN12MS has 180,662 patches consisting of 3 Geotif files from Sentinel-1, Sentinel-2,
+                  and
+                  MODIS
+                  satellites. Sentinel-1 includes two VV and VH polarized images. Sentinel-2 consists of 13 images for
+                  different wavelength bands where bands 4,3, and 2 are the RGB bands. MODIS Land Cover (Moderate
+                  Resolution Imaging Spectroradiometer) includes two images per satellite. The patches are organized
+                  by
+                  seasons winter, spring, summer, and fall. There is an overlap of 50% per image in the same season.
+
                </p>
                <h5>FMoW</h5>
                <p>Functional Map of the World (<a href=" https://arxiv.org/abs/1711.07846" target='_blank'>fMoW</a>) is
@@ -558,80 +651,7 @@
                   dense_residential,
                   chaparral, mobile_home_park, river; smaller features such as storage-tank and basketball court;
                   and even classes such as sea-ice and cloud.</p>
-               <h4>SEN12MS EDA</h4>
 
-               <p calss="text-center">
-                  <div class="container text-center">
-                     <img src="images/patch_count_utm.png" width='95%' />
-                     <br>
-                     Figure: Patches per UTM zone</div>
-                  <br>
-                  There are 35,792 non-overlapping patches out of 180662. Only 3847 patches do not have any overlap on
-                  them. Most patches have up to 8 overlapping areas (few have up to 24).
-               </p>
-               <div class="container text-center">
-                  <div class="row">
-                     <div class="col-md-9 mx-auto ">
-                        <br>
-                        <img src="images/patch_overlap.png" />
-                     </div>
-                     <div class="col-md-3 text-left">
-                        <table class="table table-bordered table-hover ">
-                           <thead class="thead-light">
-                              <tr>
-                                 <th scope="col">Overlap (%)</th>
-                                 <th scope="col">Patches</th>
-                              </tr>
-                           </thead>
-                           <tbody>
-                              <tr>
-                                 <td>
-                                    0-15
-                                 </td>
-                                 <td>1313
-                                 </td>
-                              </tr>
-                              <tr>
-                                 <td>
-                                    15-25
-                                 </td>
-                                 <td>60195
-                                 </td>
-                              </tr>
-                              <tr>
-                                 <td>
-                                    25-50
-                                 </td>
-                                 <td>82618
-                                 </td>
-                              </tr>
-                              <tr>
-                                 <td>
-                                    50-95
-                                 </td>
-                                 <td>529
-                                 </td>
-                              </tr>
-                              <tr>
-                                 <td>
-                                    >75
-                                 </td>
-                                 <td>215
-                                 </td>
-                              </tr>
-                           </tbody>
-                        </table>
-                     </div>
-                  </div>
-                  Figure: Patches overlap
-               </div><br>
-               The data in SEN12MS has 180,662 patches consisting of 3 Geotif files from Sentinel-1, Sentinel-2, and
-               MODIS
-               satellites. Sentinel-1 includes two VV and VH polarized images. Sentinel-2 consists of 13 images for
-               different wavelength bands where bands 4,3, and 2 are the RGB bands. MODIS Land Cover (Moderate
-               Resolution Imaging Spectroradiometer) includes two images per satellite. The patches are organized by
-               seasons winter, spring, summer, and fall. There is an overlap of 50% per image in the same season.
-               <br>
             </div>
          </div>
       </div>
@@ -662,7 +682,45 @@
             applications.
          </p>
          <p>
-            <h5>Naturally Augmented Positive Pairs</h5>
+            <h5>Method 1 - Sensors-based Geo-alignment Positive Pairs</h5>
+            Given the SEN12MS that provides the largest remote sensing dataset available with its global scene
+            distribution and the
+            wealth of versatile remote sensing information, It is natural to leverage the geo-alignment imagery from
+            different
+            remote sensing sensors while constructing positive or negative pairs . For example, Sentinel 1 consists of
+            two images
+            (vertical and horizontal polarization) and Sentinel 2 consist of thirteen images (different wavelength
+            bands) of the
+            same patch. Any combination from the same patch would correspond to a positive pair without the need of
+            additional
+            augmentation, while negative pairs would correspond to any image from different patches without restriction
+            of the same
+            or different satellites.<br>
+            In short, given an image <strong>x<sub>i</sub>(s1)</strong> collected from sentinel 1, we can randomly
+            select another
+            image <strong>x<sub>i</sub>s2</strong> collected from
+            sentinel 2 that is geographically aligned with the <strong>x<sub>i</sub>(s1)</strong> , and then have them
+            passthrough
+            MoCo-v2 to the geographically
+            aligned image pair <strong>x<sub>i</sub>(s1)</strong> and <strong>x<sub>i</sub>(s2)</strong>, which provides
+            us with
+            a sensor-based
+            geo-alignment positive pair (v and v<sup>'</sup>) that can be used for training the contrastive learning
+            framework by the query and key encoders in
+            MoCo-v2.<br>
+            <strong>1x1 Convolution filters</strong>
+            From the above perspective of the training methods in contrastive learning, including naturally augmented
+            positive and negative pairs and the data fusion approach, we noticed that the volume (bands) of the inputs
+            from different sensors are different. In order to match the typical dimensions of the image channels, our
+            study also applies the Network in <a href='https://arxiv.org/pdf/1312.4400.pdf'>Network concept (Min Lin
+               et al)</a> to the sourced images
+            in the sensor-based geo-aligment pairs scheme, as well as the data fusioned image in our second set of
+            experiments. As such, we introduced an extra layer of one by one convolution filter block to perform cross
+            channel sampling, thereby matching and aligning the depth of the channels from different sensor images
+            while introducing non-linearity before the MoCo v2 encoding. With the implementation, we leverage this
+            trick to carry out a pretty non-trivial computation on the input volume whereas we hope to increase the
+            generalization capability in the network.<br>
+
             <div class="container text-center">
 
                <div class="row">
@@ -686,23 +744,22 @@
             sensing sensors while constructing positive
             or negative pairs since it can provide us with extra semantically meaningful information of a place from
             different sensors.
-
          </p>
-
          <p>
-            <h5>Pre-training on SEN12MS</h5>
-            Provide description on how the positive images have been identified based on the dataset and how they have
-            been provided as positive samples to MoCo-v2.
-
-
+            <h5>Method 2 - Geo-alignment Data Fusion</h5>
+            Instead of the first approach, we data fusioned sentinel 1 (2 bands) and sentinel 2 images (10 bands)
+            together with the same locations and apply a set of combinations of images including sentinel 1 and
+            sentinel 2 together, sentinel 2 only, and sentinel 1 only to construct one fusioned image. In a sense that
+            we build a straightforward constraving learning directly under MoCo v2.<br>
          </p>
-
          <p>
-            <h5>Transfer Learning Experiments</h5>
-            Will be updated once the tasks are identified.
+
          </p>
-         <br><br>
-         TODO: Provide deep dive analysis on the Solution.
+         <p>
+            <h5>Naturally Augmented Positive Pairs</h5>
+
+
+         </p>
 
 
       </div>
