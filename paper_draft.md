@@ -67,7 +67,7 @@ We want to show that our approach to using images from different satellites for 
 To validate our ideas, we did experiments on datasets with different satellite imageries with variations in dataset size, channels, and image ground resolutions. The statistics of these datasets are given below. Readers are requested to see the the supplementary materials for examples and additional details of these datasets.  
 | Dataset  | Satellites  | Number of Images  | Image Size  |  Labels | Notes  |
 |---|---|---|---|---|---|
-| [BigEarthNet](https://arxiv.org/pdf/1902.06148.pdf)  | Sentinel-2A/B |590,326 patches; 12 Bands | 20x20 to 120x120  | Multiple, up to 43  | No overlapping; 10 European Countries |
+| [BigEarthNet](https://arxiv.org/pdf/1902.06148.pdf)  | Sentinel-2A/B |590,326 patches; 12 Bands | 20x20 to 120x120  | Multiple, 43 Full and 19 Simplified | No overlapping; 10 European Countries |
 | [SEN12MS](https://arxiv.org/pdf/1906.07789.pdf)   | Sentinel-1A/B; Sentinel-2A/B; MODIS (Terra and Aqua)  | 541,986 patches; 180662 triplets (3\*180662); 4, 2 and 13 Bands     | 256X256  | Single, 17 Full and 10 Simplified  | Partial overlapping |
 | [FMoW](https://arxiv.org/abs/1711.07846)   | QuickBird-2; GeoEye-1; WorldView-2; WorldView-3  | 1,047,691 patches; 4, 8 and RGB Bands  | Variable Over 2500x2500  | Multiple, up to 63; Bounding Box Annotations | Includes False Detection; Variable timestamp overlapping  |
 
