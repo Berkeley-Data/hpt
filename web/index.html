@@ -151,13 +151,18 @@
                            <div class="col-md-6 mx-auto border-right">
 
                               <p>
-                                 <img src="images/moco_framework.png" width="500px" />
+                                 <img src="images/architecture_method1.png" height="240px" /><br>
+                                 <strong>Method 1 - Sensor-based Geo-alignment Pairs</strong>
+
                               </p>
                            </div>
                            <div class="col-md-6 mx-auto ">
 
                               <p>
-                                 <img src="images/current_approach.png" width="500px" />
+                                 <img src="images/architecture_method2.png" height="240px" /><br>
+                                 <strong>Method 2 - Geo-alignment Data Fusion</strong>
+
+
                               </p>
                            </div>
                         </div>
@@ -489,6 +494,23 @@
                   area of all original 125 Sentinel-2 tiles with close temporal proximity were
                   selected and processed. BigEarthNet-S1 consists of 590,326 preprocessed Sentinel-1
                   image patches - one for each Sentinel-2 patch.</p>
+               <strong>12 Bands</strong><br>
+               <ol>
+                  <li>B01: Coastal aerosol; 60m (20x20 Pixels)
+                  </li>
+                  <li>B02: Blue; 10m (120x120 Pixels)</li>
+                  <li>B03: Green; 10m (120x120 Pixels)</li>
+                  <li>B04: Red; 10m (120x120 Pixels)</li>
+                  <li>B05: Vegetation red edge 1; 20m (60x60 Pixels)</li>
+                  <li>B06: Vegetation red edge 2; 20m (60x60 Pixels)</li>
+                  <li>B07: Vegetation red edge 3; 20m (60x60 Pixels)</li>
+                  <li>B08: NIR; 10m (120x120 Pixels)</li>
+                  <li>B8A: Narrow NIR; 20m (60x60 Pixels)</li>
+                  <li>B09: Water vapor; 60m (20x20 Pixels)</li>
+                  <li>B11: SWIR; 20m (60x60 Pixels)</li>
+                  <li>B12: SWIR; 20m (60x60 Pixels)</li>
+               </ol><br>
+
                <h5>SEN12MS</h5>
                <p>The <a href="https://arxiv.org/pdf/1906.07789.pdf" target='_blank'>SEN12MS</a> dataset
                   contains 180,662 patch triplets of corresponding Sentinel-1
@@ -513,6 +535,82 @@
                         Land
                         Use, and LCCS Surface Hydrology layers.</li>
                   </ul>
+
+                  <p calss="text-center">
+                     <div class="container text-center">
+                        <img src="images/patch_count_utm.png" width='95%' />
+                        <br>
+                        Figure: Patches per UTM zone</div>
+                     <br>
+                     There are 35,792 non-overlapping patches out of 180662. Only 3847 patches do not have any overlap
+                     on
+                     them. Most patches have up to 8 overlapping areas (few have up to 24).
+                  </p>
+                  <div class="container text-center">
+                     <div class="row">
+                        <div class="col-md-9 mx-auto ">
+                           <br>
+                           <img src="images/patch_overlap.png" />
+                        </div>
+                        <div class="col-md-3 text-left">
+                           <table class="table table-bordered table-hover ">
+                              <thead class="thead-light">
+                                 <tr>
+                                    <th scope="col">Overlap (%)</th>
+                                    <th scope="col">Patches</th>
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                 <tr>
+                                    <td>
+                                       0-15
+                                    </td>
+                                    <td>1313
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td>
+                                       15-25
+                                    </td>
+                                    <td>60195
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td>
+                                       25-50
+                                    </td>
+                                    <td>82618
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td>
+                                       50-95
+                                    </td>
+                                    <td>529
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td>
+                                       >75
+                                    </td>
+                                    <td>215
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                     </div>
+                     Figure: Patches overlap
+                  </div><br>
+                  The data in SEN12MS has 180,662 patches consisting of 3 Geotif files from Sentinel-1, Sentinel-2,
+                  and
+                  MODIS
+                  satellites. Sentinel-1 includes two VV and VH polarized images. Sentinel-2 consists of 13 images for
+                  different wavelength bands where bands 4,3, and 2 are the RGB bands. MODIS Land Cover (Moderate
+                  Resolution Imaging Spectroradiometer) includes two images per satellite. The patches are organized
+                  by
+                  seasons winter, spring, summer, and fall. There is an overlap of 50% per image in the same season.
+
                </p>
                <h5>FMoW</h5>
                <p>Functional Map of the World (<a href=" https://arxiv.org/abs/1711.07846" target='_blank'>fMoW</a>) is
@@ -553,80 +651,7 @@
                   dense_residential,
                   chaparral, mobile_home_park, river; smaller features such as storage-tank and basketball court;
                   and even classes such as sea-ice and cloud.</p>
-               <h4>SEN12MS EDA</h4>
 
-               <p calss="text-center">
-                  <div class="container text-center">
-                     <img src="images/patch_count_utm.png" width='95%' />
-                     <br>
-                     Figure: Patches per UTM zone</div>
-                  <br>
-                  There are 35,792 non-overlapping patches out of 180662. Only 3847 patches do not have any overlap on
-                  them. Most patches have up to 8 overlapping areas (few have up to 24).
-               </p>
-               <div class="container text-center">
-                  <div class="row">
-                     <div class="col-md-9 mx-auto ">
-                        <br>
-                        <img src="images/patch_overlap.png" />
-                     </div>
-                     <div class="col-md-3 text-left">
-                        <table class="table table-bordered table-hover ">
-                           <thead class="thead-light">
-                              <tr>
-                                 <th scope="col">Overlap (%)</th>
-                                 <th scope="col">Patches</th>
-                              </tr>
-                           </thead>
-                           <tbody>
-                              <tr>
-                                 <td>
-                                    0-15
-                                 </td>
-                                 <td>1313
-                                 </td>
-                              </tr>
-                              <tr>
-                                 <td>
-                                    15-25
-                                 </td>
-                                 <td>60195
-                                 </td>
-                              </tr>
-                              <tr>
-                                 <td>
-                                    25-50
-                                 </td>
-                                 <td>82618
-                                 </td>
-                              </tr>
-                              <tr>
-                                 <td>
-                                    50-95
-                                 </td>
-                                 <td>529
-                                 </td>
-                              </tr>
-                              <tr>
-                                 <td>
-                                    >75
-                                 </td>
-                                 <td>215
-                                 </td>
-                              </tr>
-                           </tbody>
-                        </table>
-                     </div>
-                  </div>
-                  Figure: Patches overlap
-               </div><br>
-               The data in SEN12MS has 180,662 patches consisting of 3 Geotif files from Sentinel-1, Sentinel-2, and
-               MODIS
-               satellites. Sentinel-1 includes two VV and VH polarized images. Sentinel-2 consists of 13 images for
-               different wavelength bands where bands 4,3, and 2 are the RGB bands. MODIS Land Cover (Moderate
-               Resolution Imaging Spectroradiometer) includes two images per satellite. The patches are organized by
-               seasons winter, spring, summer, and fall. There is an overlap of 50% per image in the same season.
-               <br>
             </div>
          </div>
       </div>
@@ -657,7 +682,45 @@
             applications.
          </p>
          <p>
-            <h5>Naturally Augmented Positive Pairs</h5>
+            <h5>Method 1 - Sensors-based Geo-alignment Positive Pairs</h5>
+            Given the SEN12MS that provides the largest remote sensing dataset available with its global scene
+            distribution and the
+            wealth of versatile remote sensing information, It is natural to leverage the geo-alignment imagery from
+            different
+            remote sensing sensors while constructing positive or negative pairs . For example, Sentinel 1 consists of
+            two images
+            (vertical and horizontal polarization) and Sentinel 2 consist of thirteen images (different wavelength
+            bands) of the
+            same patch. Any combination from the same patch would correspond to a positive pair without the need of
+            additional
+            augmentation, while negative pairs would correspond to any image from different patches without restriction
+            of the same
+            or different satellites.<br>
+            In short, given an image <strong>x<sub>i</sub>(s1)</strong> collected from sentinel 1, we can randomly
+            select another
+            image <strong>x<sub>i</sub>s2</strong> collected from
+            sentinel 2 that is geographically aligned with the <strong>x<sub>i</sub>(s1)</strong> , and then have them
+            passthrough
+            MoCo-v2 to the geographically
+            aligned image pair <strong>x<sub>i</sub>(s1)</strong> and <strong>x<sub>i</sub>(s2)</strong>, which provides
+            us with
+            a sensor-based
+            geo-alignment positive pair (v and v<sup>'</sup>) that can be used for training the contrastive learning
+            framework by the query and key encoders in
+            MoCo-v2.<br>
+            <strong>1x1 Convolution filters</strong>
+            From the above perspective of the training methods in contrastive learning, including naturally augmented
+            positive and negative pairs and the data fusion approach, we noticed that the volume (bands) of the inputs
+            from different sensors are different. In order to match the typical dimensions of the image channels, our
+            study also applies the Network in <a href='https://arxiv.org/pdf/1312.4400.pdf'>Network concept (Min Lin
+               et al)</a> to the sourced images
+            in the sensor-based geo-aligment pairs scheme, as well as the data fusioned image in our second set of
+            experiments. As such, we introduced an extra layer of one by one convolution filter block to perform cross
+            channel sampling, thereby matching and aligning the depth of the channels from different sensor images
+            while introducing non-linearity before the MoCo v2 encoding. With the implementation, we leverage this
+            trick to carry out a pretty non-trivial computation on the input volume whereas we hope to increase the
+            generalization capability in the network.<br>
+
             <div class="container text-center">
 
                <div class="row">
@@ -681,23 +744,22 @@
             sensing sensors while constructing positive
             or negative pairs since it can provide us with extra semantically meaningful information of a place from
             different sensors.
-
          </p>
-
          <p>
-            <h5>Pre-training on SEN12MS</h5>
-            Provide description on how the positive images have been identified based on the dataset and how they have
-            been provided as positive samples to MoCo-v2.
-
-
+            <h5>Method 2 - Geo-alignment Data Fusion</h5>
+            Instead of the first approach, we data fusioned sentinel 1 (2 bands) and sentinel 2 images (10 bands)
+            together with the same locations and apply a set of combinations of images including sentinel 1 and
+            sentinel 2 together, sentinel 2 only, and sentinel 1 only to construct one fusioned image. In a sense that
+            we build a straightforward constraving learning directly under MoCo v2.<br>
          </p>
-
          <p>
-            <h5>Transfer Learning Experiments</h5>
-            Will be updated once the tasks are identified.
+
          </p>
-         <br><br>
-         TODO: Provide deep dive analysis on the Solution.
+         <p>
+            <h5>Naturally Augmented Positive Pairs</h5>
+
+
+         </p>
 
 
       </div>
@@ -708,99 +770,223 @@
          <div class="row">
             <div class="col-lg-12 mx-auto text-left">
                <h2>Results</h2>
+
                <br>
-               <h5>BigEarthNet - Supervised Learning</h5>
-               <div class="col-md-10 text-left">
+               <h5>Scene Classification Results - SEN12MS</h5>
+               <div class="col-md-4 text-left">
+
                   <table class="table table-bordered table-hover table-responsive text-left">
                      <thead class="thead-light">
                         <tr>
-                           <th scope="col">Data</th>
-                           <th scope="col">50/50 [AUC (F1-score)]</th>
-                           <th scope="col">10/90 [AUC (F1-score)]</th>
-                           <th scope="col">No downsample [AUC (F1-score)]</th>
-                           <th scope="col">Multiclass - No downsample [F1-score (P/R)]</th>
+                           <th scope="col">Pre-train / Accuracy (%)</th>
+                           <th scope="col">S1</th>
+                           <th scope="col">S2</th>
+                           <th scope="col">S1+S2</th>
                         </tr>
                      </thead>
                      <tbody>
                         <tr>
-                           <th scope="row">1%
+                           <th scope="row">Sup. Learning
                            </th>
                            <td>
-                              0.845 (0.090)
+                              40.0
                            </td>
-                           <td>0.893 (0.153)
+                           <td>61.0
                            </td>
-                           <td>0.5 (0)</td>
-                           <td>0.647 (0.688/0.606)</td>
+                           <td>58.6</td>
                         </tr>
+                        <thead class="thead-light">
+                           <tr>
+                              <th scope="col"></th>
+                              <th scope="col"></th>
+                              <th scope="col"></th>
+                              <th scope="col"></th>
+                           </tr>
+                        </thead>
                         <tr>
-                           <th scope="row">3%
+                           <th scope="row">Sensor-based Augmentation
                            </th>
                            <td>
-                              0.904 (0.159)
                            </td>
-                           <td>0.921 (0.284)
-                           </td>
-                           <td>0.814 (0)</td>
-                           <td> 0.666 (0.711/0.626)</td>
-                        </tr>
-                        <tr>
-                           <th scope="row">5%</th>
                            <td>
-                              0.923 (0.242)
+                              62.8
                            </td>
-                           <td>0.943 (0.300)
-                           </td>
-                           <td>0.884 (0)</td>
-                           <td>0.688 (0.767/0.624)
+                           <td>
                            </td>
                         </tr>
                         <tr>
-                           <th scope=" row">10%</th>
-                           <td>0.944 (0.251)</td>
-                           <td>0.932 (0.255)
+                           <th scope="row">Full Fusion
+                           </th>
+                           <td>
+                              50.5
                            </td>
-                           <td>0.913 (0)</td>
-                           <td>0.714 (0.790/0.652)
+                           <td>
+                              62.5
+                           </td>
+                           <td>
+                              59.6
                            </td>
                         </tr>
                         <tr>
-                           <th scope=" row">100%</th>
-                           <td>0.964 (0.314)</td>
-                           <td>0.973 (0.529)
+                           <th scope="row">Partial Fusion
+                           </th>
+                           <td>
+                              47.3
                            </td>
-                           <td>0.973 (0.478)</td>
-                           <td>0.749 (0.796/0.708)
+                           <td>
+                              58.1
+                           </td>
+                           <td>
+                              60.7
                            </td>
                         </tr>
+                        <tr>
+                           <th scope="row">Optional Fusion
+                           </th>
+                           <td>
+                              48.2
+                           </td>
+                           <td>
+                              56.1
+                           </td>
+                           <td>
+                              58.8
+                           </td>
+                        </tr>
+
                      </tbody>
                   </table>
                </div>
+               <p>
+                  We perform transfer learning experiments with our two proposed methods on land cover scene
+                  classification across ten label classes using the SEN12MS dataset to understand the quality of the
+                  learned representations. Given that the image samples are randomly sampled to positive and negative
+                  pairs in MoCo v2 to compute the loss during training processes, we have finetuned with different
+                  hyper-parameters and selected the best results on each of the evaluation datasets in our reporting.
+
+                  Using the pre-trained with our sensor-based geo-aligned pairs approach, our finetune on the 1,024
+                  samples for the multi-class classification shows that the performance on s1 and s2 data together has
+                  better performance than the supervised model with the same size of samples. Due to our learned
+                  representation being constructed by encoders from two sensor images data with multiple bands
+                  information, we argue that the downstream results would perform better on the dataset, including both
+                  s1 and s2 data, as it appears in the results.
+
+                  Whereas by looking at the evaluation results with our geo-alignment data fusion approach on 1,024
+                  samples, as shown in the table, we can see that
+
+                  <ol>
+                     <li>
+                        In general, the downstream multi-class accuracy of our data fusion on the moco framework results
+                        in
+                        better performance of the supervised counterparts applying on s1 and s2 data together. Similar
+                        to our
+                        first approach result, as our learned representation for the data fusion is on sets of
+                        combinations of
+                        s1 and s2 data, the downstream results perform better on the dataset, including s1 and s2 data.
+                     </li>
+
+                     <li>
+                        The optional fusion approach results perform slightly less accuracy than the full fusion and
+                        partial
+                        fusion strategy across the evaluation dataset's combination.
+                     </li>
+
+                     <li>
+                        By only looking at the pre-trained model, the evaluation of both s1 and s2's performance shows
+                        better
+                        accuracy than s1 or s2 alone. This is in line with our expectations.
+                     </li>
+                  </ol>
+
+               </p>
                <br>
-               <h5>SEN12MS - Supervised Learning</h5>
+               <h5>Scene Classification Results - BigEarthNet</h5>
                <div class="col-md-4 text-left">
-                  <table class="table table-bordered table-hover ">
+
+                  <table class="table table-bordered table-hover table-responsive text-left">
                      <thead class="thead-light">
                         <tr>
-                           <th scope="col">Data</th>
-                           <th scope="col">Acc.</th>
-                           <th scope="col">Pre.</th>
-                           <th scope="col">Rec.</th>
+                           <th scope="col">Pre-train / Accuracy (%)</th>
+                           <th scope="col">S1</th>
+                           <th scope="col">S2</th>
+                           <th scope="col">S1+S2</th>
                         </tr>
                      </thead>
                      <tbody>
                         <tr>
+                           <th scope="row">Sup. Learning
+                           </th>
                            <td>
-                              30%
+                              40.1
                            </td>
-                           <td>0.791
+                           <td>54.9
                            </td>
-                           <td>0.874</td>
-                           <td>0.878</td>
+                           <td>54.2</td>
                         </tr>
+                        <thead class="thead-light">
+                           <tr>
+                              <th scope="col"></th>
+                              <th scope="col"></th>
+                              <th scope="col"></th>
+                              <th scope="col"></th>
+                           </tr>
+                        </thead>
+                        <tr>
+                           <th scope="row">Sensor-based Augmentation
+                           </th>
+                           <td>
+                           </td>
+                           <td>
+
+                           </td>
+                           <td>
+                           </td>
+                        </tr>
+                        <tr>
+                           <th scope="row">Full Fusion
+                           </th>
+                           <td>
+                              45.6
+                           </td>
+                           <td>
+                              55.3
+                           </td>
+                           <td>
+
+                           </td>
+                        </tr>
+                        <tr>
+                           <th scope="row">Partial Fusion
+                           </th>
+                           <td>
+                              42.8
+                           </td>
+                           <td>
+                              53.5
+                           </td>
+                           <td>
+                              53.5
+                           </td>
+                        </tr>
+                        <tr>
+                           <th scope="row">Optional Fusion
+                           </th>
+                           <td>
+                              44.8
+                           </td>
+                           <td>
+                              51.2
+                           </td>
+                           <td>
+                              52.9
+                           </td>
+                        </tr>
+
                      </tbody>
                   </table>
+
                </div>
+               <p>We demonstrate similar results finding to sen12ms. </p>
             </div>
          </div>
       </div>
@@ -810,7 +996,26 @@
          <div class="row">
             <div class="col-lg-12 mx-auto">
                <h2>Future work</h2>
-               <p>Will be updated once the results from MoCo-v2 are available and analysis is done.</p>
+               <p> In terms of our future work, further study can be done as:
+
+                  <ol>
+                     <li>The SEN12MS data in our finetune has existing noises in terms of land cover labels. Therefore,
+                        the
+                        highest accuracy we could get maybe constrained and introduce irreducible errors. A more clear
+                        labeled
+                        data or simplified dataset in our finetune would be necessary to better understand our
+                        representations
+                        quality.</li>
+                     <li>
+                        Another aspect is to perform our pre-trained model between different batch sizes and epochs to
+                        understand better how our approach under MoCo v2 could benefit more than the supervised model in
+                        remote
+                        sensing imagery. This requires more resources, training, and evaluation time.
+                     </li>
+                  </ol>
+
+                  Together with the above, if we understand better the finetuning strategies, our pre-trained and
+                  evaluation processes could improve efficiency and efficacy.</p>
             </div>
          </div>
       </div>
@@ -821,18 +1026,23 @@
             <div class="col-lg-12 mx-auto">
                <h2>Conclusion</h2>
                <p>
-                  Conclusion will be provided once the results are available from Moco-V2. The following is the current
-                  research direction:
-                  <ul>
-                     <li>Using MoCo-v2 as contrastive self-supervised learning algorithm</li>
-                     <li>Pre-training on SEN12MS using positive pairs (same location) from multiple sensors</li>
-                     <li>Downstream task will be identified soon</li>
-                  </ul>
+
+                  With many reviews and studies through our processes, we leverage large-scale training data that
+                  include versatile remote sensing information from different sensors with global scene distributions to
+                  build the sensor-based location invariance momentum contrast for representation learning. With the
+                  advantage of the MoCo framework, we proposed two methods to experiment with the learned
+                  representations. In our transfer learning tasks, we are excited to see the results are pretty much
+                  aligned with our expectations, and that helps us understand the qualities of our learned
+                  representations so far. Overall, we demonstrate that natural augmentation and data fusion helps bridge
+                  the gaps between self-supervised learning and sup. learning models.
+
+
                </p>
                <p>
-                  We believe that our approach to using images from different satellites for the same location as
-                  naturally augmented images as input to the MoCo-v2 method provides high-quality representations and
-                  transferable initializations for satellite imagery interpretation.
+
+                  We are humble to explore and pleased to accomplish the solutions so far in remote sensing
+                  applications.
+
                </p>
             </div>
          </div>
