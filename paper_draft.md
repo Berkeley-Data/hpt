@@ -19,7 +19,8 @@ While MoCo and other contrastive learning methods have demonstrated promising re
 
 Traditional contrative learning utilizes augmentation to generate positive pair. Inspired by recent success (Geo-aware Paper) using natural augmentation to create positive pairs, we propose to use positive pairs from different sensors for the same location.    
 
-In this work, we demonstrate that pre-training [MoCo-v2](https://openaccess.thecvf.com/content_CVPR_2020/papers/He_Momentum_Contrast_for_Unsupervised_Visual_Representation_Learning_CVPR_2020_paper.pdf) on data from multiple sensors lead to improved representations for remote sensing applications.
+In this work, we demonstrate that pre-training [MoCo-v2](https://openaccess.thecvf.com/content_CVPR_2020/papers/He_Momentum_Contrast_for_Unsupervised_Visual_Representation_Learning_CVPR_2020_paper.pdf) on data from multiple sensors lead to improved representations for remote sensing applications.  
+![](web/images/architectures_1_and_2.png)
 
 ## Related Work
 #### Self-supervised contrastive learning
@@ -92,8 +93,6 @@ In this section, we briefly review Contrastive Learning Framework for unsupervis
 **Multiple-Sensor**
 Update on different bands, different satellites etc. with images.  
 
-![](web/images/moco_framework.png)![](web/images/current_approach.png)
-
 #### 1. Contrastive Learning Framework
 Contrastive methods attempt to learn a mapping f<sub>q</sub> from raw pixels to semantically meaningful representations z in an unsupervised way. The training objective encourages representations corresponding to pairs of images that are known a priori to be semantically similar (positive pairs) to be closer to each other than typical unrelated pairs (negative pairs). With similarity measured by dot product, recent approaches in contrastive learning differ in the type of contrastive loss and generation of positive and negative pairs. In this work, we focus on the state-of-the-art contrastive learning framework [MoCo-v2](https://arxiv.org/pdf/2003.04297.pdf), an improved version of [MoCo](https://arxiv.org/pdf/1911.05722.pdf), and study improved methods for the construction of positive and negative pairs tailored to remote sensing applications.
 
@@ -112,7 +111,6 @@ What we used are the actual images from the same location but different sensors.
 xxxxx
 
 #### 3. Geo-alignment Data Fusion 
-(insert) architecture diagram  --
 
 Instead of the first approach, we data fusioned sentinel 1 (2 bands) and sentinel 2 images (10 bands) together with the same locations and apply a set of combinations of images including sentinel 1 and sentinel 2 together, sentinel 2 only, and sentinel 1 only to construct one fusioned image. In a sense that we build a straightforward constraving learning directly under MoCo v2. 
 
