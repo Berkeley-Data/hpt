@@ -708,98 +708,221 @@
          <div class="row">
             <div class="col-lg-12 mx-auto text-left">
                <h2>Results</h2>
+
                <br>
-               <h5>BigEarthNet - Supervised Learning</h5>
-               <div class="col-md-10 text-left">
+               <h5>Scene Classification Results - SEN12MS</h5>
+               <div class="col-md-4 text-left">
+
                   <table class="table table-bordered table-hover table-responsive text-left">
                      <thead class="thead-light">
                         <tr>
-                           <th scope="col">Data</th>
-                           <th scope="col">50/50 [AUC (F1-score)]</th>
-                           <th scope="col">10/90 [AUC (F1-score)]</th>
-                           <th scope="col">No downsample [AUC (F1-score)]</th>
-                           <th scope="col">Multiclass - No downsample [F1-score (P/R)]</th>
+                           <th scope="col">Pre-train / Accuracy (%)</th>
+                           <th scope="col">S1</th>
+                           <th scope="col">S2</th>
+                           <th scope="col">S1+S2</th>
                         </tr>
                      </thead>
                      <tbody>
                         <tr>
-                           <th scope="row">1%
+                           <th scope="row">Sup. Learning
                            </th>
                            <td>
-                              0.845 (0.090)
+                              40.0
                            </td>
-                           <td>0.893 (0.153)
+                           <td>61.0
                            </td>
-                           <td>0.5 (0)</td>
-                           <td>0.647 (0.688/0.606)</td>
+                           <td>58.6</td>
                         </tr>
+                        <thead class="thead-light">
+                           <tr>
+                              <th scope="col"></th>
+                              <th scope="col"></th>
+                              <th scope="col"></th>
+                              <th scope="col"></th>
+                           </tr>
+                        </thead>
                         <tr>
-                           <th scope="row">3%
+                           <th scope="row">Sensor-based Augmentation
                            </th>
                            <td>
-                              0.904 (0.159)
                            </td>
-                           <td>0.921 (0.284)
-                           </td>
-                           <td>0.814 (0)</td>
-                           <td> 0.666 (0.711/0.626)</td>
-                        </tr>
-                        <tr>
-                           <th scope="row">5%</th>
                            <td>
-                              0.923 (0.242)
+                              62.8
                            </td>
-                           <td>0.943 (0.300)
-                           </td>
-                           <td>0.884 (0)</td>
-                           <td>0.688 (0.767/0.624)
+                           <td>
                            </td>
                         </tr>
                         <tr>
-                           <th scope=" row">10%</th>
-                           <td>0.944 (0.251)</td>
-                           <td>0.932 (0.255)
+                           <th scope="row">Full Fusion
+                           </th>
+                           <td>
+                              50.5
                            </td>
-                           <td>0.913 (0)</td>
-                           <td>0.714 (0.790/0.652)
+                           <td>
+                              62.5
+                           </td>
+                           <td>
+                              59.6
                            </td>
                         </tr>
                         <tr>
-                           <th scope=" row">100%</th>
-                           <td>0.964 (0.314)</td>
-                           <td>0.973 (0.529)
+                           <th scope="row">Partial Fusion
+                           </th>
+                           <td>
+                              47.3
                            </td>
-                           <td>0.973 (0.478)</td>
-                           <td>0.749 (0.796/0.708)
+                           <td>
+                              58.1
+                           </td>
+                           <td>
+                              60.7
                            </td>
                         </tr>
+                        <tr>
+                           <th scope="row">Optional Fusion
+                           </th>
+                           <td>
+                              48.2
+                           </td>
+                           <td>
+                              56.1
+                           </td>
+                           <td>
+                              58.8
+                           </td>
+                        </tr>
+
                      </tbody>
                   </table>
                </div>
+               <p>
+                  We perform transfer learning experiments with our two proposed methods on land cover scene
+                  classification across ten label classes using the SEN12MS dataset to understand the quality of the
+                  learned representations. Given that the image samples are randomly sampled to positive and negative
+                  pairs in MoCo v2 to compute the loss during training processes, we have finetuned with different
+                  hyper-parameters and selected the best results on each of the evaluation datasets in our reporting.
+
+                  Using the pre-trained with our sensor-based geo-aligned pairs approach, our finetune on the 1,024
+                  samples for the multi-class classification shows that the performance on s1 and s2 data together has
+                  better performance than the supervised model with the same size of samples. Due to our learned
+                  representation being constructed by encoders from two sensor images data with multiple bands
+                  information, we argue that the downstream results would perform better on the dataset, including both
+                  s1 and s2 data, as it appears in the results.
+
+                  Whereas by looking at the evaluation results with our geo-alignment data fusion approach on 1,024
+                  samples, as shown in the table, we can see that
+
+                  <ol>
+                     <li>
+                        In general, the downstream multi-class accuracy of our data fusion on the moco framework results
+                        in
+                        better performance of the supervised counterparts applying on s1 and s2 data together. Similar
+                        to our
+                        first approach result, as our learned representation for the data fusion is on sets of
+                        combinations of
+                        s1 and s2 data, the downstream results perform better on the dataset, including s1 and s2 data.
+                     </li>
+
+                     <li>
+                        The optional fusion approach results perform slightly less accuracy than the full fusion and
+                        partial
+                        fusion strategy across the evaluation dataset's combination.
+                     </li>
+
+                     <li>
+                        By only looking at the pre-trained model, the evaluation of both s1 and s2's performance shows
+                        better
+                        accuracy than s1 or s2 alone. This is in line with our expectations.
+                     </li>
+                  </ol>
+
+               </p>
                <br>
-               <h5>SEN12MS - Supervised Learning</h5>
+               <h5>Scene Classification Results - BigEarthNet</h5>
                <div class="col-md-4 text-left">
-                  <table class="table table-bordered table-hover ">
+
+                  <table class="table table-bordered table-hover table-responsive text-left">
                      <thead class="thead-light">
                         <tr>
-                           <th scope="col">Data</th>
-                           <th scope="col">Acc.</th>
-                           <th scope="col">Pre.</th>
-                           <th scope="col">Rec.</th>
+                           <th scope="col">Pre-train / Accuracy (%)</th>
+                           <th scope="col">S1</th>
+                           <th scope="col">S2</th>
+                           <th scope="col">S1+S2</th>
                         </tr>
                      </thead>
                      <tbody>
                         <tr>
+                           <th scope="row">Sup. Learning
+                           </th>
                            <td>
-                              30%
+                              40.1
                            </td>
-                           <td>0.791
+                           <td>54.9
                            </td>
-                           <td>0.874</td>
-                           <td>0.878</td>
+                           <td>54.2</td>
                         </tr>
+                        <thead class="thead-light">
+                           <tr>
+                              <th scope="col"></th>
+                              <th scope="col"></th>
+                              <th scope="col"></th>
+                              <th scope="col"></th>
+                           </tr>
+                        </thead>
+                        <tr>
+                           <th scope="row">Sensor-based Augmentation
+                           </th>
+                           <td>
+                           </td>
+                           <td>
+
+                           </td>
+                           <td>
+                           </td>
+                        </tr>
+                        <tr>
+                           <th scope="row">Full Fusion
+                           </th>
+                           <td>
+                              45.6
+                           </td>
+                           <td>
+                              55.3
+                           </td>
+                           <td>
+
+                           </td>
+                        </tr>
+                        <tr>
+                           <th scope="row">Partial Fusion
+                           </th>
+                           <td>
+                              42.8
+                           </td>
+                           <td>
+                              53.5
+                           </td>
+                           <td>
+                              53.5
+                           </td>
+                        </tr>
+                        <tr>
+                           <th scope="row">Optional Fusion
+                           </th>
+                           <td>
+                              44.8
+                           </td>
+                           <td>
+                              51.2
+                           </td>
+                           <td>
+                              52.9
+                           </td>
+                        </tr>
+
                      </tbody>
                   </table>
+                  <p>We demonstrate similar results finding to sen12ms. </p>
                </div>
             </div>
          </div>
@@ -810,7 +933,26 @@
          <div class="row">
             <div class="col-lg-12 mx-auto">
                <h2>Future work</h2>
-               <p>Will be updated once the results from MoCo-v2 are available and analysis is done.</p>
+               <p> In terms of our future work, further study can be done as:
+
+                  <ol>
+                     <li>The SEN12MS data in our finetune has existing noises in terms of land cover labels. Therefore,
+                        the
+                        highest accuracy we could get maybe constrained and introduce irreducible errors. A more clear
+                        labeled
+                        data or simplified dataset in our finetune would be necessary to better understand our
+                        representations
+                        quality.</li>
+                     <li>
+                        Another aspect is to perform our pre-trained model between different batch sizes and epochs to
+                        understand better how our approach under MoCo v2 could benefit more than the supervised model in
+                        remote
+                        sensing imagery. This requires more resources, training, and evaluation time.
+                     </li>
+                  </ol>
+
+                  Together with the above, if we understand better the finetuning strategies, our pre-trained and
+                  evaluation processes could improve efficiency and efficacy.</p>
             </div>
          </div>
       </div>
@@ -821,18 +963,23 @@
             <div class="col-lg-12 mx-auto">
                <h2>Conclusion</h2>
                <p>
-                  Conclusion will be provided once the results are available from Moco-V2. The following is the current
-                  research direction:
-                  <ul>
-                     <li>Using MoCo-v2 as contrastive self-supervised learning algorithm</li>
-                     <li>Pre-training on SEN12MS using positive pairs (same location) from multiple sensors</li>
-                     <li>Downstream task will be identified soon</li>
-                  </ul>
+
+                  With many reviews and studies through our processes, we leverage large-scale training data that
+                  include versatile remote sensing information from different sensors with global scene distributions to
+                  build the sensor-based location invariance momentum contrast for representation learning. With the
+                  advantage of the MoCo framework, we proposed two methods to experiment with the learned
+                  representations. In our transfer learning tasks, we are excited to see the results are pretty much
+                  aligned with our expectations, and that helps us understand the qualities of our learned
+                  representations so far. Overall, we demonstrate that natural augmentation and data fusion helps bridge
+                  the gaps between self-supervised learning and sup. learning models.
+
+
                </p>
                <p>
-                  We believe that our approach to using images from different satellites for the same location as
-                  naturally augmented images as input to the MoCo-v2 method provides high-quality representations and
-                  transferable initializations for satellite imagery interpretation.
+
+                  We are humble to explore and pleased to accomplish the solutions so far in remote sensing
+                  applications.
+
                </p>
             </div>
          </div>
