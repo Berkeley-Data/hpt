@@ -1,6 +1,6 @@
 ## Abstract
 
-[todo] This will be added last. 
+We present a sensor-based location invariance momentum contrast for unsupervised visual representation learning in remote sensing application, where unlabeled data is well-known challenges to deep learning domain and accurate training data remains comparably scarce. In this study, we first introduce the use of SEN12MS datasets, a curated large-scale training data that include versatile remote sensing information from different sensors with global scene distributions. To continually bridge the gap between supervised and unsupervised learning on computer vision tasks in remote sensing application, we exploit the geo-alignment data structure from SEN12MS and construct sensor-based geo-alignment positive pairs in contrastive learning to design the natural augmentation. [last sentence subject to changes] Our experiments show that the proposed method outperforms the supervised learning counterpart when transferring to downstream tasks in scene classification for remote sensing data.
 
 
 ## Introduction
@@ -88,15 +88,29 @@ Update on different bands, different satellites etc. with images.
 
 ![](web/images/moco_framework.png)![](web/images/current_approach.png)
 
-#### Contrastive Learning Framework
+#### 1. Contrastive Learning Framework
 Contrastive methods attempt to learn a mapping f<sub>q</sub> from raw pixels to semantically meaningful representations z in an unsupervised way. The training objective encourages representations corresponding to pairs of images that are known a priori to be semantically similar (positive pairs) to be closer to each other than typical unrelated pairs (negative pairs). With similarity measured by dot product, recent approaches in contrastive learning differ in the type of contrastive loss and generation of positive and negative pairs. In this work, we focus on the state-of-the-art contrastive learning framework [MoCo-v2](https://arxiv.org/pdf/2003.04297.pdf), an improved version of [MoCo](https://arxiv.org/pdf/1911.05722.pdf), and study improved methods for the construction of positive and negative pairs tailored to remote sensing applications.
 
-#### Naturally Augmented Positive Pairs
-Instead of using augmented images of the same input, it is natural to leverage the imagery for the same location from different remote sensing sensors while constructing positive pairs since it can provide us with extra semantically meaningful information.
-For example, Sentinel 1 consists of 2 images (vertical and horizontal polarization) and Sentinel 2 consist of 13 images (different wavelength bands) of the same patch.
-Any combination from the same patch would corresponds to a positive pair without the need of additional augmentation, while negative pair would correspond to any image from different patch without restriction  of same or different satellite.
-Figure 2 shows 19 images from the 3 available satellites at the same patch.\
-***INSERT FIGURE HERE***
+#### 2. Sensors-based Geo-alignment Positive Pairs
+Given the SEN12MS that provides the largest remote sensing dataset available with its global scene distribution and the wealth of versatile remote sensing information, It is natural to leverage the geo-alignment imagery from different remote sensing sensors  while constructing positive or negative pairs . For example, Sentinel 1 consists of two images (vertical and horizontal polarization) and Sentinel 2 consist of thirteen images (different wavelength bands) of the same patch. Any combination from the same patch would correspond to a positive pair without the need of additional augmentation, while negative pairs would correspond to any image from different patches without restriction of the same or different satellites. 
+
+In short, given an image x_i(s1) collected from sentinel 1, we can randomly select another image x_i(s2) collected from sentinel 2 that is geographically aligned with the x_i(s1), and then have them passthrough MoCo-v2 to the geographically aligned image pair x_i(s1) and x_i(s2), which provides us with a sensor-based geo-alignment positive pair ( v and v’ in Figure xxx) that can be used for training the contrastive learning framework by the query and key encoders in MoCo-v2. 
+
+For a sample of x_i(s1), our GeoSensorInforNCE objective loss can be demonstrated as follows:
+
+***INSERT FIGURE HERE (GeoSensorInfoNCE)***
+
+where z_i(s1) and z_i(s2) are the encoded representation of the randomly geo-aligned positive pair x_i(s1) and x_i(s2). N denotes the number of negative samples, {k_j}j=1_n are the encoded negative pairs, and \lambda is the temperature hyperparameter. 
+
+What we used are the actual images from the same location but different sensors. With the inspiration of the success of geography-aware self-supvervised learing (insert ref -- **geo xxxxx paper** )that constructs temporal pairs from real images, we also rely on the assumptions that the actual images for positive pairs encourages the entire network to learn better representations for real sensors data than the one focusing on augmentation strategies and synthetic images. 
+xxxxx
+
+#### 3. 1x1 Convolution filters
+
+From the above perspective of constructing naturally augmented positive and negative pairs in contrastive learning, we noticed that the volume (bands) of the inputs from different sensors are different. In order to match the typical dimensions of the image channels, our study also applies the Network in Network concept (Min Lin et al)(insert ref --**NIN**) to the sourced images. As such, we introduced an extra layer of one by one convolution filter block to perform cross channel sampling, thereby matching and aligning the depth of the channels from different sensor images while introducing non-linearity before the MoCo v2 encoding. With the implementation, we leverage this trick to carry out a pretty non-trivial computation on the input volume whereas we hope to increase the generalization capability in the network.  
+  
+
+
 
 ## Experiments
 #### Pre-training on SEN12MS
@@ -128,16 +142,43 @@ We compared supervised learning with HPT model
 
 **Qualitative Analyis**
 
-Comparison Accuracy ([TODO] switch to plot) 
+-   Supervised training (full dataset)
+    -   baseline: downloaded the pre-trained the models and evaluate without finetuning.
+-   Supervised training (1k dataset)
+    -   Supervised: original ResNet50 used by Sen12ms
+    -   Supervised_1x1: adding conv1x1 block to the ResNet50 used by Sen12ms
+-   Finetune/transfer learning (1k dataset)
+    -   Moco: the ResNet50 used by Sen12ms is initialized with the weight from Moco backbone
+    -   Moco_1x1: adding conv1x1 block to the ResNet50 used by Sen12ms and both input module and ResNet50 layers are initialized with the weight from Moco
+    -   Moco_1x1Rnd: adding conv1x1 block to the ResNet50 used by Sen12ms. ResNet50 layers are initialized with the weight from Moco but input module is initialized with random weights
+-   Finetune v2 (1k dataset)
+    -   freezing ResNet50 fully or partially does not seem to help with accuracy. We will continue explore and share the results once we are sure there is no issue with implementation. 
 
-| Metrics | supervised-s2 | supervised-s1/s2 | supervised-RGB | HPT s2 | HPT s1/s2 |  
-|---|---|---|---|---|---|
-| single-label Average Accuracy (%)| 57.33 |  45.52 |  45.11 |  44.76 |  44.1 | 
-| single-label Macro-F1 (%) | 53.39 |  53.21 | 45.16 |  42.99 |  43.98 | 
-| single-label Micro-F1 (%) | 66.35 |  64.66 |  58.98 |  64.39 |  **66.34** | 
-| multi-label Overall Accuracy (%)| 60.99 |  64.32 | 58.35 | 56.16  |  55.65 | 
-| multi-label Macro-F1 (%) | 56.14 |  57.46 | 47.57  | 46.91  |  46.69 | 
-| multi-label Micro-F1 (%) | 69.88 | 71.40 | 66.51  | **72.64** |  **75.67** | 
+| Metrics|single-label Average Accuracy (%)|multi-label Overall Accuracy (%) | 
+| --- | --- | --- | 
+| Supervised s2 (full)	|  .57	| .60| 
+| Supervised s1/s2 (full)	| .45	| .64| 
+| Supervised RGB (full)	| .45	| .58| 
+| --- | --- | --- | 
+| Supervised s2 (1024)	| **.4355**	| .5931 |
+| Supervised s1/s2 (1024)	| .4652	| .4652 | 
+| Supervised 1x1 s2 (1024)	| **.3863**	| .4893 | 
+| Supervised 1x1 s1/s2 (1024)	| .4094	| .5843 | 
+| Moco s2 (1024)	| .4545	| **.6277** | 
+| Moco s1/s2 (1024)	| .4514	| **.6697** | 
+| Moco 1x1 s2 (1024)| .4454	| **.601**| 
+| Moco 1x1 s1/s2 (1024)| _.425_ (?)	| .5302 | 
+| Moco 1x1 RND s2 (1024)| 0.371 | .5374 | 	
+| Moco 1x1 RND s1/s2 (1024)| .4477 | .5152 |
+
+(before): before learning rate adjustment
+
+other findings:
+- ResNet50_1x1 (s2) 100 epoch and 500 epoch shows similar accuracy. (especially for multi-label). 
+- ResNet50_1x1 (s2) shows significantly better result with 0.001 than 0.00001 (both single label and multi-label) 
+
+(findings pending verifications)
+- By looking at the results between models with 1x1 conv and without 1x1 conv counterparts, almost all models with 1x1 conv block underperform the ones without 1x1 conv block. It appears that adding 1x1 conv layer as a volumn filters may loss some bands information overall with the finetune evalutions. 
 
 ## Conclusion
 
