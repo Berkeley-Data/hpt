@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+source /scratch/crguest/miniconda3/etc/profile.d/conda.sh
+conda activate hp120
+python "$@"
