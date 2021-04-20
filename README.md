@@ -2,14 +2,14 @@
 
 This is a research repository for the submission "Self-Supervised Pretraining Improves Self-Supervised Pretraining" 
 
-For initial setup, refer to [setup instructions](references/setup.md). 
+For initial setup, refer to [setup instructions](setup_pretraining.md). 
 
 ## Setup Weight & Biases Tracking 
 
 ```bash
 export WANDB_API_KEY=<use your API key>
 export WANDB_ENTITY=cal-capstone
-export WANDB_PROJECT=hpt
+export WANDB_PROJECT=scene_classification
 #export WANDB_MODE=dryrun
 ```
 
@@ -58,54 +58,102 @@ bands_std = {'s1_std': [4.525339, 4.3586307],
 						1082.4341, 1057.7628, 1136.1942, 1132.7898, 991.48016]}
 ```
 
-**NEXT**, copy the pretraining template
+## Pre-training with SEN12MS Dataset
+[OpenSelfSup](https://github.com/Berkeley-Data/OpenSelfSup) 
+- see `src/utils/pretrain-runner.sh` for end-to-end run (require prep creating config files). 
+
+Check installation by pretraining using mocov2, extracting the model weights, evaluating the representations, and then viewing the results on tensorboard or [wandb](https://wandb.ai/cal-capstone/hpt):
+
+Set up experimental tracking and model versioning:
 ```bash
-cd src/utils
-cp templates/pretraining-config-template.sh pretrain-configs/sen12ms-small.sh
-# edit pretrain-configs/sen12ms-small.sh
-
-# once edited, generate the project
-./gen-pretrain-project.sh pretrain-configs/my-dataset-config.sh
+export WANDB_API_KEY=<use your API key>
+export WANDB_ENTITY=cal-capstone
+export WANDB_PROJECT=hpt4
 ```
 
-What just happened? We generated a bunch of pretraining configs in the following location (take a look at all of these files to get a feel for how this works):
-```
-OpenSelfSup/configs/hpt-pretrain/${shortname}
+#### Run pre-training 
+```bash
+cd OpenSelfSup
+
+# set which GPUs to use  
+# CUDA_VISIBLE_DEVICES=1 
+# CUDA_VISIBLE_DEVICES=0,1,2,3 
+
+# (sanity check) Single GPU training on samll dataset 
+/tools/single_train.sh configs/selfsup/moco/r50_v2_sen12ms_in_basetrain_aug_20ep.py --debug
+
+# (sanity check) Single GPU training on samll dataset on sen12ms fusion
+./tools/single_train.sh configs/selfsup/moco/r50_v2_sen12ms_fusion_in_smoke_aug.py --debug
+
+# (sanity check) 4 GPUs training on samll dataset 
+./tools/dist_train.sh configs/selfsup/moco/r50_v2_sen12ms_in_basetrain_aug_20ep.py 4
+
+# (sanity check) 4 GPUs training on samll fusion dataset 
+./tools/dist_train.sh configs/selfsup/moco/r50_v2_sen12ms_fusion_in_smoke_aug.py 4
+
+# distributed full training 
+/tools/dist_train.sh configs/selfsup/moco/r50_v2_sen12ms_in_fulltrain_20ep.py 4
 ```
 
-**NEXT**, you're ready to kick off a trial run to make sure the pretraining is working as expected =)
+####  (OPTIONAL) download pre-trained models
+
+Some of key pre-trained models are on s3 (s3://sen12ms/pretrained): 
+- [200 epochs w/o augmentation: vivid-resonance-73](https://wandb.ai/cjrd/BDOpenSelfSup-tools/runs/3qjvxo2p/overview?workspace=user-cjrd) 
+- [20 epochs w/o augmentation: silvery-oath7-2rr3864e](https://wandb.ai/cal-capstone/hpt2/runs/2rr3864e?workspace=user-taeil) 
+- [sen12ms-baseline: soft-snowflake-3.pth](https://wandb.ai/cal-capstone/SEN12MS/runs/3gjhe4ff/overview?workspace=user-taeil)
+
+```
+aws configure 
+aws s3 sync s3://sen12ms/pretrained . --dryrun
+aws s3 sync s3://sen12ms/pretrained_sup . --dryrun
+```
+
+#### Extract pre-trained model 
+Any other models can be restored by run ID if stored with W&B. Go to files section under the run to find `*.pth` files  
 
 ```bash
-# the `-t` flag means `trial`: it'll only run a 50 iter pretraining
- ./utils/pretrain-runner.sh -t -d OpenSelfSup/configs/hpt-pretrain/${shortname}
+BACKBONE=work_dirs/selfsup/moco/r50_v2_sen12ms_in_basetrain_20ep/epoch_20_moco_in_baseline.pth
+
+# method 1: From working dir(same system for pre-training)
+# CHECKPOINT=work_dirs/selfsup/moco/r50_v2_resisc_in_basetrain_20ep/epoch_20.pth
+
+# method 2: from W&B, {projectid}/{W&B run id} (any system)
+CHECKPOINT=hpt2/3l4yg63k  
+
+# Extract the backbone
+python tools/extract_backbone_weights.py ${BACKBONE} ${CHECKPOINT}
+
 ```
 
-**NEXT**, if this works, kick off the full training. NOTE: you can kick this off multiple times as long as the config directories share the same filesystem
-```bash
-# simply removing the `-t` flag from above
- ./utils/pretrain-runner.sh -d OpenSelfSup/configs/hpt-pretrain/${shortname}
-```
-
-**NEXT**, if you want to perform BYOL pretraining, add `-b` flag. 
-```bash
-# simply add the `-b` flag to above.
- ./utils/pretrain-runner.sh -d OpenSelfSup/configs/hpt-pretrain/${shortname} -b
-```
-
-
-Congratulations: you've launch a full hierarchical pretraining experiment.
-
-**FAQs/PROBLEMS?**
-* How does `pretrain-runner.sh` keep track of what's been pretrained?
-    * In each config directory, it creates a `.pretrain-status` folder to keep track of what's processing/finished. See them with e.g.  `find OpenSelfSup/configs/hpt-pretrain -name '.pretrain-status'`
-* How to redo a pretraining, e.g. because it crashed or something changed? Remove the
-    * Remove the associate `.proc` or `.done` file. Find these e.g.
-    ```bash
-    find OpenSelfSup/configs/hpt-pretrain -name '.proc'
-    find OpenSelfSup/configs/hpt-pretrain -name '.done'
-    ```
 
 ## Evaluating Pretrained Representations
+
+Using OpenSelfSup
+```bash
+python tools/train.py $CFG --pretrained $PRETRAIN
+
+# RESISC finetune example 
+tools/train.py --local_rank=0 configs/benchmarks/linear_classification/resisc45/r50_last.py --pretrained work_dirs/selfsup/moco/r50_v2_resisc_in_basetrain_20ep/epoch_20_moco_in_basetrain.pth --work_dir work_dirs/benchmarks/linear_classification/resisc45/moco-selfsup/r50_v2_resisc_in_basetrain_20ep-r50_last --seed 0 --launcher=pytorch
+
+
+
+```
+
+
+Using Sen12ms 
+```bash
+```
+
+
+
+
+
+#### Previous 
+```
+# Evaluate the representations (NOT SURE)
+./benchmarks/dist_train_linear.sh configs/benchmarks/linear_classification/resisc45/r50_last.py ${BACKBONE}
+```
+
 This has been simplified to simply:
 ```bash
 ./utils/pretrain-evaluator.sh -b OpenSelfSup/work_dirs/hpt-pretrain/${shortname}/ -d OpenSelfSup/configs/hpt-pretrain/${shortname}
