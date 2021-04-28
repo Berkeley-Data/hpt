@@ -12,7 +12,7 @@
       <paths name="angler">
         <serverdata>
           <mappings>
-            <mapping deploy="/home/taeil/hpt_2" local="$PROJECT_DIR$" web="/" />
+            <mapping deploy="/home/taeil/hpt" local="$PROJECT_DIR$" web="/" />
           </mappings>
         </serverdata>
       </paths>
