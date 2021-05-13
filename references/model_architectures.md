@@ -28,7 +28,9 @@ Some pretrained models:
 **Data Fusion - Augmentation Set 2**
 - [(optional fusion) crimson-pyramid-70](https://wandb.ai/cal-capstone/hpt4/runs/2iu8yfs6): 200 epochs 
 - [(partial fusion) decent-bird-80](https://wandb.ai/cal-capstone/hpt4/runs/yuy7sdav) to replace due to consistent kernel size.  [(partial fusion) laced-water-61](https://wandb.ai/cal-capstone/hpt4/runs/367tz8vs) and [visionary-lake-62](https://wandb.ai/cal-capstone/hpt4/runs/1srlc7jr)
-- [(full  fusion) volcanic-disco-84](https://wandb.ai/cal-capstone/hpt4/runs/21toacw1). 
+- [(full  fusion 200 epocs) volcanic-disco-84](https://wandb.ai/cal-capstone/hpt4/runs/21toacw1). 
+- [(full fusion 500 epocs) pleasant-moon-88](https://wandb.ai/cal-capstone/hpt4/runs/11yc8up0)
+- [(full fusion 900 epocs) major-sky-90](https://wandb.ai/cal-capstone/hpt4/runs/3l1wwwvo) 
 
 **Data Fusion - Augmentation Set 1**
 - [(optional fusion) proud-snowball-86](https://wandb.ai/cal-capstone/hpt4/runs/3lsgncpe) 
