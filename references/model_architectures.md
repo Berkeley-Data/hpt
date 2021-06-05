@@ -32,6 +32,9 @@ Some pretrained models:
 - [(full fusion 500 epocs) pleasant-moon-88](https://wandb.ai/cal-capstone/hpt4/runs/11yc8up0)
 - [(full fusion 900 epocs) major-sky-90](https://wandb.ai/cal-capstone/hpt4/runs/3l1wwwvo) 
 
+- [(full fusion 200 - 180K) stilted-mountain-91](https://wandb.ai/cal-capstone/hpt4/runs/xcthtqmn) - not evaluated yet 
+
+
 **Data Fusion - Augmentation Set 1**
 - [(optional fusion) proud-snowball-86](https://wandb.ai/cal-capstone/hpt4/runs/3lsgncpe) 
 - [silvery-meadow-88](https://wandb.ai/cal-capstone/hpt4/runs/1jkg2ym0)
